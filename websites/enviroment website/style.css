@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Playfair Display",serif;
+    background-image: linear-gradient(180deg,
+                hsl(70deg 76% 65%) 0%,
+                hsl(57deg 69% 57%) 10%,
+                hsl(47deg 77% 54%) 20%,
+                hsl(40deg 82% 52%) 30%,
+                hsl(33deg 85% 51%) 40%,
+                hsl(24deg 85% 52%) 50%,
+                hsl(17deg 87% 56%) 60%,
+                hsl(9deg 87% 58%) 70%,
+                hsl(1deg 85% 61%) 80%,
+                hsl(352deg 84% 58%) 90%,
+                hsl(344deg 81% 54%) 100%);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    text-align: center;
+    font-size: 2rem;
+}
+
+header {
+    padding-top: 100px;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: #252524;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+nav li {
+    list-style-type: none;
+    text-wrap: nowrap;
+    padding: 0 20px;
+    margin: 0 20px;
+    transition: all 0.5s linear;
+}
+
+
+a {
+    color: #03DAC6;
+    text-decoration: none;
+}
+
+nav li:hover {
+    transform: translate3d(0,-10px,22px);
+}
+
+a:hover {
+    color: #F25757;
+}
+
+article {
+    margin: 0 25%;
+}
+
+section img{
+    width: calc(100vw - 400px);
+    background-size: cover;
+    background-position: center;
+}

@@ -1,0 +1,40 @@
+@use './utils/functions' as u;
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+    padding: u.rem(10);
+    border-bottom: u.rem(1) solid #eee;
+    background-color: #615252;
+
+    @media (max-width: u.rem(650)) {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .item {
+        padding: u.rem(18) u.rem(28);
+        cursor: pointer;
+        transition: color .3s ease-out;
+        text-decoration: none;
+        color: #111;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        font-size: u.rem(15);
+        margin: u.rem(5) u.rem(25);
+
+        &.active {
+            color: #fff;
+        }
+    }
+
+    .indicator {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        border-radius: u.rem(30);
+    }
+}

@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: grey;
+}
+
+#quote-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    margin-top: 20%;
+}
+
+.quote {
+    font-size: 18px;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+}
+
+.quote-generator {
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+    width: 300px;
+    height: auto;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.author {
+    font-size: 16px;
+    font-style: italic;
+    transition: color 0.3s;
+}
+
+.quote-generator:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.quote-generator:hover .quote {
+    color: #007BFF;
+}
+
+.quote-generator:hover .author {
+    color: #FF5733;
+}
+
+.btn-el {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #007BFF;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.btn-el:hover {
+    background-color: #0056b3;
+}
+
+#add-quote-btn {
+    display: block;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px;
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    background-color: #21f854;
+    color: rgb(238, 88, 50);
+    transition: background-color 0.3s;
+}
+
+#add-quote-btn:hover {
+    background-color: #2bf09e;
+}

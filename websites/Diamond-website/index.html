@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gem-Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div id="socials">
+                <p>Facebook</p>
+                <p>Twitter</p>
+            </div>
+            <div id="company-logo">
+                <h1>PRD</h1>
+            </div>
+            <div id="personal-info">
+                <a href="#">Login</a>
+                <button>Sign Up</button>
+                <img src="./images/Bag.png" alt="image of the bag">
+            </div>
+        </nav>
+    </header>
+    <div id="gem-display">
+        <div id="heart">
+            <p>Heart</p>
+            <div id="background-square"></div>
+            <img src="./images/heart.png" alt="">
+        </div>
+        <div id="diamond">
+            <p>Diamond</p>
+            <div id="background-square"></div>
+            <img src="./images/My project 1.png" alt="diamond">
+        </div>
+        <div id="emerald">
+            <p>Emerald</p>
+            <div id="background-square"></div>
+            <img src="./images/emerald.png" alt="">
+        </div>
+    </div>
+    <div id="diamond-setting">
+        <h1>Get your diamond</h1>
+        <div id="diamond-heading">
+            <p>Diamond</p>
+            <p>Setting</p>
+            <p>Ring</p>
+        </div>
+        <div id="diamond-scroll">
+            <div class="scroll-content">
+                <div>
+                    <img src="./images/My project (1).png" alt="">
+                </div>
+                <div>
+                    <img src="./images/My project (2).png" alt="">
+                </div>
+                <div>
+                    <img src="./images/My project (3).png" alt="">
+                </div>
+                <div>
+                    <img src="./images/My project 6.png" alt="">
+                </div>
+                <div>
+                    <img src="./images/round 2.png" alt="">
+                </div>
+                <div>
+                    <img src="./images/My project 6.png" alt="">
+                </div>
+                <!-- Repeat the items for a seamless scroll -->
+                <div>
+                    <img src="./images/My project (1).png" alt="">
+                </div>
+                <div>
+                    <img src="./images/My project (2).png" alt="">
+                </div>
+                <div>
+                    <img src="./images/My project (3).png" alt="">
+                </div>
+                <div>
+                    <img src="./images/My project 6.png" alt="">
+                </div>
+                <div>
+                    <img src="./images/round 2.png" alt="">
+                </div>
+                <div>
+                    <img src="./images/My project 6.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="diamond-customization">
+        <span id="setting-diamond">
+            <div>
+                <p>Price</p>
+                <div class="range_container">
+                    <div class="sliders_control">
+                        <div id="fromPriceSliderTooltip" class="slider-tooltip">115</div>
+                        <input type="range" id="fromPriceSlider" value="120" min="50" max="350" step="10">
+                        <div id="toPriceSliderTooltip" class="slider-tooltip">120</div>
+                        <input type="range" id="toPriceSlider" value="260" min="50" max="350" step="10">
+                    </div>
+                    <div id="priceScale" class="scale" data-steps="50"></div>
+                </div>
+            </div>
+            <div>
+                <p>Carat</p>
+                <div class="range_container">
+                    <div class="sliders_control">
+                        <div id="fromCaratSliderTooltip" class="slider-tooltip">0.75</div>
+                        <input type="range" id="fromCaratSlider" value="0.75" min="0.25" max="3.00" step="0.05">
+                        <div id="toCaratSliderTooltip" class="slider-tooltip">1.50</div>
+                        <input type="range" id="toCaratSlider" value="1.50" min="0.25" max="3.00" step="0.05">
+                    </div>
+                    <div id="caratScale" class="scale" data-steps="0.25"></div>
+                </div>
+            </div>
+            <div>
+                <p>Color</p>
+                <div class="range_container">
+                    <div class="sliders_control">
+                        <div id="fromColorSliderTooltip" class="slider-tooltip">D</div>
+                        <input type="range" id="fromColorSlider" value="1" min="1" max="23" step="1">
+                        <div id="toColorSliderTooltip" class="slider-tooltip">J</div>
+                        <input type="range" id="toColorSlider" value="10" min="1" max="23" step="1">
+                    </div>
+                    <div id="colorScale" class="scale" data-steps="1"></div>
+                </div>
+            </div>
+        </span>
+        <div id="stone-type">
+            <p>Stone Type</p>
+            <span>
+                <button>ALL</button>
+                <button>Natural</button>
+                <button>Man-made</button>
+            </span>
+        </div>
+        <div id="cut-grade">
+            <span>
+                <p>Stone Type</p>
+            </span>
+            <button>ALL</button>
+            <button>Good</button>
+            <button>Very Good</button>
+            <button>ideal</button>
+            <button>True hearts</button>
+        </div>
+        <div id="clarity">
+            <span>
+                <p>Stone Type</p>
+            </span>
+            <span>
+                <button>All</button>
+                <button>1F</button>
+                <button>WS1</button>
+                <button>WS2</button>
+                <button>VS1</button>
+                <button>VS2</button>
+                <button>S11</button>
+                <button>S12</button>
+                <button>S13</button>
+            </span>
+        </div>
+        <div id="flouresense">
+            <span>
+                <p>Flouresense</p>
+            </span>
+            <span>
+                <button>None</button>
+                <button>Faint</button>
+                <button>Medium</button>
+                <button>Strong</button>
+                <button>Very Strong</button>
+            </span>
+        </div>
+        <hr>
+        <div>
+            <span>
+                <button>Search Diamond</button>
+                <button>Advanced Filters</button>
+            </span>
+            <button>Clear all</button>
+        </div>
+    </div>
+    <div id="customer-review">
+        <h1>What Our Customer Says About Us ?</h1>
+        <div id="review">
+            <div id="review-container">
+                <span>
+                    <div>
+                        <img src="./images/female-profile-pic.png" alt="">
+                    </div>
+                    <span id="customer-name">
+                        <h4>Alina</h4>
+                        <p>Fashion Blogger</p>
+                    </span>
+                </span>
+                <p>An enchanting world of diamonds awaits at our jewelry haven. Indulge in opulent elegance and timeless allure, tailored
+                for the rich, classy, and irresistibly alluring. Our exquisite pieces radiate a captivating brilliance, reflecting the
+                essence of femininity.</p>
+            </div>
+            <div id="review-container">
+                <span>
+                    <div>
+                        <img src="./images/female-profile-pic.png" alt="">
+                    </div>
+                    <span id="customer-name">
+                        <h4>Alina</h4>
+                        <p>Fashion Blogger</p>
+                    </span>
+                </span>
+                <p>An enchanting world of diamonds awaits at our jewelry haven. Indulge in opulent elegance and timeless allure, tailored
+                for the rich, classy, and irresistibly alluring. Our exquisite pieces radiate a captivating brilliance, reflecting the
+                essence of femininity.</p>
+            </div>
+            <div id="review-container">
+                <span>
+                    <div>
+                        <img src="./images/female-profile-pic.png" alt="">
+                    </div>
+                    <span id="customer-name">
+                        <h4>Alina</h4>
+                        <p>Fashion Blogger</p>
+                    </span>
+                </span>
+                <p>An enchanting world of diamonds awaits at our jewelry haven. Indulge in opulent elegance and timeless allure, tailored
+                for the rich, classy, and irresistibly alluring. Our exquisite pieces radiate a captivating brilliance, reflecting the
+                essence of femininity.</p>
+            </div>
+        </div>
+    </div>
+    <aside>
+        <div>
+            <p>Unleash Your Diamond <img src="./images/small-diamond.png" alt=""> Dreams - Seize The Sparkle!</p>
+            <p><img src="./images/small-diamond-2.png" alt=""> Join now & Discover Your Perfect Gem <img src="./images/small-diamond-3.png" alt=""></p>
+            <button>Explore Now</button>
+        </div>
+        <div id="white-board"></div>
+    </aside>
+    <footer>
+        <div id="newsletter">
+            <h1>Receive our weekly digest</h1>
+            <p>Subscribe to our newsletter</p>
+        </div>
+       <span>
+        <div>
+            <p>Explore</p>
+            <li><a href="#">Journal</a></li>
+            <li><a href="#">Crafts</a></li>
+            <li><a href="#">Photography</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </div>
+        <div>
+            <p>Inform</p>
+            <li><a href="#">Informations</a></li>
+            <li><a href="#">Forums</a></li>
+            <li><a href="#">Our Artisians</a></li>
+            <li><a href="#">returns</a></li>
+            <li><a href="#">legals</a></li>
+        </div>
+        <div>
+            <p>Connect</p>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Medium</a></li>
+        </div>
+       </span>
+    </footer>
+    <script src="main.js"></script>
+</body>
+
+</html>

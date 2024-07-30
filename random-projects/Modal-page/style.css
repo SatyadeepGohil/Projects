@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(https://cdn.pixabay.com/photo/2023/09/29/07/58/watermelon-8283269_640.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+div {
+    width: 500px;
+    height: 200px;
+    border-radius: 20px;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+button {
+    padding: 10px;
+    width: 150px;
+    border-radius: 10px;
+    background-color: cornflowerblue;
+    border: none;
+    font-size: 1.3em;
+    color: aliceblue;
+}
+
+.modal {
+    position: relative;
+    display: none;
+}
+
+#myModal {
+    position: absolute;
+}
+
+#close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    font-weight: bold;
+    color: red;
+    font-size: 2rem;
+}
+
+#close:hover {
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+}

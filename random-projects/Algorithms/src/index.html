@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithms</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <button id="generateButton">Generate</button>
+        <button id="startButton">Start</button>
+        <select name="Sorting" id="Sorting">
+            <option value="Selection">Selection sort</option>
+            <option value="Bubble">Bubble sort</option>
+            <option value="Merge">Merge sort</option>
+            <option value="Insertion">Insertion sort</option>
+            <option value="Quick">Quick sort</option>
+            <option value="Heap">Heap sort</option>
+            <option value="Count">Count sort</option>
+        </select>
+
+        <select name="speed" id="speed">
+            <option value="0.5">Ultrafast</option>
+            <option value="10">Fast</option>
+            <option value="50">Normal</option>
+            <option value="100">Slow</option>
+            <option value="150">Slower</option>
+            <option value="300">Very Slow</option>
+        </select>
+
+        <Select name="bars" id="bars">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="40">40</option>
+            <option value="80">80</option>
+            <option value="160">160</option>
+            <option value="320">320</option>
+            <option value="640">640</option>
+            <option value="1280">1280</option>
+            <option value="2560">2560</option>
+            <option value="5120">5120</option>
+        </Select>
+    </nav>
+    <canvas id="container"></canvas>
+    <script src="main.js"></script>
+    <script src="sortingalgorithms.js"></script>
+</body>
+</html>

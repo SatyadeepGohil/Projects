@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+button {
+    width: 50px;
+    margin: 2px;
+}
+
+p {
+    font-size: 20px;
+}
+
+canvas {
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    display: block;
+    width: 100vw;
+    height: 90vh;
+}

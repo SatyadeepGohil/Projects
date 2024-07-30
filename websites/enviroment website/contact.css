@@ -1,0 +1,98 @@
+:root {
+    --card-height: calc(100vh - 300px);
+    --card-width: calc(var(--card-height) / 1.5);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Playfair Display", serif;
+    background-image: linear-gradient(0deg,
+            hsl(0deg 0% 0%) 20%,
+            hsl(180deg 25% 6%) 57%,
+            hsl(180deg 10% 10%) 67%,
+            hsl(180deg 7% 14%) 72%,
+            hsl(180deg 6% 18%) 75%,
+            hsl(180deg 5% 22%) 77%,
+            hsl(180deg 4% 26%) 79%,
+            hsl(180deg 4% 31%) 83%,
+            hsl(180deg 3% 35%) 89%,
+            hsl(180deg 3% 40%) 100%);
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100vw;
+    text-align: center;
+    font-size: 2rem;
+}
+
+header h1 {
+    margin: 120px;
+    color: white;
+    font-size: 3rem;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: #252524;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+#logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+nav li {
+    list-style-type: none;
+    text-wrap: nowrap;
+    font-size: 30px;
+    padding: 0 20px;
+    margin: 0 20px;
+    transition: all 0.5s linear;
+}
+
+#logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+nav li {
+    list-style-type: none;
+    text-wrap: nowrap;
+    font-size: 30px;
+    padding: 0 20px;
+    margin: 0 20px;
+    transition: all 0.5s linear;
+}
+
+
+a {
+    color: #03DAC6;
+    text-decoration: none;
+}
+
+nav li:hover {
+    transform: translate3d(0, -10px, 22px);
+}
+
+a:hover {
+    color: #F25757;
+}
+
+section {
+    color: aliceblue;
+}

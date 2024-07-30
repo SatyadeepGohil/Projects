@@ -1,0 +1,71 @@
+@import './function';
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Kulim Park', sans-serif;
+}
+
+h1{
+    font-size: em(30px);
+    margin: em(10px);
+    text-align: left;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+}
+
+#container {
+    background-image: url("./pexels-pixabay-42266.jpg");
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    display: grid;
+    place-content: center;
+    position: relative;
+}
+
+#count-display {
+    background-color: #23f32d;
+    border-radius: 10px;
+    width: em(600px);
+    height: em(100px);
+    position: absolute;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+}
+
+#timer {
+    font-size: em(55px);
+    color: white;
+    padding: em(5px);
+}
+
+#background {
+    background-image: linear-gradient(45deg,
+                hsl(122deg 36% 86%) 0%,
+                hsl(122deg 26% 79%) 17%,
+                hsl(122deg 20% 73%) 25%,
+                hsl(122deg 17% 66%) 31%,
+                hsl(122deg 15% 60%) 37%,
+                hsl(122deg 13% 54%) 42%,
+                hsl(122deg 13% 48%) 47%,
+                hsl(122deg 15% 42%) 53%,
+                hsl(122deg 18% 36%) 58%,
+                hsl(123deg 22% 30%) 63%,
+                hsl(123deg 27% 25%) 69%,
+                hsl(125deg 36% 19%) 75%,
+                hsl(128deg 53% 14%) 83%,
+                hsl(122deg 86% 8%) 100%);
+    border-radius: 30px;
+    width: em(500px);
+    height: em(300px);
+    opacity: 0.7;
+}

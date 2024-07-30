@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    margin: 10px;
+    letter-spacing: 10px;
+}
+
+#underline {
+    width: 70px;
+    height: 3px;
+    background-color: orange;
+    margin-bottom: 10px;
+}
+
+#menu {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+}
+
+#menu button {
+    padding: 10px;
+    border: 1px solid orange;
+    border-radius: 10px;
+    width: 80px;
+}
+
+button:active { 
+            transform: scale(0.98); 
+            box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); 
+}
+
+section {
+    width: 100%;
+    height: auto;
+    background-color: rgb(228, 220, 220);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#food {
+    width: 400px;
+    height: 400px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#food img {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 3px solid orange;
+}
+
+#food div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+#food-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid black;
+    margin-bottom: 10px;
+}
+
+#food-details p {
+    font-size: 15px;
+    text-wrap: nowrap;
+    margin: 5px;
+}
+
+#name {
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+#price {
+    color: orange;
+    font-weight: 800;
+}
+
+#description {
+    color: rgb(73, 140, 179);
+    font-weight: 600;
+}
+

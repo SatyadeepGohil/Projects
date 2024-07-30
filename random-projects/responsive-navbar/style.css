@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+header {
+    background-color: rgb(253, 224, 224);
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+#socials img {
+    width: 20px;
+    height: 20px;
+}
+
+
+#logo {
+    display: flex;
+}
+
+
+h1 {
+    margin: 10px;
+}
+
+
+#addict {
+    color: rgb(52, 238, 238);
+    text-shadow: 1px 1px 4px black;
+}
+
+ul {
+    display: flex;
+    gap: 2rem;
+}
+
+
+li {
+    list-style: none;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    nav {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    ul {
+        flex-direction: column;
+        transition: background-color 0.5s;
+    }
+
+
+    .burger {
+    width: 50px;
+    height: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    transition: transform 0.5s, box-shadow 0.5s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+
+    .burger div {
+    background-color: black;
+    height: 3px;
+    width: 25px;
+}
+
+
+    .burger:hover {
+    transform: rotate(180deg);
+    box-shadow: 1px 1px 1px 2px blue,-1px -1px 1px 2px blue;
+}
+.menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: aliceblue;
+    }
+    li {
+        padding: 10px;
+    }
+
+    li:hover {
+        background-color: aqua;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .burger {
+        display: flex;
+    }
+
+    #socials {
+        margin: 10px;
+    }
+}

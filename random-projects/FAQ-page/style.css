@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(
+  45deg,
+  hsl(125deg 63% 88%) 0%,
+  hsl(127deg 63% 86%) 12%,
+  hsl(129deg 63% 83%) 18%,
+  hsl(131deg 64% 80%) 22%,
+  hsl(132deg 64% 76%) 26%,
+  hsl(133deg 65% 73%) 29%,
+  hsl(135deg 66% 69%) 33%,
+  hsl(138deg 62% 67%) 36%,
+  hsl(141deg 59% 65%) 39%,
+  hsl(144deg 56% 63%) 42%,
+  hsl(148deg 53% 60%) 44%,
+  hsl(151deg 51% 58%) 47%,
+  hsl(155deg 49% 55%) 50%,
+  hsl(158deg 46% 53%) 53%,
+  hsl(162deg 44% 51%) 56%,
+  hsl(166deg 43% 49%) 58%,
+  hsl(170deg 45% 46%) 61%,
+  hsl(175deg 48% 44%) 64%,
+  hsl(179deg 52% 41%) 67%,
+  hsl(182deg 52% 39%) 71%,
+  hsl(184deg 52% 37%) 74%,
+  hsl(188deg 53% 35%) 78%,
+  hsl(192deg 54% 33%) 82%,
+  hsl(197deg 55% 31%) 88%,
+  hsl(205deg 56% 29%) 100%
+);
+height: 100vh;
+font-family: 'Playwrite ES', cursive;
+font-style: italic;
+display: flex;
+justify-content: center;
+align-items: center;
+transition: all 0.8s linear;
+}
+
+#container {
+    padding: 10px;
+    background-color: aliceblue;
+    margin: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+}
+
+h1 {
+    color: gold;
+    text-shadow: 1px 1px 10px black;
+    font-size: 2rem;
+}
+
+li {
+    list-style: none;
+    margin: 10px;
+    background-color: #F5B700;
+    color: #DC0073;
+    padding: 20px;
+    border-bottom: 2px solid blueviolet;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    position: relative;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+#icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 10px;
+}
+
+button {
+    padding: 5px;
+    font-size: 1.5rem;
+    border: none;
+    background-color: transparent;
+    transform: rotate(45deg);
+}
+
+button.active {
+    box-shadow: 1px 1px 10px aqua, 1px 1px 10px aqua;
+    transform: rotate(0);
+}
+
+.answer {
+    display: none;
+    padding-top: 10px;
+}
+
+.answer.active {
+    display: block;
+}

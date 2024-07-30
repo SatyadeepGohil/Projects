@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <span id="logo">
+                <h1>Coding</h1>
+                <h1 id="addict">Addict</h1>
+            </span>
+            <ul class="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <span id="socials">
+                <img src="https://img.icons8.com/?size=100&id=118497&format=png&color=000000" alt="">
+                <img src="https://img.icons8.com/?size=100&id=32323&format=png&color=000000" alt="">
+                <img src="https://img.icons8.com/?size=100&id=13963&format=png&color=000000" alt="">
+                <img src="https://img.icons8.com/?size=100&id=20419&format=png&color=000000" alt="">
+            </span>
+        </nav>
+        <div class="burger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+    <script>
+        const burger = document.querySelector('.burger');
+        const menu = document.querySelector('.menu');
+
+        burger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            console.log('click')
+        })
+    </script>
+</body>
+</html>
