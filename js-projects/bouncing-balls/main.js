@@ -1,14 +1,10 @@
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height =window.innerHeight;
-let mousex = 0;
-let mouseY = 0;
 
-document.addEventListener('mousemove', () => {
-    mousex = event.clientX;
-    mouseY = event.clientY;
-});
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;;
+
+let balls = [];
 
 function getRandomColor() {
     let r = Math.floor(Math.random() * 256);
@@ -18,26 +14,73 @@ function getRandomColor() {
     return `rgb(${r},${g},${b})`;
 }
 
+class Ball {
+    constructor(x, y, radius, color, dx, dy, gravity, bounce) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+        this.dx = dx;
+        this.dy = dy;
+        this.gravity = gravity;
+        this.bounce = bounce;
+    }
 
-function balls() {
-    let radius = Math.floor(Math.random() * 50);
-    let color = getRandomColor();
-    let x = Math.floor(Math.random() * canvas.height);
-    let y = Math.floor(Math.random() * canvas.width);
-    ctx.beginPath();
-    ctx.arc(x,y,radius,0, Math.PI * 2);
-    ctx.fillStyle = color;
-    ctx.fill();
-    ctx.closePath();
+    draw(ctx) {
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    update(canvas) {
+        this.dy += this.gravity;
+        this.x += this.dx;
+        this.y += this.dy;
+
+        if (this.y + this.radius > canvas.height) {
+            this.y = canvas.height - this.radius;
+            this.dy *= -this.bounce;
+        }
+
+        if (this.y - this.radius < 0) {
+            this.y = this.radius;
+            this.dy *= -this.bounce;
+        }
+
+        if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
+            this.dx *= -1;
+        }
+    }
 }
 
-balls();
+function createBalls(numBalls) {
+    for (let i = 0; i < numBalls; i++) {
+        let radius = Math.floor(Math.random() * 15);
+        let x = Math.random() * (canvas.width - 2 * radius) + radius;
+        let y = Math.random() * (canvas.height - 2 * radius) + radius;
+        let color = getRandomColor();
+        let dx = Math.random() * 2 - 0.5;
+        let dy = Math.random() * 2 - 0.5;
+        let gravity = 0.1;
+        let bounce = 1;
 
-let gravity = 1;
-
-function animate() {
+        balls.push(new Ball(x,y,radius,color,dx,dy,gravity,bounce));
+    }
 }
 
-for (let i = 0; i < 10; i++) {
-    balls();
+createBalls(1000);
+
+function update() {
+    ctx.clearRect(0,0, canvas.width, canvas.height);
+
+    balls.forEach(ball => {
+        ball.update(canvas);
+        ball.draw(ctx);
+    });
+
+    requestAnimationFrame(update);
 }
+
+update();
