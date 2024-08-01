@@ -2,7 +2,7 @@ const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;;
+canvas.height = window.innerHeight;
 
 let balls = [];
 
@@ -57,20 +57,22 @@ class Ball {
 
 function createBalls(numBalls) {
     for (let i = 0; i < numBalls; i++) {
-        let radius = Math.floor(Math.random() * 15);
+        let radius = Math.floor(Math.random() * 10);
         let x = Math.random() * (canvas.width - 2 * radius) + radius;
         let y = Math.random() * (canvas.height - 2 * radius) + radius;
         let color = getRandomColor();
         let dx = Math.random() * 2 - 0.5;
         let dy = Math.random() * 2 - 0.5;
-        let gravity = 0.1;
+        let gravity = 0.8;
         let bounce = 1;
 
         balls.push(new Ball(x,y,radius,color,dx,dy,gravity,bounce));
     }
 }
 
-createBalls(1000);
+let numberOfBalls = prompt('how many balls do you want to see?');
+
+createBalls(numberOfBalls);
 
 function update() {
     ctx.clearRect(0,0, canvas.width, canvas.height);
@@ -84,3 +86,9 @@ function update() {
 }
 
 update();
+
+window.addEventListener('resize' , () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    update();
+});
