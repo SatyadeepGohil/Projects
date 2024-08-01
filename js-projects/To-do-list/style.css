@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F2BAC9;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+h1 {
+    margin: 20px;
+    font-size: 3rem;
+    background-color: #BAF2BB;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+p {
+    margin: 10px;
+    font-size: 1.5rem;
+    background-color: #BAD7F2;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+input {
+    padding: 10px;
+    font-size: 1.5rem;
+    margin: 20px 10px 10px 10px;
+}
+
+button {
+    padding: 5px;
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    border: none;
+}
+
+button:active {
+    background-color: aqua;
+    transform: scale(0.9);
+    transform: 500ms;
+}
+
+#listadder {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    align-items: center;
+    height: 100%;
+}
+
+ul {
+    width: 100%;
+}
+
+ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(250, 199, 72);
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 2rem;
+    list-style-type: none;
+    transition: all linear 300ms;
+}
+
+
+li button {
+    background: none;
+    border: none;
+    text-align: center;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+}
+
+li:hover {
+    transform: scale(1.1);
+    background-color: rgba(250, 199, 72, 0.742);
+}
+
+li button:active, li button:hover {
+    color: white;
+    background-color: red;
+}
