@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    gap: 10px;
+    perspective: 1000px;
+}
+
+.box {
+    background-color: red;
+    height: 400px;
+    width: 100px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s, filter 0.5s;
+    filter: brightness(0);
+}
+
+.box:hover {
+    transform: translateZ(100px);
+    filter: brightness(1);
+}
+
+
+.box:hover + * {
+    transform: translateZ(90px) rotateY(45deg);
+    filter: brightness(0.6);
+}
+
+.box:hover + * + * {
+    transform: translateZ(45px) rotateY(30deg);
+    filter: brightness(0.4);
+}
+
+.box:hover + * + * + *{
+    transform: translateZ(25.5px) rotateY(15deg);
+    filter: brightness(0.2);
+}
+
+.box:has(+ *:hover){
+    transform: translateZ(90px) rotateY(-45deg);
+    filter: brightness(0.6);
+}
+
+.box:has(+ * + *:hover){
+    transform: translateZ(45px) rotateY(-30deg);
+    filter: brightness(0.4);
+}
+
+.box:has(+ * + * + *:hover){
+    transform: translateZ(25.5px) rotateY(-15deg);
+    filter: brightness(0.2);
+}
+
+.box-1 {
+    background-color: #7C00FE;
+}
+
+.box-2 {
+    background-color: #F9E400;
+}
+
+.box-3 {
+    background-color: #FFAF00;
+}
+
+.box-4 {
+    background-color: #F5004F;
+}
+
+.box-5 {
+    background-color: #B4E380;
+}
+
+.box-6 {
+    background-color: #88D66C;
+}
+
+.box-7 {
+    background-color: #73BBA3;
+}
+
+.box-8 {
+    background-color: #E8C5E5;
+}
+
+.box-9 {
+    background-color: #F19ED2;
+}
+
+.box-10 {
+    background-color: #FF5580;
+}
