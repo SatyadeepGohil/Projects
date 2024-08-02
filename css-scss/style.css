@@ -13,94 +13,55 @@ body {
 
 #container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    width: 90%;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 5px;
+    width: 100%;
     perspective: 1000px;
 }
 
 .box {
     background-color: red;
     height: 400px;
-    width: 100px;
+    width: 50px;
     transform-style: preserve-3d;
-    transition: transform 0.5s, filter 0.5s;
-    filter: brightness(0);
+    transition: transform 0.5s, filter 0.3s;
 }
 
 .box:hover {
-    transform: translateZ(100px);
+    transform: translateZ(150px);
     filter: brightness(1);
+    background-color: #87F1FF;
 }
 
 
 .box:hover + * {
-    transform: translateZ(90px) rotateY(45deg);
-    filter: brightness(0.6);
+    transform: translateZ(100px) rotateY(60deg);
+    filter: brightness(0.8);
 }
 
 .box:hover + * + * {
-    transform: translateZ(45px) rotateY(30deg);
-    filter: brightness(0.4);
-}
-
-.box:hover + * + * + *{
-    transform: translateZ(25.5px) rotateY(15deg);
-    filter: brightness(0.2);
-}
-
-.box:has(+ *:hover){
-    transform: translateZ(90px) rotateY(-45deg);
+    transform: translateZ(50px) rotateY(30deg);
     filter: brightness(0.6);
 }
 
-.box:has(+ * + *:hover){
-    transform: translateZ(45px) rotateY(-30deg);
+.box:hover + * + * + *{
+    transform: translateZ(25px) rotateY(15deg);
     filter: brightness(0.4);
 }
 
+.box:has(+ *:hover){
+    transform: translateZ(100px) rotateY(-60deg);
+    filter: brightness(0.8);
+}
+
+.box:has(+ * + *:hover){
+    transform: translateZ(50px) rotateY(-30deg);
+    filter: brightness(0.6);
+}
+
 .box:has(+ * + * + *:hover){
-    transform: translateZ(25.5px) rotateY(-15deg);
-    filter: brightness(0.2);
-}
-
-.box-1 {
-    background-color: #7C00FE;
-}
-
-.box-2 {
-    background-color: #F9E400;
-}
-
-.box-3 {
-    background-color: #FFAF00;
-}
-
-.box-4 {
-    background-color: #F5004F;
-}
-
-.box-5 {
-    background-color: #B4E380;
-}
-
-.box-6 {
-    background-color: #88D66C;
-}
-
-.box-7 {
-    background-color: #73BBA3;
-}
-
-.box-8 {
-    background-color: #E8C5E5;
-}
-
-.box-9 {
-    background-color: #F19ED2;
-}
-
-.box-10 {
-    background-color: #FF5580;
+    transform: translateZ(25px) rotateY(-15deg);
+    filter: brightness(0.4);
 }
