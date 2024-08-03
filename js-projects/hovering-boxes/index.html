@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hovering boxes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+                const container = document.getElementById('container');
+                    const rows = 10;
+                    const cols = 10;
+                    const boxCount = rows * cols;
+
+                    for (let i = 0; i < boxCount; i++) {
+                        const box = document.createElement('div');
+                        box.classList.add('box');
+                        container.appendChild(box);
+                    }
+
+                    const boxes = document.querySelectorAll('.box');
+
+                    boxes.forEach((box, index) => {
+                        box.addEventListener('mouseover', () => {
+                            const row = Math.floor(index / cols);
+                            const col = index % cols;
+
+                            boxes.forEach((b, i) => {
+                                const bRow = Math.floor(i / cols);
+                                const bCol = i % cols;
+                                const distance = Math.sqrt(Math.pow(row - bRow, 2) + Math.pow(col - bCol, 2));
+                                b.style.transform = `translateZ(${100 - distance * 10}px)`;
+                                b.style.filter = `brightness(${1 - distance * 0.1})`;
+                                b.style.transitionDelay = `${distance * 50}ms`;
+                            });
+                        });
+
+                        box.addEventListener('mouseout', () => {
+                            boxes.forEach(b => {
+                                b.style.transform = 'translateZ(0)';
+                                b.style.filter = 'brightness(0)';
+                                b.style.transitionDelay = '0ms';
+                            });
+                        });
+                    });
+    </script>
+</body>
+</html>
