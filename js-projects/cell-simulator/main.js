@@ -75,39 +75,8 @@ class Cell {
         this.limitSpeed();
     }
 
-    limitSpeed() {
-        let speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-        if (speed > maxSpeed) {
-            this.vx = (this.vx / speed) * maxSpeed;
-            this.vy = (this.vy / speed) * maxSpeed;
-        }
-        else if (speed < minSpeed) {
-            this.vx = (this.vx / speed) * minSpeed;
-            this.vy = (this.vy / speed) * minSpeed;
-        }
-    }
-
-    seperation(cells, seperateDistance) {
-        let steer = {x : 0, y: 0};
-        let count = 0;
-
-        cells.forEach(cell => {
-            let distance = Math.hypot(this.x - cell.x, this.y - cell.y);
-            if (distance > 0 && distance < seperateDistance) {
-                let diff = { x: this.x - cell.x, y: this.y - cell.y};
-                diff.x /= distance;
-                diff.y /= distance;
-                steer.x += diff.x;
-                steer.y += diff.y;
-                count++;
-            }
-        });
-
-        if (count > 0) {
-            steer.x /= count;
-            steer.y /= count;
-        }
-
+    seperation(boids, seperateDistance) {
+        
         return steer;
     }
 
