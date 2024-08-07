@@ -17,6 +17,13 @@
             align-items: center;
             height: 100vh;
         }
+
+        div {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            color: white;
+        }
         canvas {
             width: 100%;
             height: inherit;
@@ -25,6 +32,11 @@
     </style>
 </head>
 <body>
+    <div>
+        <p id="plantCount">Number of Plants</p>
+        <p id="preyCount">Number of Prey</p>
+        <p id="predatorCount">Number of Predator</p>
+    </div>
     <canvas id="myCanvas"></canvas>
     <script src="main.js"></script>
 </body>

@@ -1,16 +1,24 @@
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
+const plantCount = document.getElementById('plantCount');
+const preyCount = document.getElementById('preyCount');
+const predatorCount = document.getElementById('predatorCount');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let cells = [];
 let gridSize = 50;
-let numOfCells = 1000;
-let numOfPlants = 900;
-let numOfPreys = 90;
+let numOfCells = 100;
+let numOfPlants = 50;
+let numOfPreys = 20;
 let numOfPredator = 10;
 let maxSpeed = 1;
+const maxPlants = 500;
+const preyConsumptionThreshold = 2;
+const predatorCosumptionThreshold = 2;
+const duplicateInterval = 5000;
+
 
 class Cell {
     constructor (x,y,vx,vy,radius,color,type) {
@@ -22,6 +30,7 @@ class Cell {
         this.color = color;
         this.type = type;
         this.gridIndex = this.getGridIndex();
+        this.consumed = 0;
     }
 
     getGridIndex() {
@@ -66,17 +75,27 @@ class Cell {
         this.acceleration.x = 0;
         this.acceleration.y = 0;
 
-        if (this.position.x + this.radius > canvas.width || this.position.x - this.radius < 0) {
-            this.vx *= -0.9;
-            this.position.x = Math.min(Math.max(this.radius, this.position.x), canvas.width - this.radius);
-        }
-        if (this.position.y + this.radius > canvas.height || this.position.y - this.radius < 0) {
-            this.vy *= -0.9;
-            this.position.y = Math.min(Math.max(this.radius, this.position.y), canvas.height - this.radius);
-        }
-
+        this.wrapAroundCanvas();
         this.checkCollisions(grid);
         this.gridIndex = this.getGridIndex();
+    }
+
+    wrapAroundCanvas() {
+        if (this.position.x + this.radius > canvas.width) {
+            this.position.x = this.radius;
+        }
+
+        if (this.position.x - this.radius < 0) {
+            this.position.x = canvas.width - this.radius;
+        }
+
+        if (this.position.y + this.radius > canvas.height) {
+            this.position.y = this.radius;
+        }
+
+        if (this.position.y - this.radius < 0) {
+            this.position.y = canvas.height - this.radius;
+        }
     }
 
      getNearbyCells(grid) {
@@ -101,21 +120,33 @@ class Cell {
 
     preyBehavior(grid) {
         let closestPlant = null;
-        let closestDistance = Infinity;
+        let closestPredator = null;
+        let closestPlantDistance = Infinity;
+        let closestPredatorDistance = Infinity;
         let nearbyCells = this.getNearbyCells(grid);
-        cells.forEach(cell => {
+        nearbyCells.forEach(cell => {
             if (cell.type === 'plant') {
                 let distance = Math.hypot(cell.position.x - this.position.x, cell.position.y - this.position.y);
-                if (distance < closestDistance) {
-                    closestDistance = distance;
+                if (distance < closestPlantDistance) {
+                    closestPlantDistance = distance;
                     closestPlant = cell;
+                } 
+            } else if (cell.type === 'predator') {
+                let distance = Math.hypot(cell.position.x - this.position.x, cell.position.y - this.position.y);
+                if (distance < closestPredator) {
+                    closestPredatorDistance = distance;
+                    closestPredator = cell;
                 }
             }
         });
 
-        if (closestPlant) {
-            this.acceleration.x = (closestPlant.position.x - this.position.x) * 0.005;
-            this.acceleration.y = (closestPlant.position.y - this.position.y) * 0.005;
+        if (closestPredator && closestPredatorDistance < 100) {
+            this.acceleration.x = (this.position.x - closestPredator.position.x) * 0.01;
+            this.acceleration.y = (this.position.y - closestPredator.position.y) * 0.01;
+        } 
+        else if (closestPlant) {
+            this.acceleration.x = (closestPlant.position.x - this.position.x) * 0.001;
+            this.acceleration.y = (closestPlant.position.y - this.position.y) * 0.001;
         }
     }
 
@@ -123,7 +154,7 @@ class Cell {
         let closestPrey = null;
         let closestDistance = Infinity;
         let nearbyCells = this.getNearbyCells(grid);
-        cells.forEach(cell => {
+        nearbyCells.forEach(cell => {
             if (cell.type === 'prey') {
                 let distance = Math.hypot(cell.position.x - this.position.x, cell.position.y - this.position.y);
                 if (distance < closestDistance) {
@@ -134,8 +165,8 @@ class Cell {
         });
 
         if (closestPrey) {
-            this.acceleration.x = (closestPrey.position.x - this.position.x) * 0.0005;
-            this.acceleration.y = (closestPrey.position.y - this.position.y) * 0.0005;
+            this.acceleration.x = (closestPrey.position.x - this.position.x) * 0.002;
+            this.acceleration.y = (closestPrey.position.y - this.position.y) * 0.002;
         }
     }
 
@@ -145,21 +176,46 @@ class Cell {
         nearbyCells.forEach(cell => {
             if (this !== cell) {
 
-                if (this.type === 'predator' && cell.type === 'prey') {
-                    let distance = Math.hypot(cell.position.x - this.position.x, cell.position.y - this.position.y);
-                    if (distance < this.radius + cell.radius) {
-                        cells.splice(cells.indexOf(cell), 1);
+                const distance = Math.hypot(cell.position.x - this.position.x, cell.position.y - this.position.y);
+
+                if (this.type === 'predator' && cell.type === 'prey' && distance < this.radius + cell.radius) {
+                    cells.splice(cells.indexOf(cell), 1);
+                    this.consumed += 1;
+                    if (this.consumed >= predatorCosumptionThreshold) {
+                        this.duplicate();
+                        this.consumed = 0;
                     }
                 }
 
-                if (this.type === 'prey' && cell.type === 'plant') {
-                    let distance = Math.hypot(cell.position.x - this.position.x, cell.position.y - this.position.y);
-                    if (distance < this.radius + cell.radius) {
-                        cells.splice(cells.indexOf(cell), 1);
+                if (this.type === 'prey' && cell.type === 'plant' && distance < this.radius + cell.radius) {
+                    cells.splice(cells.indexOf(cell), 1);
+                    this.consumed += 1;
+                    if (this.consumed >= preyConsumptionThreshold) {
+                        this.duplicate();
+                        this.consumed = 0;
                     }
                 }
             }
         });
+    }
+
+    duplicate() {
+        if (this.type == 'plant' && cells.filter(cell => cell.type === 'plant').length < maxPlants) {
+            const radius = 2;
+            const x = this.position.x + (Math.random() - 2) * gridSize;
+            const y = this.position.y + (Math.random() - 2) * gridSize;
+            const vx = 0;
+            const vy = 0;
+            cells.push(new Cell(x, y, vx, vy, radius, 'green', 'plant'));
+        }
+        if (this.type == 'prey' || 'predator' && this.type !== 'plant') {
+            const radius = 2;
+            const x = this.position.x + (Math.random() - 1.5) * gridSize;
+            const y = this.position.y + (Math.random() - 1.5) * gridSize;
+            const vx = (Math.random() - 0.5) * 2;
+            const vy = (Math.random() - 0.5) * 2;
+            cells.push(new Cell(x,y,vx,vy,radius, this.color, this.type));
+        }
     }
 }
 
@@ -190,18 +246,33 @@ function updateGrid() {
     return grid;
 }
 
+function updateCounts() {
+    plantCount.innerText = `Number of Plants: ${cells.filter(cell => cell.type === 'plant').length}`;
+    preyCount.innerText = `Number of Prey: ${cells.filter(cell => cell.type === 'prey').length}`;
+    predatorCount.innerText = `Number of Predator: ${cells.filter(cell => cell.type === 'predator').length}`;
+}
+
 function update() {
     ctx.clearRect( 0, 0, canvas.width, canvas.height);
 
-    let grid = updateGrid();
+    const grid = updateGrid();
 
     cells.forEach(cell => {
         cell.draw(ctx);
         cell.update(grid);
     });
 
+    updateCounts();
     requestAnimationFrame(update);
 }
+
+setInterval(() => {
+    cells.forEach(cell => {
+        if (cell.type === 'plant') {
+            cell.duplicate();
+        }
+    });
+},duplicateInterval);
 
 update();
 
