@@ -3,8 +3,8 @@ Cells will have attraction force and repulsion force.
 
 There will be three types of cells
 
--Plants :- The plants will have green color and will grow upto certain size after that they will reproduce and spread small plants cells near by their position.
+-Plants :- The plants will have green color and grow in number in nearby area after certain amount of time. The plants are static
 
--Herbivores :- The herbivores will move in folks(using the boids) and eat the plants. The herbivores will run away from the predators. if the herbivores does not find food until some amount of time then they will die.
+-Herbivores :- The herbivores will move and eat the plants. The herbivores will run away from the predators. if the herbivores finds certain amount of food then they will multiply by 1.
 
--Preadatr :- The Predator will hunt the herbivores. The Predator will touch the herbivores and that will count as a kill.
+-Preadator :- The Predator will hunt the herbivores. The Predator will touch the herbivores and that will count as a kill. The predator also can increase in numbers after a certain amount of kill.
