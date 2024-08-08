@@ -16,8 +16,8 @@ let numOfPredator = 10;
 let maxSpeed =  2;
 const maxPlants = 1000;
 const preyConsumptionThreshold = 5;
-const predatorCosumptionThreshold = 2;
-const duplicateInterval = 2500;
+const predatorCosumptionThreshold = 3;
+const duplicateInterval = 2000;
 const lifespanDecrement = 0.1;
 const initialLifespan = 100;
 const lifespanIncreaseOnConsumption = 10;
@@ -153,12 +153,12 @@ class Cell {
         });
 
         if (closestPredator && closestPredatorDistance < 100) {
-            this.acceleration.x = (this.position.x - closestPredator.position.x) * 0.02;
-            this.acceleration.y = (this.position.y - closestPredator.position.y) * 0.02;
+            this.acceleration.x = (this.position.x - closestPredator.position.x) * 0.01;
+            this.acceleration.y = (this.position.y - closestPredator.position.y) * 0.01;
         } 
         else if (closestPlant) {
-            this.acceleration.x = (closestPlant.position.x - this.position.x) * 0.01;
-            this.acceleration.y = (closestPlant.position.y - this.position.y) * 0.01;
+            this.acceleration.x = (closestPlant.position.x - this.position.x) * 0.02;
+            this.acceleration.y = (closestPlant.position.y - this.position.y) * 0.02;
         }
     }
 
