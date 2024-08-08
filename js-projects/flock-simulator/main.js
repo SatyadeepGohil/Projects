@@ -7,9 +7,9 @@ canvas.height = window.innerHeight;
 let boids = [];
 let numOfBoids = 200;
 
-let maxSpeed = 1;
+let maxSpeed = 3;
 let minSpeed = 0.5;
-let maxForce = 0.03;
+let maxForce = 1;
 
 
 class Boid {
@@ -46,12 +46,20 @@ class Boid {
         this.acceleration.x = 0;
         this.acceleration.y = 0;
 
-        if (this.position.x + this.radius > canvas.width || this.position.x - this.radius < 0) {
-            this.vx *= -0.9;
+        if (this.position.x + this.radius > canvas.width) {
+            this.position.x = this.radius;
         }
 
-        if (this.position.y + this.radius > canvas.height || this.position.y - this.radius < 0) {
-            this.vy *= -0.9;
+        if (this.position.x - this.radius < 0) {
+            this.position.x = canvas.width - this.radius;
+        }
+
+        if (this.position.y + this.radius > canvas.height) {
+            this.position.y = this.radius;
+        }
+
+        if (this.position.y - this.radius < 0) {
+            this.position.y = canvas.height - this.radius;
         }
     }
 
@@ -70,7 +78,6 @@ class Boid {
         let separation = this.seperate(boids);
         let alignment = this.align(boids);
         let cohesion = this.cohere(boids);
-        let edgeAvoidance = this.avoidEdges();
 
         separation.x *= 1.5;
         separation.y *= 1.5;
@@ -78,32 +85,10 @@ class Boid {
         alignment.y *= 1.0;
         cohesion.x *= 1.0;
         cohesion.y *= 1.0;
-        edgeAvoidance.x *= 2.0;
-        edgeAvoidance.y *= 2.0;
 
         this.applyForce(separation);
         this.applyForce(alignment);
         this.applyForce(cohesion);
-        this.avoidEdges(edgeAvoidance);
-    }
-
-    avoidEdges() {
-        let avoidForce = { x: 0, y: 0};
-        let edgeBuffer = 50;
-
-        if (this.position.x < edgeBuffer) {
-            avoidForce.x += (edgeBuffer - this.position.x) / edgeBuffer;
-        } else if (this.position.x > canvas.width - edgeBuffer) {
-            avoidForce.x -= (this.position.x - (canvas.width - edgeBuffer)) / edgeBuffer;
-        }
-
-        if (this.position.y < edgeBuffer) {
-            avoidForce.y += (edgeBuffer - this.position.y) / edgeBuffer;
-        } else if (this.position.y > canvas.height - edgeBuffer) {
-            avoidForce.y -= (this.position.y - (canvas.height - edgeBuffer)) / edgeBuffer;
-        }
-
-        return avoidForce;
     }
 
     seperate(boids) {
