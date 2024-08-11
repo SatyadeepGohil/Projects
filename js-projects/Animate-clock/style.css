@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#container {
+    width: 500px;
+    height: 500px;
+    border: 2px solid black;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.number {
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.number:nth-child(1) { transform: translate(-50%, -50%) rotate(30deg) translateY(-220px) rotate(-30deg);}
+.number:nth-child(2) { transform: translate(-50%, -50%) rotate(60deg) translateY(-220px) rotate(-60deg);}
+.number:nth-child(3) { transform: translate(-50%, -50%) rotate(90deg) translateY(-220px) rotate(-90deg);}
+.number:nth-child(4) { transform: translate(-50%, -50%) rotate(120deg) translateY(-220px) rotate(-120deg);}
+.number:nth-child(5) { transform: translate(-50%, -50%) rotate(150deg) translateY(-220px) rotate(-150deg);}
+.number:nth-child(6) { transform: translate(-50%, -50%) rotate(180deg) translateY(-220px) rotate(-180deg);}
+.number:nth-child(7) { transform: translate(-50%, -50%) rotate(210deg) translateY(-220px) rotate(-210deg);}
+.number:nth-child(8) { transform: translate(-50%, -50%) rotate(240deg) translateY(-220px) rotate(-240deg);}
+.number:nth-child(9) { transform: translate(-50%, -50%) rotate(270deg) translateY(-220px) rotate(-270deg);}
+.number:nth-child(10) { transform: translate(-50%, -50%) rotate(300deg) translateY(-220px) rotate(-300deg);}
+.number:nth-child(11) { transform: translate(-50%, -50%) rotate(330deg) translateY(-220px) rotate(-330deg);}
+.number:nth-child(12) { transform: translate(-50%, -50%) rotate(360deg) translateY(-220px) rotate(-360deg);}
+
+.hand {
+    position: absolute;
+    width: 2px;
+    background-color: black;
+    left: 50%;
+    bottom: 50%;
+    transform-origin: bottom;
+}
+
+.hour-hand {
+    height: 100px;
+    background-color: #333;
+    z-index: 3;
+}
+
+.minute-hand {
+    height: 150px;
+    background-color: #666;
+    z-index: 2;
+}
+
+.second-hand {
+    height: 200px;
+    background-color: red;
+    z-index: 1;
+}
