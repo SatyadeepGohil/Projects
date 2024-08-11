@@ -215,7 +215,7 @@ class Cell {
 
     duplicate() {
         if (this.type == 'plant' && cells.filter(cell => cell.type === 'plant').length < maxPlants) {
-            const radius = 2;
+            const radius = 3.8;
             const x = this.position.x + (Math.random() - 4) * gridSize;
             const y = this.position.y + (Math.random() - 4) * gridSize;
             const vx = 0;
@@ -223,7 +223,7 @@ class Cell {
             cells.push(new Cell(x, y, vx, vy, radius, 'green', 'plant'));
         }
         if (this.type == 'prey' || 'predator' && this.type !== 'plant') {
-            const radius = 2;
+            const radius = 3.8;
             const x = this.position.x + (Math.random() - 2) * gridSize;
             const y = this.position.y + (Math.random() - 2) * gridSize;
             const vx = (Math.random() - 0.5) * 2;
@@ -235,7 +235,7 @@ class Cell {
 
 function createCells(numOfCells, type, color) {
     for (let i = 0; i < numOfCells; i++) {
-        let radius = 2;
+        let radius = 3.8;
         let x = Math.random() * (canvas.width - 2 * radius) + radius;
         let y = Math.random() * (canvas.height - 2 * radius) + radius;
         let vx = (Math.random() - 0.5) * 2;
