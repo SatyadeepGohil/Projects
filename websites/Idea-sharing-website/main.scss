@@ -1,0 +1,132 @@
+$button-color: #4262FF;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: inherit;
+    margin-top: 20px;
+    li {
+        list-style-type: none;
+        a {
+            text-decoration: none;
+            font-size: 0.8em;
+            margin: 10px;
+        }
+    }
+    img {
+        height: 20px;
+        width: 60px;
+        margin: 10px;
+    }
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        select {
+            border: none;
+            width: 100px;
+        }
+    }
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 30px;
+            height: 15px;
+        }
+        button {
+            padding: 10px;
+            border-radius: 30px;
+            border: none;
+            background-color: $button-color;
+            color: antiquewhite;
+            margin: 5px;
+        }
+    }
+}
+
+#Showcase {
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    #appimage {
+        width: 50%;
+        height: 400px;
+    }
+    
+    #sidepanel {
+        width: 50%;
+        height: 400px;
+        margin-left: 10px;
+        h1 {
+            font-size: 3rem;
+            color: #050038;
+        }
+        p {
+            margin-top: 20px;
+            font-size: 1em;
+            color: #050038;
+        }
+        input {
+            width: 400px;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 20px;
+        }
+        button {
+            width: 400px;
+            padding: 10px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: $button-color;
+            color: white;
+        }
+        #button-text {
+            font-size: 0.8em;
+            font-weight: 200;
+            margin: 0;
+            margin-left: 10px;
+            color: #050038;
+        }
+
+        #images {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-top: 20px;
+        }
+    }
+}
+
+#company-logo {
+    position: relative;
+    margin-top: 50px;
+    width: inherit;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 250px;
+    p {
+        position: absolute;
+        font-weight: 200;
+        top: 10%;
+    }
+}
