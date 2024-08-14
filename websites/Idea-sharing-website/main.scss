@@ -1,4 +1,6 @@
 $button-color: #4262FF;
+$abhaya-libre : 'Abhaya Libre', serif;
+$font-weight: 300;
 
 * {
     margin: 0;
@@ -42,6 +44,7 @@ header {
         select {
             border: none;
             width: 100px;
+            font-family: $abhaya-libre;
         }
     }
     div {
@@ -59,6 +62,7 @@ header {
             background-color: $button-color;
             color: antiquewhite;
             margin: 5px;
+            font-family: $abhaya-libre;
         }
     }
 }
@@ -70,7 +74,6 @@ header {
     align-items: center;
     #appimage {
         width: 50%;
-        height: 400px;
     }
     
     #sidepanel {
@@ -88,6 +91,7 @@ header {
         p {
             font-size: 1em;
             color: #050038;
+            font-family: $abhaya-libre;
         }
         input {
             width: 400px;
@@ -100,11 +104,12 @@ header {
             border: none;
             border-radius: 20px;
             background-color: $button-color;
+            font-family: $abhaya-libre;
             color: white;
         }
         #button-text {
             font-size: 0.8em;
-            font-weight: 200;
+            font-weight: $font-weight;
             margin: 0;
             color: #050038;
         }
@@ -128,7 +133,7 @@ header {
     height: 250px;
     p {
         position: absolute;
-        font-weight: 200;
+        font-weight: $font-weight;
         top: 10%;
     }
 }
@@ -176,7 +181,8 @@ header {
                 margin: 10px;
             }
             p {
-                font-weight: 300;
+                font-weight: $font-weight;
+                font-family: $abhaya-libre;
             }
         }
     }
@@ -187,6 +193,7 @@ header {
         border-radius: 20px;
         margin: 20px;
         color: white;
+        font-family: $abhaya-libre;
     }
 }
 
@@ -205,12 +212,15 @@ header {
         a {
             color: blue;
             word-spacing: 5px;
+            text-decoration: none;
+            font-family: $abhaya-libre;
         }
         h1 {
             font-size: 2.5rem;
         }
         p {
-            font-weight: 300;
+            font-weight: $font-weight;
+            font-family: $abhaya-libre;
         }
     }
 }
@@ -222,7 +232,7 @@ header {
     align-items: center;
     img {
         width: 80%;
-        height: 400px;
+        height: 40%;
     }
     #work-ways {
         position: absolute;
@@ -232,9 +242,10 @@ header {
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        gap: 20px;
+        gap: 10px;
+        margin: 20px;
         p {
-            font-size: 0.9em;
+            font-size: 0.7em;
         }
         button {
             background-color: $button-color;
@@ -252,6 +263,10 @@ header {
     justify-content: space-between;
     gap: 30px;
     color: #050038;
+    margin-top: 100px;
+    #brainstrom-session {
+        width: 50%;
+    }
     #heading {
         margin-left: 3%;
         font-size: 3rem;
@@ -260,9 +275,281 @@ header {
         display: inherit;
         width: 100%;
         p {
-            font-size: 0.8em;
+            font-size: 0.9em;
             margin-left: 3%;
-            font-family: 300;
+            font-family: $font-weight;
+            font-family: $abhaya-libre;
+        }
+    }
+    #brainstorming {
+        font-family: $abhaya-libre;
+    }
+}
+
+#teamwork {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+    margin: 3%;
+    color: #050038;
+    #uxdesign {
+        width: 50%;
+    }
+    h1 {
+        font-size: 3rem;
+    }
+    #teams {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: $abhaya-libre;
+        font-weight: 600;
+    }
+    #team-features {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: $abhaya-libre;
+        p {
+            margin-top: 1em;
+            margin-bottom: 1em;
+            font-weight: 400;
+        }
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+        #tools-plugin {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}
+
+#company-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    background-color: #FFD02F;
+    padding: 10%;
+
+    a {
+        color: #090909;
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: #050038;
+    }
+
+    #information {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        div {
+            padding: 15%;
+
+            p {
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
+#company-review {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    #company-review-header {
+        text-align: center;
+
+        h1 {
+                font-size: 3rem;
+                color: #050038;
+                margin-bottom: 20px;
+            }
+
+            button {
+                font-size: 1.5rem;
+                color: #4262FF;
+                border-color: #4262FF;
+                padding: 20px;
+                border-radius: 50px;
+            }
+    }
+
+    div {
+        padding: 5%;
+    }
+
+    #reviews {
+        display: flex;
+        justify-content: center;
+
+        h1 {
+            font-size: 3em;
+        }
+
+        h1,p {
+            margin-top: 20px;
+        }
+
+        #review-info {
+            display: flex;
+            justify-content: space-between;
+            justify-self: flex-start;
+            align-items: center;
+            margin-top: 100px;
+            width: 90%;
+
+            img {
+                height: 50px;
+                width: 50px;
+            }
+
+            span {
+
+                p {
+                    font-size: 0.8em;
+                }
+            }
+        }
+    }
+}
+
+aside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    #join-org {
+        text-align: center;
+        color: aliceblue;
+        background-color: #050038;
+        border-radius: 20px;
+        padding: 5%;
+        width: 80%;
+        p {
+            color: rgba(250, 235, 215, 0.719);
+            font-size: 0.8em;
+        }
+        button {
+            margin-top: 50px;
+            padding: 10px;
+            border-radius: 40px;
+            color: aliceblue;
+            background-color: #4262FF;
+            border: none;
+        }
+        }
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+    background-color: #050038;
+
+    #footer-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        color: white;
+        width: 100%;
+
+        h3, li,span {
+            margin: 20px;
+        }
+
+        li, span {
+            font-weight: 300;
+            font-size: 0.8em;
+        }
+
+        span {
+            a {
+                color: white;
+            }
+        }
+        li {
+            list-style-type: none;
+            a {
+                text-decoration: none;
+                color: white;
+            }
+        }
+    }
+
+    hr {
+        margin-top: 100px;
+        width: 90%;
+        line-height: 1px;
+    }
+
+    #footer-images {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2%;
+        margin-top: 50px;
+    }
+
+    img {
+        width: 50%;
+    }
+
+    #appstore {
+        width: 30%;
+    }
+}
+
+button {
+    transform: all linear 0.2s;
+}
+
+button:active {
+    transform: scale(0.9);
+}
+
+@media (min-width: 1200px) {
+
+    #work-realtionships {
+        #work-ways {
+                right: 10%;
+                h1 {
+                    font-size: 3rem;
+                }
+                p {
+                    font-size: 1.5em;
+                }
+            }
+    }
+
+    #company-info {
+        #information div {
+            padding: 5%;
+        }
+    }
+
+    aside {
+        #join-org {
+            h1 {
+                font-size: 3em;
+            }
+            
+            p,button {
+                font-size: 1.5em;
+            }
         }
     }
 }
