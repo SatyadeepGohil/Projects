@@ -4,24 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paint IN vanilla js</title>
+    <link rel="stylesheet" href="main.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            display: grid;
-            place-content: center;
-            height: 100vh;
-        }
-        canvas {
-            background-color: blue;
-        }
+        
     </style>
 </head>
 <body>
+    <header>
+
+        <div id="tools">
+            <button id="pencil"><img src="./images/pencil.png" alt=""></button>
+            <button id="eraser"><img src="./images/eraser.png" alt=""></button>
+            <button id="paint-bucket"><img src="./images/paint-bucket.png" alt=""></button>
+            <button id="text-font"><img src="./images/text-font.png" alt=""></button>
+            <button id="maginfier"><img src="./images/search.png" alt=""></button>
+            <button id="color-picker"><img src="./images/color-picker.png" alt=""></button>
+        </div>
+
+        <div id="colors">
+
+            <div id="main-colors">
+                <button id="main-color1"></button>
+                <button id="main-color2"></button>
+            </div>
+
+            <div id="color-palette">
+                <div class="chosen-colors"></div>
+                <div class="chosen-colors"></div>
+                <div class="chosen-colors"></div>
+                <div class="chosen-colors"></div>
+                <div class="chosen-colors"></div>
+                <div class="chosen-colors"></div>
+                <div class="chosen-colors"></div>
+                <div class="chosen-colors"></div>
+                <div class="chosen-colors"></div>
+                <div class="chosen-colors"></div>
+                <div class="chosen-colors"></div>
+                <div class="chosen-colors"></div>
+                <div class="chosen-colors"></div>
+                <div class="chosen-colors"></div>
+                <div class="chosen-colors"></div>
+                <div class="chosen-colors"></div>
+            </div>
+
+            <div id="color-wheel">
+                <img src="./images/color-wheel.png" alt="">
+            </div>
+        </div>
+    </header>
     <canvas id="myCanvas"></canvas>
     <script src="main.js"></script>
 </body>

@@ -1,13 +1,22 @@
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
-canvas.width = 800;
-canvas.height = 600;
+canvas.width = 500;
+canvas.height = 300;
 
 let isResizing = false;
+let isDrawing = false;
 let startX, startY, startWidth, startHeight, startLeft, startTop;
 let direction = '';
-let isDrawing = false;
+let savedImageData;
+
+function saveCanvasState() {
+    savedImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+}
+
+function restoreCanvasState() {
+    ctx.putImageData(savedImageData, 0, 0);
+}
 
 function updateCursorStyle(direction) {
     switch (direction) {
@@ -37,7 +46,7 @@ function updateCursorStyle(direction) {
 }
 
 function getResizeDirection(e, rect) {
-    const edgeThreshold = 5;
+    const edgeThreshold = 10;
     const right = Math.abs(rect.right - e.clientX) <= edgeThreshold;
     const left = Math.abs(e.clientX - rect.left) <= edgeThreshold;
     const bottom = Math.abs(rect.bottom - e.clientY) <= edgeThreshold;
@@ -68,6 +77,7 @@ function getResizeDirection(e, rect) {
 
     if (direction) {
         isResizing = true;
+        saveCanvasState();
         updateCursorStyle(direction);
         e.preventDefault();
     }
@@ -84,25 +94,34 @@ document.addEventListener('mousemove', (e) => {
     const dx = e.clientX - startX;
     const dy = e.clientY - startY;
 
+    let newHeight = startHeight;
+    let newWidth = startWidth;
+
     if (direction.includes('right')) {
-        canvas.width = Math.max(startWidth + dx, 50);
+        newWidth = Math.max(startWidth + dx, 50);
     }
 
     if (direction.includes('bottom')) {
-        canvas.height = Math.max(startHeight + dy, 50);
+        newHeight = Math.max(startHeight + dy, 50);
     }
 
     if (direction.includes('left')) {
-        const newWidth = Math.max(startWidth - dx, 50);
-        canvas.width = newWidth;
-        canvas.style.left = startLeft + dx + 'px';
+        newWidth = Math.max(startWidth - dx, 50);
     }
 
     if (direction.includes('top')) {
-        const newHeight = Math.max(startHeight - dy, 50);
-        canvas.height = newHeight;
-        canvas.style.top = startTop + dy + 'px';
+        newHeight = Math.max(startHeight - dy, 50);
     }
+
+    const scaleX = newWidth / canvas.width;
+    const scaleY = newHeight / canvas.height;
+
+    canvas.width = newWidth;
+    canvas.height = newHeight;
+
+    ctx.scale(scaleX, scaleY);
+    restoreCanvasState();
+
 
     updateCursorStyle(direction);
     } else if (isDrawing) {
