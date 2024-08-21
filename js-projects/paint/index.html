@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paint IN vanilla js</title>
     <link rel="stylesheet" href="main.css">
-    <style>
-        
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
 </head>
 <body>
     <header>
@@ -18,7 +16,7 @@
             <button id="paint-bucket"><img src="./images/paint-bucket.png" alt=""></button>
             <button id="text-font"><img src="./images/text-font.png" alt=""></button>
             <button id="maginfier"><img src="./images/search.png" alt=""></button>
-            <button id="color-picker"><img src="./images/color-picker.png" alt=""></button>
+            <button id="color-picker-btn"><img src="./images/color-picker.png" alt=""></button>
         </div>
 
         <div id="colors">
@@ -49,6 +47,17 @@
 
             <div id="color-wheel">
                 <img src="./images/color-wheel.png" alt="">
+                <div id="color-picker">
+                <select id="color-code">
+                    <option value="rgb">RGB</option>
+                    <option value="rgba">RGBA</option>
+                    <option value="hex">HEX</option>
+                    <option value="hsl">HSL</option>
+                    <option value="hsv">HSV</option>
+                </select>
+                <p id="color-name">Selected Color: </p>
+                <div id="color-preview"></div>
+                </div>
             </div>
         </div>
     </header>
