@@ -25,42 +25,30 @@
                 <button id="main-color1"></button>
                 <button id="main-color2"></button>
             </div>
-
             <div id="color-palette">
-                <div class="chosen-colors"></div>
-                <div class="chosen-colors"></div>
-                <div class="chosen-colors"></div>
-                <div class="chosen-colors"></div>
-                <div class="chosen-colors"></div>
-                <div class="chosen-colors"></div>
-                <div class="chosen-colors"></div>
-                <div class="chosen-colors"></div>
-                <div class="chosen-colors"></div>
-                <div class="chosen-colors"></div>
-                <div class="chosen-colors"></div>
-                <div class="chosen-colors"></div>
-                <div class="chosen-colors"></div>
-                <div class="chosen-colors"></div>
-                <div class="chosen-colors"></div>
-                <div class="chosen-colors"></div>
+                <button class="color-btn"></button>
+                <button class="color-btn"></button>
+                <button class="color-btn"></button>
+                <button class="color-btn"></button>
+                <button class="color-btn"></button>
+                <button class="color-btn"></button>
+                <button class="color-btn"></button>
+                <button class="color-btn"></button>
+                <button class="color-btn"></button>
+                <button class="color-btn"></button>
             </div>
 
             <div id="color-wheel">
                 <img src="./images/color-wheel.png" alt="">
-                <div id="color-picker">
-                <select id="color-code">
-                    <option value="rgb">RGB</option>
-                    <option value="rgba">RGBA</option>
-                    <option value="hex">HEX</option>
-                    <option value="hsl">HSL</option>
-                    <option value="hsv">HSV</option>
-                </select>
-                <p id="color-name">Selected Color: </p>
-                <div id="color-preview"></div>
-                </div>
             </div>
         </div>
     </header>
+    <div id="color-picker-wrapper">
+        <div id="picker"></div>
+        <div id="color-preview"></div>
+        <p id="hex-value" style="display: none;">Hex: #FFFFFF</p>
+        <p id="rgba-value" style="display: none;">RGBA: rgba(255, 255, 255, 1)</p>
+    </div>
     <canvas id="myCanvas"></canvas>
     <script src="main.js"></script>
 </body>

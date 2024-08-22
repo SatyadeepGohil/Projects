@@ -10,85 +10,118 @@ let startX, startY, startWidth, startHeight, startLeft, startTop;
 let direction = '';
 let savedImageData;
 
-let colorArray = ['rgb(255, 0, 0)', 'rgb(0, 128, 0)', 'rgb(0, 0, 255)', 'rgb(255, 255, 0)', 'rgb(255, 165, 0)', 'rgb(128, 0, 128)', 'rgb(255, 192, 203)', 'rgb(165, 42, 42)', 'rgb(0, 255, 255)', 'rgb(255, 0, 255)', 'rgb(0, 255, 0)', 'rgb(75, 0, 130)', 'rgb(238, 130, 238)', 'rgb(255, 215, 0)', 'rgb(192, 192, 192)', 'rgb(0, 0, 0)'];
-
 
 let colorWheel = document.getElementById('color-wheel');
-let chosenColors = document.getElementsByClassName('chosen-colors');
+let colorPicker;
+let colorPickerContainer = document.getElementById('picker');
+let colorPreview = document.getElementById('color-preview');
+let hexValueParagraph = document.getElementById('hex-value');
+let rgbaValueParagraph = document.getElementById('rgba-value');
+
+const colors = [
+    '#FF0000',
+    '#00FF00',
+    '#0000FF',
+    '#FFFF00',
+    '#FF00FF',
+    '#00FFFF'
+];
+
+const colorButtons = document.querySelectorAll('.color-btn');
+
+colorButtons.forEach((btn, index) => {
+    btn.style.backgroundColor = colors[index];
+})
 
 let mainColor1 = document.getElementById('main-color1');
 let mainColor2 = document.getElementById('main-color2');
 
-let colorPicker;
 let activeMainColor = mainColor1;
-let selectedColor = null;
 
-let colorCode = document.getElementById('color-code');
-let colorPreview = document.getElementById('color-preview');
-
-colorWheel.addEventListener('click', () => {
-    if(!colorPicker) {
-        colorPicker = new iro.ColorPicker('#color-picker', {
-            width: 300,
-            layout: [
-                { component: iro.ui.Box },
-                { component: iro.ui.Slider, options: { sliderType: 'hue' } },
-                { component: iro.ui.Slider, options: { sliderType: 'saturation' } },
-                { component: iro.ui.Slider, options: { sliderType: 'value' } },
-                { component: iro.ui.Slider, options: { sliderType: 'alpha' } },
-            ]
-        });
-
-        colorPicker.on('color:change', (color) => {
-            let colorValue = colorCode.value;
-            let colorString;
-
-            switch (colorValue) {
-                case 'rgb': colorString = color.rgbString; break;
-                case 'rgba': colorString = color.rgbaString; break;
-                case 'hex': colorString = color.hexString; break;
-                case 'hsl': colorString = color.hslString; break;
-                case 'hsla': colorString = color.hslaString; break;
-                case 'hsv':
-                    let hsv = color.hsv;
-                    colorString = `hsv(${hsv.h.toFixed(0)}, ${hsv.s.toFixed(0)}%, ${hsv.v.toFixed(0)}%)`;
-                    break;
-            }
-
-            colorName.textContent = `Selected Color: ${colorString}`;
-            colorPreview.style.backgroundColor = colorString;
-
-            if (selectedColor) {
-                selectedColor.style.backgroundColor = colorString;
-
-                if (selectedColor === activeMainColor) {
-                    activeMainColor.style.backgroundColor = colorString;
-                }
-            }
-        })
-    }
+colorButtons.forEach((colorSwitch) => {
+    colorSwitch.addEventListener('click', () => {
+        const color = window.getComputedStyle(colorSwitch).backgroundColor;
+        activeMainColor.style.backgroundColor = color;
+    })
 })
 
+const initializeColorPicker = () => {
+    colorPicker = new iro.ColorPicker(colorPickerContainer, {
+        width: 300,
+        layoutDirection: 'horizontal',
+        layout: [
+            {
+                component: iro.ui.Box,
+                options: {}
+            },
+            {
+                component: iro.ui.Slider,
+                options: {
+                    sliderType: 'hue'
+                }
+            },
+            {
+                component: iro.ui.Slider,
+                options: {
+                    sliderType: 'saturation'
+                }
+            },
+            {
+                component: iro.ui.Slider,
+                options: {
+                    sliderType: 'value'
+                }
+            },
+            {
+                component: iro.ui.Slider,
+                options: {
+                    sliderType: 'alpha'
+                }
+            }
+        ],
+        color: activeMainColor.style.backgroundColor || '#FFFFFF'
+    });
 
-for(let i = 0; i < chosenColors.length; i++) {
-    chosenColors[i].style.backgroundColor = colorArray[i];
-
-    chosenColors[i].addEventListener('click', () => {
-        selectedColor = chosenColors[i];
-
-        activeMainColor.style.backgroundColor = selectedColor.style.backgroundColor;
-    })
+    colorPicker.on('color:change', (color) => {
+        activeMainColor.style.backgroundColor = color.rgbaString;
+        colorPreview.style.backgroundColor = color.rgbaString;
+        hexValueParagraph.textContent = `Hex: ${color.hexString}`;
+        rgbaValueParagraph.textContent = `RGBA: ${color.rgbaString}`;
+    });
 }
+
+const closeColorPicker = (event) => {
+    if (!colorPickerContainer.contains(event.target) && event.target !== colorWheel) {
+        colorPickerContainer.style.display = 'none';
+        hexValueParagraph.style.display = 'none';
+        rgbaValueParagraph.style.display = 'none';
+        document.removeEventListener('click', closeColorPicker);
+    }
+}
+
+colorWheel.addEventListener('click', (event) => {
+    if (!colorPicker) {
+        initializeColorPicker();
+    }
+    colorPickerContainer.style.display = 'block';
+    hexValueParagraph.style.display = 'block';
+    rgbaValueParagraph.style.display = 'block';
+    document.addEventListener('click', closeColorPicker);
+    event.stopPropagation();
+});
 
 mainColor1.addEventListener('click', () => {
     activeMainColor = mainColor1;
-    selectedColor = null;
-})
+});
 
 mainColor2.addEventListener('click', () => {
     activeMainColor = mainColor2;
-    selectedColor = null;
-})
+});
+
+mainColor1.style.backgroundColor = '#000';
+mainColor2.style.backgroundColor = '#fff';
+
+
 
 function saveCanvasState() {
     savedImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
