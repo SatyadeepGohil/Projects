@@ -1,55 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paint IN vanilla js</title>
+    <title>Paint in Vanilla JS</title>
     <link rel="stylesheet" href="main.css">
     <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
 </head>
+
 <body>
     <header>
-
         <div id="tools">
-            <button id="pencil"><img src="./images/pencil.png" alt=""></button>
-            <button id="eraser"><img src="./images/eraser.png" alt=""></button>
-            <button id="paint-bucket"><img src="./images/paint-bucket.png" alt=""></button>
-            <button id="text-font"><img src="./images/text-font.png" alt=""></button>
-            <button id="maginfier"><img src="./images/search.png" alt=""></button>
-            <button id="color-picker-btn"><img src="./images/color-picker.png" alt=""></button>
+            <button id="pencil"><img src="./images/pencil.png" alt="Pencil"></button>
+            <button id="eraser"><img src="./images/eraser.png" alt="Eraser"></button>
+            <button id="paint-bucket"><img src="./images/paint-bucket.png" alt="Paint Bucket"></button>
+            <button id="text-font"><img src="./images/text-font.png" alt="Text Font"></button>
+            <button id="magnifier"><img src="./images/search.png" alt="Magnifier"></button>
+            <button id="color-picker-btn"><img src="./images/color-picker.png" alt="Color Picker"></button>
         </div>
 
         <div id="colors">
-
             <div id="main-colors">
                 <button id="main-color1"></button>
                 <button id="main-color2"></button>
             </div>
-            <div id="color-palette">
-                <button class="color-btn"></button>
-                <button class="color-btn"></button>
-                <button class="color-btn"></button>
-                <button class="color-btn"></button>
-                <button class="color-btn"></button>
-                <button class="color-btn"></button>
-                <button class="color-btn"></button>
-                <button class="color-btn"></button>
-                <button class="color-btn"></button>
-                <button class="color-btn"></button>
-            </div>
-
+            <div id="color-palette"></div>
             <div id="color-wheel">
-                <img src="./images/color-wheel.png" alt="">
+                <img src="./images/color-wheel.png" alt="Color Wheel">
             </div>
         </div>
     </header>
+
     <div id="color-picker-wrapper">
         <div id="picker"></div>
         <div id="color-preview"></div>
         <p id="hex-value" style="display: none;">Hex: #FFFFFF</p>
         <p id="rgba-value" style="display: none;">RGBA: rgba(255, 255, 255, 1)</p>
     </div>
+
     <canvas id="myCanvas"></canvas>
+
     <script src="main.js"></script>
 </body>
+
 </html>

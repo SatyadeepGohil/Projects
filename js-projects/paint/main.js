@@ -10,87 +10,84 @@ let startX, startY, startWidth, startHeight, startLeft, startTop;
 let direction = '';
 let savedImageData;
 
-
-let colorWheel = document.getElementById('color-wheel');
-let colorPicker;
-let colorPickerContainer = document.getElementById('picker');
-let colorPreview = document.getElementById('color-preview');
-let hexValueParagraph = document.getElementById('hex-value');
-let rgbaValueParagraph = document.getElementById('rgba-value');
-
 const colors = [
-    '#FF0000',
-    '#00FF00',
-    '#0000FF',
-    '#FFFF00',
-    '#FF00FF',
-    '#00FFFF'
+    '#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FFA500', '#800080',
+    '#00FFFF', '#FFC0CB', '#808080', '#000000', '#FFFFFF', '#8B4513',
+    '#FFD700', '#C0C0C0', '#A52A2A', '#008000', '#000080', '#FF6347',
+    '#FF1493', '#F0E68C'
 ];
 
-const colorButtons = document.querySelectorAll('.color-btn');
-
-colorButtons.forEach((btn, index) => {
-    btn.style.backgroundColor = colors[index];
-})
-
-let mainColor1 = document.getElementById('main-color1');
-let mainColor2 = document.getElementById('main-color2');
+const mainColor1 = document.getElementById('main-color1');
+const mainColor2 = document.getElementById('main-color2');
 
 let activeMainColor = mainColor1;
 
-colorButtons.forEach((colorSwitch) => {
-    colorSwitch.addEventListener('click', () => {
-        const color = window.getComputedStyle(colorSwitch).backgroundColor;
-        activeMainColor.style.backgroundColor = color;
-    })
-})
+const colorPalette = document.getElementById('color-palette');
 
-const initializeColorPicker = () => {
+colors.forEach(color => {
+    const btn = document.createElement('button');
+    btn.style.backgroundColor = color;
+    btn.addEventListener('click', () => {
+        activeMainColor.style.backgroundColor = color;
+    });
+    colorPalette.appendChild(btn);
+});
+
+const customColorsButtons = [];
+const maxCustomColors = 10;
+let currentCustomColorIndex = -1;
+
+for (let i = 0; i < maxCustomColors; i++) {
+    const btn = document.createElement('button');
+    btn.style.background = 'transparent';
+    colorPalette.appendChild(btn);
+    customColorsButtons.push(btn);
+
+    btn.addEventListener('click', () => {
+        activeMainColor.style.backgroundColor = btn.style.backgroundColor;
+    })
+}
+
+const colorPickerContainer = document.getElementById('picker');
+const colorPreview = document.getElementById('color-preview')
+const colorWheel = document.getElementById('color-wheel');
+const hexValueParagraph = document.getElementById('hex-value');
+const rgbaValueParagraph = document.getElementById('rgba-value');
+
+let colorPicker;
+
+function initializeColorPicker() {
+    if (colorPicker) return;
+
     colorPicker = new iro.ColorPicker(colorPickerContainer, {
         width: 300,
         layoutDirection: 'horizontal',
         layout: [
-            {
-                component: iro.ui.Box,
-                options: {}
-            },
-            {
-                component: iro.ui.Slider,
-                options: {
-                    sliderType: 'hue'
-                }
-            },
-            {
-                component: iro.ui.Slider,
-                options: {
-                    sliderType: 'saturation'
-                }
-            },
-            {
-                component: iro.ui.Slider,
-                options: {
-                    sliderType: 'value'
-                }
-            },
-            {
-                component: iro.ui.Slider,
-                options: {
-                    sliderType: 'alpha'
-                }
-            }
+            { component: iro.ui.Box },
+            { component: iro.ui.Slider, options: { sliderType: 'hue' } },
+            { component: iro.ui.Slider, options: { sliderType: 'saturation' } },
+            { component: iro.ui.Slider, options: { sliderType: 'value' } },
+            { component: iro.ui.Slider, options: { sliderType: 'alpha' } }
         ],
         color: activeMainColor.style.backgroundColor || '#FFFFFF'
     });
 
     colorPicker.on('color:change', (color) => {
-        activeMainColor.style.backgroundColor = color.rgbaString;
-        colorPreview.style.backgroundColor = color.rgbaString;
+        const colorString = color.rgbaString;
+
+        customColorsButtons.forEach((btn, index) => {
+            if (index === currentCustomColorIndex) {
+                btn.style.backgroundColor = colorString;
+            }
+        });
+
+        colorPreview.style.backgroundColor = colorString;
         hexValueParagraph.textContent = `Hex: ${color.hexString}`;
-        rgbaValueParagraph.textContent = `RGBA: ${color.rgbaString}`;
+        rgbaValueParagraph.textContent = `RGBA: ${colorString}`;
     });
 }
 
-const closeColorPicker = (event) => {
+function closeColorPicker (event) {
     if (!colorPickerContainer.contains(event.target) && event.target !== colorWheel) {
         colorPickerContainer.style.display = 'none';
         hexValueParagraph.style.display = 'none';
@@ -100,9 +97,8 @@ const closeColorPicker = (event) => {
 }
 
 colorWheel.addEventListener('click', (event) => {
-    if (!colorPicker) {
-        initializeColorPicker();
-    }
+    initializeColorPicker();
+    currentCustomColorIndex += 1;
     colorPickerContainer.style.display = 'block';
     hexValueParagraph.style.display = 'block';
     rgbaValueParagraph.style.display = 'block';
@@ -110,13 +106,13 @@ colorWheel.addEventListener('click', (event) => {
     event.stopPropagation();
 });
 
-mainColor1.addEventListener('click', () => {
-    activeMainColor = mainColor1;
+[mainColor1,mainColor2].forEach(mainColor => {
+    mainColor.addEventListener('click', () => {
+        activeMainColor = mainColor;
+    });
 });
 
-mainColor2.addEventListener('click', () => {
-    activeMainColor = mainColor2;
-});
+ctx.strokeStyle = activeMainColor.style.backgroundColor;
 
 mainColor1.style.backgroundColor = '#000';
 mainColor2.style.backgroundColor = '#fff';
@@ -254,7 +250,5 @@ document.addEventListener('mouseup', () => {
 });
 
 document.addEventListener('selectstart', (e) => {
-    if (isResizing) {
-        e.preventDefault();
-    }
+    if (isResizing) e.preventDefault();
 });

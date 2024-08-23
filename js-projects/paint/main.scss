@@ -68,7 +68,7 @@ header {
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
-        .chosen-colors {
+        button {
             height: 20px;
             width: 20px;
             border: 1px solid black;
@@ -103,13 +103,6 @@ header {
         background-color: black;
         margin-top: 20px;
     }
-}
-
-#color-palette {
-    display: flex;
-    flex-wrap: wrap;
-    width: 300px;
-    margin: 20px;
 }
 
 .color-btn {
