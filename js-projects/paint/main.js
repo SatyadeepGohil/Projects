@@ -9,13 +9,16 @@ let isDrawing = false;
 let startX, startY, startWidth, startHeight, startLeft, startTop;
 let direction = '';
 let savedImageData;
+let brushType = 'round';
 
 const colors = [
     '#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FFA500', '#800080',
     '#00FFFF', '#FFC0CB', '#808080', '#000000', '#FFFFFF', '#8B4513',
     '#FFD700', '#C0C0C0', '#A52A2A', '#008000', '#000080', '#FF6347',
-    '#FF1493', '#F0E68C'
+    '#FF1493', '#F0E68C', '#4B0082', '#FF4500', '#2E8B57', '#B22222',
+    '#DAA520', '#7FFFD4'
 ];
+
 
 const mainColor1 = document.getElementById('main-color1');
 const mainColor2 = document.getElementById('main-color2');
@@ -29,12 +32,13 @@ colors.forEach(color => {
     btn.style.backgroundColor = color;
     btn.addEventListener('click', () => {
         activeMainColor.style.backgroundColor = color;
+        ctx.strokeStyle = activeMainColor.style.backgroundColor;
     });
     colorPalette.appendChild(btn);
 });
 
 const customColorsButtons = [];
-const maxCustomColors = 10;
+const maxCustomColors = 13;
 let currentCustomColorIndex = -1;
 
 for (let i = 0; i < maxCustomColors; i++) {
@@ -45,6 +49,7 @@ for (let i = 0; i < maxCustomColors; i++) {
 
     btn.addEventListener('click', () => {
         activeMainColor.style.backgroundColor = btn.style.backgroundColor;
+        ctx.strokeStyle = activeMainColor.style.backgroundColor;
     })
 }
 
@@ -98,7 +103,7 @@ function closeColorPicker (event) {
 
 colorWheel.addEventListener('click', (event) => {
     initializeColorPicker();
-    currentCustomColorIndex += 1;
+    currentCustomColorIndex = (currentCustomColorIndex + 1) % maxCustomColors;
     colorPickerContainer.style.display = 'block';
     hexValueParagraph.style.display = 'block';
     rgbaValueParagraph.style.display = 'block';
@@ -109,14 +114,45 @@ colorWheel.addEventListener('click', (event) => {
 [mainColor1,mainColor2].forEach(mainColor => {
     mainColor.addEventListener('click', () => {
         activeMainColor = mainColor;
+        ctx.strokeStyle = activeMainColor.style.backgroundColor;
     });
 });
 
-ctx.strokeStyle = activeMainColor.style.backgroundColor;
 
 mainColor1.style.backgroundColor = '#000';
 mainColor2.style.backgroundColor = '#fff';
 
+
+const brushSelection = document.getElementById('brush-selection');
+
+brushSelection.addEventListener('change', (e) => {
+    brushType = e.target.value;
+});
+
+function drawSquareBrush(e) {
+    ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+    ctx.strokeStyle = activeMainColor.style.backgroundColor;
+    ctx.lineWidth = 5;
+    ctx.lineCap = 'square';
+    ctx.stroke();
+}
+
+function drawRoundBrush(e) {
+    ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+    ctx.strokeStyle = activeMainColor.style.backgroundColor;
+    ctx.lineWidth = 5;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+}
+
+function drawSprayBrush(e) {
+    for(let i = 0; i < 10; i++) {
+        const offsetX = (Math.random() - 0.5) * 20;
+        const offsetY = (Math.random() - 0.5) * 20;
+        ctx.fillStyle = activeMainColor.style.backgroundColor;
+        ctx.fillRect(e.clientX + offsetX - canvas.offsetLeft, e.clientY + offsetY - canvas.offsetTop, 1, 1);
+    }
+}
 
 
 function saveCanvasState() {
@@ -192,8 +228,17 @@ function getResizeDirection(e, rect) {
     }
     else {
         isDrawing = true;
-        ctx.beginPath();
-        ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+        switch (brushType) {
+            case 'round':
+                drawRoundBrush(e);
+                break;
+            case 'sqaure':
+                drawSquareBrush(e);
+                break;
+            case 'spray':
+                drawSprayBrush(e);
+                break;
+        }
     }
 });
 
