@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Slider</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            /* To hide overflowing content */
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: blue;
+            width: 100%;
+            height: 300px;
+            position: relative;
+            /* For absolute positioning of buttons */
+        }
+
+        .container-wrapper {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: green;
+            width: 80%;
+            height: 100%;
+            overflow: hidden;
+            /* To hide overflowing boxes */
+        }
+
+        .box {
+            min-width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+            /* Smooth transition for sliding effect */
+        }
+
+        button {
+            position: absolute;
+            top: 10%;
+        }
+
+        #previous {
+            left: 0;
+        }
+
+        #next {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="container-wrapper">
+            <!-- Boxes -->
+            <div class="box" style="background-color: aqua;"></div>
+            <div class="box" style="background-color: gold;"></div>
+            <div class="box" style="background-color: black;"></div>
+            <div class="box" style="background-color: peru;"></div>
+            <div class="box" style="background-color: purple;"></div>
+            <div class="box" style="background-color: red;"></div>
+            <div class="box" style="background-color: chocolate;"></div>
+            <div class="box" style="background-color: magenta;"></div>
+            <div class="box" style="background-color: grey;"></div>
+            <div class="box" style="background-color: aliceblue;"></div>
+        </div>
+    </div>
+    <button id="previous">Previous</button>
+    <button id="next">Next</button>
+
+    <script>
+        const previous = document.getElementById('previous');
+        const next = document.getElementById('next');
+        const boxes = document.getElementsByClassName('box');
+
+        let boxWidth = boxes[0].offsetWidth; // Get the width of a single box
+        let boxMarginRight = parseInt(getComputedStyle(boxes[0]).marginRight); // Margin between boxes
+        let move = boxWidth + boxMarginRight; // Total distance to move for each step
+        let currentIndex = 0; // Track the current index of the first visible box
+
+        // Function to slide boxes
+        function slideBoxes(direction) {
+            for (let i = 0; i < boxes.length; i++) {
+                // Update the position based on direction
+                boxes[i].style.transform = `translateX(${move * (currentIndex * -1)}px)`;
+            }
+        }
+
+        next.addEventListener('click', () => {
+            if (currentIndex < boxes.length - 1) { // Avoid sliding beyond the last box
+                currentIndex++;
+                slideBoxes('next');
+            }
+        });
+
+        previous.addEventListener('click', () => {
+            if (currentIndex > 0) { // Avoid sliding before the first box
+                currentIndex--;
+                slideBoxes('previous');
+            }
+        });
+    </script>
+</body>
+
+</html>
