@@ -33,7 +33,7 @@ let foodNext = document.getElementById('food-category-next');
 let foodPrevious = document.getElementById('food-category-previous');
 let foodCards = document.getElementsByClassName('food-category-cards');
 
-let foodCardsWidth = foodCards[0].offsetWidth;
+let foodCardsWidth = foodCards[0].clientWidth;
 let foodCardsMarginRight = parseInt(getComputedStyle(foodCards[0]).marginRight);
 let foodCardsMove = foodCardsWidth + foodCardsMarginRight;
 let foodCurrentIndex = 0;

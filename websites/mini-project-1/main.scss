@@ -505,3 +505,93 @@ main {
         box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.575);
     }
 }
+
+#app-features-showcase {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 600px;
+    background-color: rgba(255, 166, 0, 0.404);
+    position: relative;
+
+    #app-features {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        border-radius: 15px;
+        background-color: white;
+        padding: 10px;
+        box-shadow: 5px 10px 40px 1px rgba(255, 166, 0, 0.459),-5px 10px 40px 1px rgba(255, 166, 0, 0.459);
+        margin-top: 100px;
+
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            p {
+                margin: 10px;
+                font-size: 2rem;
+                font-weight: 700;
+                background: linear-gradient(46deg,#FB3C00, #FFB800);
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+    }
+}
+
+#app-img {
+    width: 40%;
+    position: absolute;
+    left: 10%;
+    bottom: 0;
+}
+
+#app-install {
+    position: absolute;
+    bottom: 2%;
+    right: 5%;
+    width: 40%;
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        background: linear-gradient(76deg,#FFB800,#FF8A00);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    span {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+        margin-top: 20px;
+        gap: 10px;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 1px 1px 40px 1px rgba(255, 166, 0, 0.671);
+        span {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+
+#light-text {
+    color: #616161;
+}
+
+#dark-text {
+    color: black;
+    font-size: 1.3rem;
+}
