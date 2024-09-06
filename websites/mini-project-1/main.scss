@@ -1,0 +1,507 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Moderustic', sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+        width: 20%;
+        margin-left: 10px;
+    }
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 30%;
+        li {
+            list-style-type: none;
+            a {
+                text-decoration: none;
+                color: black;
+            }
+            a:active {
+                color: #F65900;
+            }
+        }
+    }
+
+    #header-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        button {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px;
+                border: none;
+            }
+
+        #search-btn{
+            img {
+                width: 20px;
+                margin-right: 5px;
+            }
+        }
+
+        #user-btn {
+            img {
+                width: 15px;
+                margin-right: 5px;
+            }
+        }
+    }
+}
+
+main {
+    width: 100%;
+    height: 500px;
+    background: linear-gradient(#FDCB16, #FBCD26 , #FFB908);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    h1 {
+        color: white;
+    }
+
+    #intro-dish {
+        width: 20%;
+        border: 1px solid black;
+        border-radius: 50%;
+        box-shadow: -40px 30px 100px 1px black, 1px 1px 20px 1px black;
+        filter: brightness(1.5) contrast(1.2);
+    }
+}
+
+#Delivery-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    h1 {
+        font-size: 3.5rem;
+        margin: 20px;
+    }
+    h6 {
+        font-size: 1rem;
+    }
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        border-radius: 10px;
+        margin-top: 50px;
+        padding: 20px;
+        span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            input {
+                padding: 10px;
+                margin-left: 10px;
+                border: none;
+            }
+            button {
+                width: 130px;
+                padding: 10px;
+                margin: 10px;
+                font-weight: 800;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: none;
+                border-radius: 10px;
+                img {
+                    margin-right: 10px;
+                }
+            }
+
+            button:hover {
+                background-color: rgba(0, 0, 0, 0.103);
+            }
+        }
+    }
+}
+
+#find-food {
+    background: linear-gradient(72deg,#FF7A7A, #F65900);
+    border-radius: 5px;
+}
+
+#discount-food {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 100px;
+    img {
+        width: 300px;
+        border-radius: 20px;
+    }
+}
+
+.discount-food-container {
+    position: relative;
+    font-weight: bolder;
+    height: 100%;
+    margin: 20px;
+    #discount {
+        position: absolute;
+        top: 54%;
+        right: 68%;
+        background-color: #FFB30E;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        border-bottom-left-radius: 20px;
+        border-top-right-radius: 20px;
+        padding: 10px;
+        #discount-number {
+            font-size: 3rem;
+            margin: 2px;
+        }
+        span {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+        }
+    }
+}
+
+#foodname {
+    color: #424242;
+    margin-top: 10px;
+}
+
+#discount-expiry {
+    background-color: rgba(241, 114, 40, 0.493);
+    color: #F17228;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+#company-delivery-process {
+    margin-top: 100px;
+    text-align: center;
+    h1 {
+        color: #F17228;
+    }
+
+    #icon-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 10px;
+        div {
+            margin: 10px;
+        }
+        p {
+            margin: 10px;
+        }
+    }
+}
+
+#icon-primary-text {
+    color: #434343;
+    font-weight: bolder;
+    font-size: 1.3rem;
+}
+
+#icon-secondary-text {
+    color: gray;
+    font-weight: 500;
+    text-wrap: wrap;
+    width: 250px;
+}
+
+#popular-foods {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+
+    h1 {
+        margin: 50px;
+        font-size: 2.5rem;
+    }
+
+    #container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 100%;
+
+        #card-container {
+            display: flex;
+            width: 50%;
+            overflow: hidden;
+
+            .card {
+                margin-right: 50px;
+
+                h3 {
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+                    color: #424242;
+                }
+
+                span {
+                    display: flex;
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+                    img {
+                        margin-right: 10px;
+                    }
+
+                    p {
+                        color: #FFB30E;
+                        font-weight: 700;
+                    }
+                }
+                button {
+                width: 100%;
+                padding: 10px;
+                border-radius: 5px;
+                border: none;
+                background: #F17228;
+                color: white;
+                font-weight: 700;
+                margin-top: 10px;
+                }
+            }
+
+            .card-img {
+                width: 200px;
+                border-radius: 20px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+ .food-price {
+     margin-top: 10px;
+     margin-bottom: 10px;
+     font-weight: 700;
+     color: #212121;
+     letter-spacing: 2px;
+ }
+
+.control-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background-color: #FFB20E;
+    position: absolute;
+    top: 50%;
+    margin: 20px;
+    font-size: 3rem;
+    color: white;
+    font-weight: 600;
+}
+
+#right {
+    right: 0;
+}
+
+#left {
+    left: 0;
+}
+
+#featured-restaurants {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-direction: column;
+    margin-top: 100px;
+    width: 100%;
+
+    button {
+        padding: 10px;
+        border: none;
+        background: linear-gradient(68deg,#FFBA26,#FF9A0E);
+        color: white;
+        width: 120px;
+        font-weight: 700;
+        border-radius: 10px;
+    }
+
+    #restaurant-showcase-container {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 30px;
+
+        .main-img {
+            width: 300px;
+            border-radius: 15px;
+        }
+    }
+}
+
+.restaurant-cards {
+    position: relative;
+}
+
+.restaurant-details {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    span {
+        p {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: gray;
+            margin-bottom: 15px;
+        }
+
+        span {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            font-weight: 700;
+            color: #FFB30E;
+            img {
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+#tomorrow {
+    width: 200px;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: #f172288e;
+    font-weight: 750;
+    color: #F17228;
+}
+
+.discount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+
+    span {
+        display: flex;
+        color: white;
+        font-weight: 700;
+        margin: 10px;
+        img {
+            margin-right: 10px;
+        }
+    }
+
+    #priceoff, #delivery {
+        border-radius: 10px;
+        padding: 10px;
+        background-color: #F17228;
+    }
+
+    #delivery {
+        background-color: #FFB30E;
+    }
+}
+
+#food-search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+
+    span {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        margin-bottom: 20px;
+
+        h1 {
+            font-size: 1.8rem;
+        }
+    }
+    #food-category-container {
+        display: flex;
+        width: 90%;
+        overflow: hidden;
+
+        .food-category-cards {
+            display: flex;
+            margin-right: 20px;
+            flex-direction: column;
+            img {
+                border-radius: 50%;
+            }
+            p {
+                text-align: center;
+                margin: 20px;
+                color: grey;
+                font-weight: 700;
+                font-size: 1.3rem;
+            }
+        }
+    }
+}
+
+#food-category-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+        color: #FFB30E;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 20px;
+        margin-right: 20px;
+    }
+
+    button {
+        display: grid;
+        place-content: center;
+        margin-right: 10px;
+        width: 60px;
+        height: 60px;
+        border: none;
+        border-radius: 50%;
+        font-size: 45px;
+        background-color: #FFB30E;
+        color: white;
+        box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.575);
+    }
+}
