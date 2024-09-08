@@ -465,6 +465,7 @@ main {
             margin-right: 20px;
             flex-direction: column;
             img {
+                width: 200px;
                 border-radius: 50%;
             }
             p {
@@ -594,4 +595,62 @@ main {
 #dark-text {
     color: black;
     font-size: 1.3rem;
+}
+
+#direct-order-foods {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+
+    .direct-order-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        margin-bottom: 50px;
+        
+        img {
+            width: 60%;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 270px;
+            padding: 10px;
+            box-shadow: 0px 18px 26px -6px rgba(0, 0, 0, 0.75);
+            h1 {
+                font-size: 1.8rem;
+                margin-top: 20px;
+                align-self: flex-start;
+
+                span {
+                    color: #FFB30E;
+                }
+            }
+
+            p {
+                align-self: flex-start;
+                color: grey;
+                font-size: 1rem;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+
+            button {
+                width: 90%;
+                margin-top: 40px;
+                padding: 10px;
+                border: none;
+                background: linear-gradient(76deg,#FFB800,#FF8A00);
+                color: white;
+                font-weight: 700;
+                border-radius: 5px;
+            }
+        }
+    }
 }
