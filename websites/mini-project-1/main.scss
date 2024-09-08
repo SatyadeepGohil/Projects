@@ -400,13 +400,19 @@ main {
     }
 }
 
-#tomorrow {
-    width: 200px;
+#tomorrow, #now {
+    width: 150px;
     border-radius: 20px;
     padding: 10px;
     background-color: #f172288e;
     font-weight: 750;
     color: #F17228;
+}
+
+#now {
+    color: rgb(0, 156, 0);
+    background-color: rgba(34, 248, 34, 0.384);
+    width: 120px;
 }
 
 .discount {
@@ -636,7 +642,7 @@ main {
             p {
                 align-self: flex-start;
                 color: grey;
-                font-size: 1rem;
+                font-weight: 700;
                 margin-top: 10px;
                 margin-bottom: 20px;
             }
@@ -651,6 +657,131 @@ main {
                 font-weight: 700;
                 border-radius: 5px;
             }
+        }
+    }
+}
+
+#bottom-order {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    height: 220px;
+    width: 100%;
+    background-image: url(images/bottom-picture.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: black;
+
+    div {
+        text-align: center;
+        width: 40%;
+
+        h1 {
+            color: white;
+            margin-top: 20px;
+        }
+
+        button {
+            width: 250px;
+            margin-top: 50px;
+            padding: 10px;
+            border: none;
+            background: linear-gradient(73deg, #F17228, #F15E28);
+            color: white;
+            font-weight: 700;
+            border-radius: 5px;
+        }
+    }
+}
+
+footer {
+    background-color: #212121;
+    padding: 50px;
+    li {
+        list-style-type: none;
+        margin-bottom: 15px;
+        a {
+            text-decoration: none;
+            color: #f5f5f5;
+            font-weight: 500;
+            font-size: 0.8rem;
+        }
+    }
+
+    #top-city-names {
+        h1 {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        #cities {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    hr {
+        margin-top: 50px;
+    }
+
+    #legal-information {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+        h1 {
+            font-size: 1.2rem;
+            align-self: flex-start;
+            margin-bottom: 20px;
+            color: #f5f5f5;
+        }
+
+        #socials {
+            h1 {
+                color: grey;
+                font-size: 1.1rem;
+                margin-bottom: 30px;
+            }
+
+            span {
+                display: flex;
+                justify-content: space-between;
+                width: 120px;
+                margin-bottom: 40px;
+            }
+
+            div {
+                input,button {
+                    padding: 10px;
+                    border-radius: 5px;
+                    margin-right: 10px;
+                    border: none;
+                }
+
+                input {
+                    font-weight: 700;
+                }
+
+                button {
+                    color: white;
+                    background: linear-gradient(52deg,#FFB800,#FF8A00);
+                    font-weight: 700;
+                    box-shadow: -3px 3px 20px -5px #FFB800;
+                }
+            }
+        }
+    }
+
+    p {
+        margin-top: 10px;
+        color: grey;
+        font-weight: 700;
+        span {
+            color: white;
         }
     }
 }
