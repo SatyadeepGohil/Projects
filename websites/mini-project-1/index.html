@@ -4,27 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Moderustic:wght@300..800&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Moderustic:wght@300..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
     <header>
-        <img src="./images/Logo.svg" alt="">
         <nav>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact US</a></li>
+            <img src="./images/Logo.svg" alt="" id="logo">
+            <p>Deiliver to <img src="images/small-location-icon.png" alt=""> 
+            <span>
+                Current location
+            </span> Coffeen St, Watertown</p>
+            <div id="header-buttons">
+                <button id="search-btn">
+                    <img src="./images/Search.svg" alt="">Search Food
+                </button>
+                <button id="user-btn">
+                    <img src="./images/user.svg" alt="">Login
+                </button>
+            </div>
         </nav>
-        <div id="header-buttons">
-            <button id="search-btn">
-                <img src="./images/Search.svg" alt="">Search Food
-            </button>
-            <button id="user-btn">
-                <img src="./images/user.svg" alt="">Login
-            </button>
-        </div>
     </header>
     <main>
         <div id="Delivery-panel">
