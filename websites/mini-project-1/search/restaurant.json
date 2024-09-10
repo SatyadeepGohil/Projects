@@ -1,0 +1,708 @@
+{
+  "restaurants": [
+    {
+      "name": "Burger Joint",
+      "location": "123 Main Street, Anytown",
+      "contact": {
+        "phone": "123-456-7890",
+        "email": "info@burgerjoint.com"
+      },
+      "logo": "https://example.com/images/burger_joint_logo.png",
+      "openingHours": {
+        "monday": "10:00 AM - 10:00 PM",
+        "tuesday": "10:00 AM - 10:00 PM",
+        "wednesday": "10:00 AM - 10:00 PM",
+        "thursday": "10:00 AM - 10:00 PM",
+        "friday": "10:00 AM - 11:00 PM",
+        "saturday": "11:00 AM - 11:00 PM",
+        "sunday": "Closed"
+      },
+      "menu": [
+        {
+          "category": "Burgers",
+          "items": [
+            {
+              "name": "Classic Burger",
+              "description": "A classic beef burger with lettuce, tomato, and cheese.",
+              "price": 5.99,
+              "available": true,
+              "image": "https://example.com/images/classic_burger.png"
+            },
+            {
+              "name": "Veggie Burger",
+              "description": "A delicious burger made with a veggie patty, lettuce, and tomato.",
+              "price": 6.49,
+              "available": true,
+              "image": "https://example.com/images/veggie_burger.png"
+            }
+          ]
+        },
+        {
+          "category": "Sides",
+          "items": [
+            {
+              "name": "Fries",
+              "description": "Crispy golden fries.",
+              "price": 2.49,
+              "available": true,
+              "image": "https://example.com/images/fries.png"
+            },
+            {
+              "name": "Onion Rings",
+              "description": "Crispy onion rings with a side of dipping sauce.",
+              "price": 3.49,
+              "available": false,
+              "image": "https://example.com/images/onion_rings.png"
+            }
+          ]
+        },
+        {
+          "category": "Drinks",
+          "items": [
+            {
+              "name": "Soft Drink",
+              "description": "Choice of Coke, Pepsi, Sprite, or Fanta.",
+              "price": 1.99,
+              "available": true,
+              "image": "https://example.com/images/soft_drink.png"
+            },
+            {
+              "name": "Water",
+              "description": "Bottled mineral water.",
+              "price": 1.49,
+              "available": true,
+              "image": "https://example.com/images/water.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pasta Paradise",
+      "location": "456 Elm Street, Anytown",
+      "contact": {
+        "phone": "321-654-0987",
+        "email": "contact@pastaparadise.com"
+      },
+      "logo": "https://example.com/images/pasta_paradise_logo.png",
+      "openingHours": {
+        "monday": "11:00 AM - 10:00 PM",
+        "tuesday": "11:00 AM - 10:00 PM",
+        "wednesday": "11:00 AM - 10:00 PM",
+        "thursday": "11:00 AM - 10:00 PM",
+        "friday": "11:00 AM - 11:00 PM",
+        "saturday": "12:00 PM - 11:00 PM",
+        "sunday": "12:00 PM - 9:00 PM"
+      },
+      "menu": [
+        {
+          "category": "Pasta",
+          "items": [
+            {
+              "name": "Spaghetti Carbonara",
+              "description": "Classic spaghetti with creamy sauce, pancetta, and parmesan.",
+              "price": 9.99,
+              "available": true,
+              "image": "https://example.com/images/spaghetti_carbonara.png"
+            },
+            {
+              "name": "Penne Arrabbiata",
+              "description": "Penne pasta with a spicy tomato sauce.",
+              "price": 8.99,
+              "available": true,
+              "image": "https://example.com/images/penne_arrabbiata.png"
+            },
+            {
+              "name": "Fettuccine Alfredo",
+              "description": "Fettuccine pasta with a rich and creamy Alfredo sauce.",
+              "price": 10.99,
+              "available": true,
+              "image": "https://example.com/images/fettuccine_alfredo.png"
+            }
+          ]
+        },
+        {
+          "category": "Salads",
+          "items": [
+            {
+              "name": "Caesar Salad",
+              "description": "Romaine lettuce with Caesar dressing, croutons, and parmesan.",
+              "price": 7.99,
+              "available": true,
+              "image": "https://example.com/images/caesar_salad.png"
+            },
+            {
+              "name": "Caprese Salad",
+              "description": "Fresh mozzarella, tomatoes, basil, and balsamic glaze.",
+              "price": 8.99,
+              "available": true,
+              "image": "https://example.com/images/caprese_salad.png"
+            }
+          ]
+        },
+        {
+          "category": "Desserts",
+          "items": [
+            {
+              "name": "Tiramisu",
+              "description": "Classic Italian coffee-flavored dessert.",
+              "price": 5.49,
+              "available": true,
+              "image": "https://example.com/images/tiramisu.png"
+            },
+            {
+              "name": "Panna Cotta",
+              "description": "Creamy Italian dessert served with berry sauce.",
+              "price": 4.99,
+              "available": true,
+              "image": "https://example.com/images/panna_cotta.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sushi Central",
+      "location": "789 Maple Avenue, Anytown",
+      "contact": {
+        "phone": "987-654-3210",
+        "email": "info@sushicentral.com"
+      },
+      "logo": "https://example.com/images/sushi_central_logo.png",
+      "openingHours": {
+        "monday": "12:00 PM - 9:00 PM",
+        "tuesday": "12:00 PM - 9:00 PM",
+        "wednesday": "12:00 PM - 9:00 PM",
+        "thursday": "12:00 PM - 9:00 PM",
+        "friday": "12:00 PM - 10:00 PM",
+        "saturday": "12:00 PM - 10:00 PM",
+        "sunday": "Closed"
+      },
+      "menu": [
+        {
+          "category": "Sushi Rolls",
+          "items": [
+            {
+              "name": "California Roll",
+              "description": "Crab, avocado, and cucumber wrapped in rice and seaweed.",
+              "price": 6.99,
+              "available": true,
+              "image": "https://example.com/images/california_roll.png"
+            },
+            {
+              "name": "Spicy Tuna Roll",
+              "description": "Tuna, spicy mayo, and cucumber.",
+              "price": 7.99,
+              "available": true,
+              "image": "https://example.com/images/spicy_tuna_roll.png"
+            },
+            {
+              "name": "Dragon Roll",
+              "description": "Eel, cucumber, avocado, and tobiko.",
+              "price": 9.99,
+              "available": true,
+              "image": "https://example.com/images/dragon_roll.png"
+            }
+          ]
+        },
+        {
+          "category": "Sashimi",
+          "items": [
+            {
+              "name": "Salmon Sashimi",
+              "description": "Freshly sliced salmon served with wasabi and soy sauce.",
+              "price": 12.99,
+              "available": true,
+              "image": "https://example.com/images/salmon_sashimi.png"
+            },
+            {
+              "name": "Tuna Sashimi",
+              "description": "Freshly sliced tuna served with wasabi and soy sauce.",
+              "price": 13.99,
+              "available": true,
+              "image": "https://example.com/images/tuna_sashimi.png"
+            }
+          ]
+        },
+        {
+          "category": "Appetizers",
+          "items": [
+            {
+              "name": "Edamame",
+              "description": "Steamed young soybeans with a sprinkle of sea salt.",
+              "price": 4.99,
+              "available": true,
+              "image": "https://example.com/images/edamame.png"
+            },
+            {
+              "name": "Gyoza",
+              "description": "Pan-fried dumplings filled with pork and vegetables.",
+              "price": 5.99,
+              "available": true,
+              "image": "https://example.com/images/gyoza.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Taco Town",
+      "location": "101 Pine Street, Anytown",
+      "contact": {
+        "phone": "555-123-4567",
+        "email": "orders@tacotown.com"
+      },
+      "logo": "https://example.com/images/taco_town_logo.png",
+      "openingHours": {
+        "monday": "11:00 AM - 9:00 PM",
+        "tuesday": "11:00 AM - 9:00 PM",
+        "wednesday": "11:00 AM - 9:00 PM",
+        "thursday": "11:00 AM - 9:00 PM",
+        "friday": "11:00 AM - 10:00 PM",
+        "saturday": "11:00 AM - 10:00 PM",
+        "sunday": "Closed"
+      },
+      "menu": [
+        {
+          "category": "Tacos",
+          "items": [
+            {
+              "name": "Chicken Taco",
+              "description": "Grilled chicken with lettuce, cheese, and salsa.",
+              "price": 3.99,
+              "available": true,
+              "image": "https://example.com/images/chicken_taco.png"
+            },
+            {
+              "name": "Beef Taco",
+              "description": "Seasoned beef with lettuce, cheese, and salsa.",
+              "price": 4.49,
+              "available": true,
+              "image": "https://example.com/images/beef_taco.png"
+            },
+            {
+              "name": "Fish Taco",
+              "description": "Battered fish with cabbage, pico de gallo, and lime.",
+              "price": 4.99,
+              "available": true,
+              "image": "https://example.com/images/fish_taco.png"
+            }
+          ]
+        },
+        {
+          "category": "Burritos",
+          "items": [
+            {
+              "name": "Chicken Burrito",
+              "description": "Grilled chicken, rice, beans, cheese, and salsa wrapped in a flour tortilla.",
+              "price": 8.99,
+              "available": true,
+              "image": "https://example.com/images/chicken_burrito.png"
+            },
+            {
+              "name": "Beef Burrito",
+              "description": "Seasoned beef, rice, beans, cheese, and salsa wrapped in a flour tortilla.",
+              "price": 9.49,
+              "available": true,
+              "image": "https://example.com/images/beef_burrito.png"
+            }
+          ]
+        },
+        {
+          "category": "Sides",
+          "items": [
+            {
+              "name": "Chips and Salsa",
+              "description": "Crispy tortilla chips served with fresh salsa.",
+              "price": 3.49,
+              "available": true,
+              "image": "https://example.com/images/chips_and_salsa.png"
+            },
+            {
+              "name": "Guacamole",
+              "description": "Freshly made guacamole with avocados, tomatoes, and lime.",
+              "price": 4.49,
+              "available": true,
+              "image": "https://example.com/images/guacamole.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pizza Palace",
+      "location": "202 Oak Lane, Anytown",
+      "contact": {
+        "phone": "444-987-6543",
+        "email": "support@pizzapalace.com"
+      },
+      "logo": "https://example.com/images/pizza_palace_logo.png",
+      "openingHours": {
+        "monday": "10:00 AM - 10:00 PM",
+        "tuesday": "10:00 AM - 10:00 PM",
+        "wednesday": "10:00 AM - 10:00 PM",
+        "thursday": "10:00 AM - 10:00 PM",
+        "friday": "10:00 AM - 11:00 PM",
+        "saturday": "11:00 AM - 11:00 PM",
+        "sunday": "11:00 AM - 9:00 PM"
+      },
+      "menu": [
+        {
+          "category": "Pizzas",
+          "items": [
+            {
+              "name": "Margherita Pizza",
+              "description": "Classic pizza with tomato sauce, mozzarella, and basil.",
+              "price": 8.99,
+              "available": true,
+              "image": "https://example.com/images/margherita_pizza.png"
+            },
+            {
+              "name": "Pepperoni Pizza",
+              "description": "Pepperoni, mozzarella, and tomato sauce.",
+              "price": 9.99,
+              "available": true,
+              "image": "https://example.com/images/pepperoni_pizza.png"
+            },
+            {
+              "name": "Veggie Pizza",
+              "description": "Tomato sauce, mozzarella, mushrooms, peppers, and olives.",
+              "price": 10.49,
+              "available": true,
+              "image": "https://example.com/images/veggie_pizza.png"
+            }
+          ]
+        },
+        {
+          "category": "Pastas",
+          "items": [
+            {
+              "name": "Spaghetti Bolognese",
+              "description": "Spaghetti pasta with a rich meat sauce.",
+              "price": 10.99,
+              "available": true,
+              "image": "https://example.com/images/spaghetti_bolognese.png"
+            },
+            {
+              "name": "Lasagna",
+              "description": "Layers of pasta, meat sauce, and cheese.",
+              "price": 11.99,
+              "available": true,
+              "image": "https://example.com/images/lasagna.png"
+            }
+          ]
+        },
+        {
+          "category": "Desserts",
+          "items": [
+            {
+              "name": "Chocolate Lava Cake",
+              "description": "Warm chocolate cake with a gooey center.",
+              "price": 5.99,
+              "available": true,
+              "image": "https://example.com/images/chocolate_lava_cake.png"
+            },
+            {
+              "name": "Cannoli",
+              "description": "Crispy pastry filled with sweet ricotta cheese.",
+              "price": 3.99,
+              "available": true,
+              "image": "https://example.com/images/cannoli.png"
+            }
+          ]
+        }
+      ]
+    },
+    
+     {
+      "name": "Noodle House",
+      "location": "789 Pine Street, Anytown",
+      "contact": {
+        "phone": "987-654-3210",
+        "email": "hello@noodlehouse.com"
+      },
+      "logo": "https://example.com/images/noodle_house_logo.png",
+      "openingHours": {
+        "monday": "11:00 AM - 9:00 PM",
+        "tuesday": "11:00 AM - 9:00 PM",
+        "wednesday": "11:00 AM - 9:00 PM",
+        "thursday": "11:00 AM - 9:00 PM",
+        "friday": "11:00 AM - 10:00 PM",
+        "saturday": "12:00 PM - 10:00 PM",
+        "sunday": "12:00 PM - 8:00 PM"
+      },
+      "menu": [
+        {
+          "category": "Noodles",
+          "items": [
+            {
+              "name": "Chicken Ramen",
+              "description": "Japanese-style ramen noodles with chicken, egg, and vegetables.",
+              "price": 8.99,
+              "available": true,
+              "image": "https://example.com/images/chicken_ramen.png"
+            },
+            {
+              "name": "Beef Udon",
+              "description": "Thick udon noodles served in a savory beef broth with veggies.",
+              "price": 9.99,
+              "available": true,
+              "image": "https://example.com/images/beef_udon.png"
+            }
+          ]
+        },
+        {
+          "category": "Appetizers",
+          "items": [
+            {
+              "name": "Spring Rolls",
+              "description": "Crispy spring rolls with a side of dipping sauce.",
+              "price": 4.49,
+              "available": true,
+              "image": "https://example.com/images/spring_rolls.png"
+            },
+            {
+              "name": "Edamame",
+              "description": "Steamed edamame sprinkled with sea salt.",
+              "price": 3.99,
+              "available": true,
+              "image": "https://example.com/images/edamame.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sandwich Stop",
+      "location": "101 Maple Avenue, Anytown",
+      "contact": {
+        "phone": "246-810-1214",
+        "email": "order@sandwichstop.com"
+      },
+      "logo": "https://example.com/images/sandwich_stop_logo.png",
+      "openingHours": {
+        "monday": "8:00 AM - 7:00 PM",
+        "tuesday": "8:00 AM - 7:00 PM",
+        "wednesday": "8:00 AM - 7:00 PM",
+        "thursday": "8:00 AM - 7:00 PM",
+        "friday": "8:00 AM - 8:00 PM",
+        "saturday": "9:00 AM - 8:00 PM",
+        "sunday": "9:00 AM - 6:00 PM"
+      },
+      "menu": [
+        {
+          "category": "Sandwiches",
+          "items": [
+            {
+              "name": "Turkey Club",
+              "description": "Turkey sandwich with bacon, lettuce, tomato, and mayo.",
+              "price": 7.49,
+              "available": true,
+              "image": "https://example.com/images/turkey_club.png"
+            },
+            {
+              "name": "Veggie Delight",
+              "description": "Sandwich with fresh vegetables, hummus, and cheese.",
+              "price": 6.99,
+              "available": true,
+              "image": "https://example.com/images/veggie_delight.png"
+            }
+          ]
+        },
+        {
+          "category": "Sides",
+          "items": [
+            {
+              "name": "Potato Chips",
+              "description": "Crispy potato chips in various flavors.",
+              "price": 1.99,
+              "available": true,
+              "image": "https://example.com/images/potato_chips.png"
+            },
+            {
+              "name": "Coleslaw",
+              "description": "Freshly made coleslaw with a tangy dressing.",
+              "price": 2.49,
+              "available": true,
+              "image": "https://example.com/images/coleslaw.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chowmein Corner",
+      "location": "202 Birch Road, Anytown",
+      "contact": {
+        "phone": "654-321-0987",
+        "email": "contact@chowmeincorner.com"
+      },
+      "logo": "https://example.com/images/chowmein_corner_logo.png",
+      "openingHours": {
+        "monday": "11:00 AM - 10:00 PM",
+        "tuesday": "11:00 AM - 10:00 PM",
+        "wednesday": "11:00 AM - 10:00 PM",
+        "thursday": "11:00 AM - 10:00 PM",
+        "friday": "11:00 AM - 11:00 PM",
+        "saturday": "12:00 PM - 11:00 PM",
+        "sunday": "12:00 PM - 9:00 PM"
+      },
+      "menu": [
+        {
+          "category": "Chowmein",
+          "items": [
+            {
+              "name": "Chicken Chowmein",
+              "description": "Stir-fried noodles with chicken, vegetables, and a savory sauce.",
+              "price": 7.99,
+              "available": true,
+              "image": "https://example.com/images/chicken_chowmein.png"
+            },
+            {
+              "name": "Vegetable Chowmein",
+              "description": "Stir-fried noodles with mixed vegetables.",
+              "price": 6.99,
+              "available": true,
+              "image": "https://example.com/images/vegetable_chowmein.png"
+            }
+          ]
+        },
+        {
+          "category": "Soups",
+          "items": [
+            {
+              "name": "Hot and Sour Soup",
+              "description": "Spicy and tangy soup with tofu, mushrooms, and vegetables.",
+              "price": 3.99,
+              "available": true,
+              "image": "https://example.com/images/hot_and_sour_soup.png"
+            },
+            {
+              "name": "Wonton Soup",
+              "description": "Clear broth soup with wontons, chicken, and vegetables.",
+              "price": 4.49,
+              "available": true,
+              "image": "https://example.com/images/wonton_soup.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Steak House",
+      "location": "303 Oak Lane, Anytown",
+      "contact": {
+        "phone": "789-012-3456",
+        "email": "info@steakhouse.com"
+      },
+      "logo": "https://example.com/images/steak_house_logo.png",
+      "openingHours": {
+        "monday": "5:00 PM - 11:00 PM",
+        "tuesday": "5:00 PM - 11:00 PM",
+        "wednesday": "5:00 PM - 11:00 PM",
+        "thursday": "5:00 PM - 11:00 PM",
+        "friday": "5:00 PM - 12:00 AM",
+        "saturday": "5:00 PM - 12:00 AM",
+        "sunday": "Closed"
+      },
+      "menu": [
+        {
+          "category": "Steaks",
+          "items": [
+            {
+              "name": "Ribeye Steak",
+              "description": "Juicy ribeye steak cooked to perfection.",
+              "price": 19.99,
+              "available": true,
+              "image": "https://example.com/images/ribeye_steak.png"
+            },
+            {
+              "name": "Sirloin Steak",
+              "description": "Tender sirloin steak with a choice of sides.",
+              "price": 17.99,
+              "available": true,
+              "image": "https://example.com/images/sirloin_steak.png"
+            }
+          ]
+        },
+        {
+          "category": "Sides",
+          "items": [
+            {
+              "name": "Mashed Potatoes",
+              "description": "Creamy mashed potatoes with a hint of garlic.",
+              "price": 3.99,
+              "available": true,
+              "image": "https://example.com/images/mashed_potatoes.png"
+            },
+            {
+              "name": "Grilled Vegetables",
+              "description": "Assorted grilled vegetables seasoned with herbs.",
+              "price": 4.49,
+              "available": true,
+              "image": "https://example.com/images/grilled_vegetables.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream Delight",
+      "location": "404 Cedar Avenue, Anytown",
+      "contact": {
+        "phone": "963-852-7410",
+        "email": "scoop@icecreamdelight.com"
+      },
+      "logo": "https://example.com/images/ice_cream_delight_logo.png",
+      "openingHours": {
+        "monday": "12:00 PM - 9:00 PM",
+        "tuesday": "12:00 PM - 9:00 PM",
+        "wednesday": "12:00 PM - 9:00 PM",
+        "thursday": "12:00 PM - 9:00 PM",
+        "friday": "12:00 PM - 10:00 PM",
+        "saturday": "12:00 PM - 10:00 PM",
+        "sunday": "12:00 PM - 8:00 PM"
+      },
+      "menu": [
+        {
+          "category": "Ice Cream",
+          "items": [
+            {
+              "name": "Vanilla Bean",
+              "description": "Classic vanilla bean ice cream.",
+              "price": 3.49,
+              "available": true,
+              "image": "https://example.com/images/vanilla_bean.png"
+            },
+            {
+              "name": "Chocolate Fudge",
+              "description": "Rich and creamy chocolate fudge ice cream.",
+              "price": 3.99,
+              "available": true,
+              "image": "https://example.com/images/chocolate_fudge.png"
+            }
+          ]
+        },
+        {
+          "category": "Sundaes",
+          "items": [
+            {
+              "name": "Strawberry Sundae",
+              "description": "Vanilla ice cream topped with fresh strawberries and whipped cream.",
+              "price": 5.49,
+              "available": true,
+              "image": "https://example.com/images/strawberry_sundae.png"
+            },
+            {
+              "name": "Hot Fudge Sundae",
+              "description": "Chocolate ice cream topped with hot fudge and nuts.",
+              "price": 5.99,
+              "available": true,
+              "image": "https://example.com/images/hot_fudge_sundae.png"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
