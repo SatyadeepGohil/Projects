@@ -8,16 +8,33 @@ button.addEventListener('click', () => {
     const foodsdata = JSON.stringify(data);
     container.innerHTML = '';
 
+    let resultsFound = false;
+
     data.restaurants.forEach(restaurant => {
-      if (restaurant.name.toLowerCase().includes(search)) {
-    let cardDiv = document.createElement('div');
-    cardDiv.classList.add('card');
-    let para = document.createElement('p');
-    para.textContent = `Name: ${restaurant.name}`;
-    
-    cardDiv.appendChild(para);
-    container.appendChild(cardDiv);
-      }
+      restaurant.menu.forEach(category => {
+        category.items.forEach(item => {
+          if (item.name.toLowerCase().includes(search)) {
+            resultsFound = true;
+
+            container.innerHTML += `
+                <div class="card">
+                  <img src="${item.image}" alt="${item.name}" class="card-img">
+                  <h3>${item.name}</h3>
+                  <span>
+                    <img src="../images/small-location-icon.png" alt="">
+                    <p>${restaurant.name}</p>
+                  </span>
+                  <p class="food-price">$${item.price.toFixed(2)}</p>
+                  <button>Order Now</button>
+                </div>`;
+
+          }
+        })
+      })
     });
+
+    if (!resultsFound) {
+      container.innerHTML = `<p>No items found matching your search.</p>`;
+    }
   })
 })
