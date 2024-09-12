@@ -1,40 +1,20 @@
-const button = document.getElementById('searchbtn');
+const xhr = new XMLHttpRequest();
+const search = document.getElementById('search').value.toLowerCase();
+const searchBtn = document.getElementById('searchbtn');
+const container = document.getElementById('container');
 
-button.addEventListener('click', () => {
-  fetch('http://localhost:3000/data').then(response => response.json()).
-  then(data => {
-    const container = document.getElementById('container');
-    const  search = document.getElementById('search').value.toLowerCase();
-    const foodsdata = JSON.stringify(data);
-    container.innerHTML = '';
+xhr.open('GET', '/search/restaurant.json', true);
+xhr.onload = function() {
+  if (xhr.status >= 200 && xhr.status < 300) {
+     const data = JSON.parse(xhr.responseText);
+    // Process the JSON data
+    console.log(data);
+  } else {
+    console.error('Error fetching data:', xhr.statusText);
+  }
+};
+xhr.onerror = function() {
+  console.error('Request failed');
+};
+xhr.send();
 
-    let resultsFound = false;
-
-    data.restaurants.forEach(restaurant => {
-      restaurant.menu.forEach(category => {
-        category.items.forEach(item => {
-          if (item.name.toLowerCase().includes(search)) {
-            resultsFound = true;
-
-            container.innerHTML += `
-                <div class="card">
-                  <img src="${item.image}" alt="${item.name}" class="card-img">
-                  <h3>${item.name}</h3>
-                  <span>
-                    <img src="../images/small-location-icon.png" alt="">
-                    <p>${restaurant.name}</p>
-                  </span>
-                  <p class="food-price">$${item.price.toFixed(2)}</p>
-                  <button>Order Now</button>
-                </div>`;
-
-          }
-        })
-      })
-    });
-
-    if (!resultsFound) {
-      container.innerHTML = `<p>No items found matching your search.</p>`;
-    }
-  })
-})
