@@ -745,7 +745,7 @@ footer {
             align-self: flex-start;
             margin-bottom: 20px;
             color: #f5f5f5;
-        }
+        }r
 
         #socials {
             h1 {
@@ -757,8 +757,12 @@ footer {
             span {
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
                 width: 120px;
                 margin-bottom: 40px;
+                a img {
+                    cursor: pointer;
+                }
             }
 
             div {

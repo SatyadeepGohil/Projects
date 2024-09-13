@@ -1,4 +1,5 @@
 const xhr = new XMLHttpRequest();
+let searchInput = document.getElementById('search');
 const searchBtn = document.getElementById('searchbtn');
 const container = document.getElementById('container');
 let searchResults = document.getElementById('search-results');
@@ -19,9 +20,9 @@ xhr.onerror = function() {
 xhr.send();
 
 
-function autocompleteMatch (search) {
-  if (search === '') return [];
-  let reg = new RegExp(search, 'i');
+function autocompleteMatch (val) {
+  if (val === '') return [];
+  let reg = new RegExp(val, 'i');
   let  matches = [];
 
 
@@ -40,19 +41,50 @@ function autocompleteMatch (search) {
 
 function showresults (val) {
   searchResults.innerHTML = '';
+
+  if (!val) return;
   let list = '';
   let terms = autocompleteMatch(val);
   for (let i = 0; i < terms.length; i++) {
     list += `<li>${terms[i]}</li>`;
   }
   searchResults.innerHTML = `<ul> ${list} </ul>`;
+
+  const listItems = searchResults.querySelectorAll('li');
+  listItems.forEach(item => {
+    item.addEventListener('click', () => {
+      searchInput.value = item.textContent;
+      searchResults.innerHTML = '';
+      performSearch();
+    })
+  })
 }
 
-searchBtn.addEventListener('click', () => {
-  const search = document.getElementById('search').value.toLowerCase();
+searchBtn.addEventListener('click', performSearch);
+
+searchInput.addEventListener('input', (event) => {
+  showresults(event.target.value);
+})
+
+searchInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    searchResults.innerHTML = '';
+    performSearch();
+  }
+})
+
+
+function performSearch() {
+   const search = searchInput.value.toLowerCase();
   if (!data) return;
   container.innerHTML = "";
   searchResults.innerHTML = '';
+
+  if (!search) {
+    container.innerHTML = '<p>Please enter a search term.</p>';
+    return;
+  }
 
   const resultsHTML = data.restaurants.flatMap(restaurant => 
       restaurant.menu.flatMap(category => 
@@ -75,4 +107,4 @@ searchBtn.addEventListener('click', () => {
 
 
   container.innerHTML = resultsHTML || '<p>No Items Found</p>';
-})
+}
