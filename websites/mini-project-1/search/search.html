@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FoodWagon Search Food</title>
+    <link rel="stylesheet" href="search.css">
 </head>
 <body>
-    <form autocomplete="off">
-        <input type="search" id="search" placeholder="Search for Food and Restaurant">
+    <span>
+        <input type="search" id="search" autocomplete="off" placeholder="Search for Food and Restaurant">
+        <button id="searchbtn">Search</button>
         <div id="search-results"></div>
-    </form>
-    <button id="searchbtn">Search</button>
-    <div id="container"></div>
+    </span>
+    <div id="category">
+        <div id="category-container"></div>
+        <button id="previous">Previous</button>
+        <button id="next">Next</button>
+    </div>
+    <div id="food-container"></div>
     <script src="search.js"></script>
     <!-- <img src="../images/" alt=""> -->
 </body>

@@ -7,11 +7,7 @@ Search Page Layout
 
 --Food Item Search: When a user types a food item name (e.g., "burger" or "pasta"), it searches the database for matching items and displays them as cards below the search bar.
 
---Suggestions: As the user types, display suggestions in a dropdown. Suggestions could include food items and restaurant names, with icons or labels to differentiate them.
-
---Restaurant Name Search: If a user types a restaurant's name, display the restaurant's card (in a separate container) with its details and the entire menu for that restaurant.
-
---Two Separate Containers for Results:
+--Suggestions: As the user types, display suggestions in a list. Suggestions could include food items and restaurant names, with icons or labels to differentiate them.
 
 -Food Items Container: Displays food items found in the search results. This container can use a grid layout to show individual food item cards.
 
