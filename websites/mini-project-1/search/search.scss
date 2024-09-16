@@ -36,27 +36,45 @@ span {
 }
 
 #category {
-    width: 80%;
-    #category-container {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            width: 100%;
-            overflow: hidden;
+    width: 100%;
+    height: 300px;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 
-            .category-item {
-                width: 100px;
+    #category-container {
+        display: flex;
+        align-items: center;
+        width: 80%;
+        height: 100%;
+        overflow-x: hidden;
+        background-color: black;
+
+        .category-item {
+                flex: 0 0 200px;
                 height: 100px;
                 background-color: red;
                 margin-right: 20px;
             }
-    
-            img {
-                width: 150px;
-                height: 150px;
-                border-radius: 10px;
+
+            .category-item:hover {
+                background-color: orange;
             }
+    }
+
+    button {
+        position: absolute;
+
+        &#previous {
+            left: 0;
         }
+
+        &#next {
+            right: 0;
+        }
+    }
 }
 
 #food-container {

@@ -96,7 +96,7 @@
         let currentIndex = 0; // Track the current index of the first visible box
 
         // Function to slide boxes
-        function slideBoxes(direction) {
+        function slideBoxes() {
             for (let i = 0; i < boxes.length; i++) {
                 // Update the position based on direction
                 boxes[i].style.transform = `translateX(${move * (currentIndex * -1)}px)`;
@@ -106,14 +106,14 @@
         next.addEventListener('click', () => {
             if (currentIndex < boxes.length - 1) { // Avoid sliding beyond the last box
                 currentIndex++;
-                slideBoxes('next');
+                slideBoxes();
             }
         });
 
         previous.addEventListener('click', () => {
             if (currentIndex > 0) { // Avoid sliding before the first box
                 currentIndex--;
-                slideBoxes('previous');
+                slideBoxes();
             }
         });
     </script>

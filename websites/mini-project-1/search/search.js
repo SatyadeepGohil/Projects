@@ -3,6 +3,7 @@ let searchInput = document.getElementById('search');
 const searchBtn = document.getElementById('searchbtn');
 const foodContainer = document.getElementById('food-container');
 const categoryContainer = document.getElementById('category-container');
+const restaurantContainer = document.getElementById('restaurant-container');
 let searchResults = document.getElementById('search-results');
 let data;
 
@@ -42,6 +43,8 @@ function categoryRender() {
 
   categoryContainer.innerHTML = categoryHTML || '<p>No categories found</p>';
 
+  setupCategorySlider()
+
   const categoryItems = categoryContainer.querySelectorAll('.category-item');
   categoryItems.forEach(item => {
     item.addEventListener('click', () => {
@@ -51,14 +54,17 @@ function categoryRender() {
   })
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+
+
+function setupCategorySlider() {
   let categoryNext = document.getElementById('next');
   let categoryPrevious = document.getElementById('previous');
   let categoryDiv = document.getElementsByClassName('category-item');
+  console.log(categoryDiv.length)
 
-  let categoryDivWidth = 100;
+  let categoryDivWidth = categoryDiv[0].offsetWidth;
   console.log(categoryDivWidth)
-  let categoryMarginRight = 20;
+  let categoryMarginRight = parseInt(getComputedStyle(categoryDiv[0]).marginRight);
   let move = categoryDivWidth + categoryMarginRight;
 
   let categoryCurrentIndex = 0;
@@ -73,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (categoryCurrentIndex < categoryDiv.length - 1) {
       categoryCurrentIndex++;
       slideCategories();
+      console.log(categoryCurrentIndex)
     }
   });
 
@@ -82,7 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
       slideCategories();
     }
   });
-})
+}
+
 
 
 
@@ -161,17 +169,10 @@ searchInput.addEventListener('input', (event) => {
   showResults(event.target.value);
 });
 
-searchInput.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter') {
-    event.preventDefault();
-    searchResults.innerHTML = '';
-    performSearch();
-  }
-});
-
 function performSearch() {
   const search = searchInput.value.toLowerCase();
   if (!data) return;
+  restaurantContainer.innerHTML = '';
   foodContainer.innerHTML = '';
   searchResults.innerHTML = '';
 
@@ -180,11 +181,37 @@ function performSearch() {
     return;
   }
 
+  let restaurantHTML = '';
   let foodHTML = '';
 
   const matchedRestaurants = data.restaurants.filter(restaurant => restaurant.name.toLowerCase().includes(search));
 
   if (matchedRestaurants.length > 0) {
+
+    restaurantHTML = matchedRestaurants.flatMap(restaurant => `
+      <div id="restaurant-card">
+        <img src="" alt="">
+        <div id="restaurant-details">
+            <h1>Restaurant Details</h1>
+            <span>
+            <p>Name: ${restaurant.name}</p>
+            <img src="${restaurant.logo}" alt="${restaurant.name}">
+            </span>
+            <p>Location: ${restaurant.location}</p>
+            <p>Contact: ${restaurant.contact.phone} | ${restaurant.contact.email}</p>
+            <h5>Opening Hours</h5>
+            <ul>
+              <li>Monday: ${restaurant.openingHours.monday}</li>
+              <li>Tuesday: ${restaurant.openingHours.tuesday}</li>
+              <li>Wednesday: ${restaurant.openingHours.wednesday}</li>
+              <li>Thursday: ${restaurant.openingHours.thursday}</li>
+              <li>Friday: ${restaurant.openingHours.friday}</li>
+              <li>Saturday: ${restaurant.openingHours.saturday}</li>
+              <li>Sunday: ${restaurant.openingHours.sunday}</li>
+            </ul>
+        </div>
+    </div>`);
+
 
     foodHTML = matchedRestaurants.flatMap(restaurant => 
     restaurant.menu.flatMap(category => 
@@ -227,6 +254,6 @@ function performSearch() {
     )
   ).join('');
   }
-
+  restaurantContainer.innerHTML = restaurantHTML;
   foodContainer.innerHTML = foodHTML || '<p>No Food Items Found</p>';
 }
