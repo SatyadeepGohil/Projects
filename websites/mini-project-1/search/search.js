@@ -114,7 +114,7 @@ function displayCategoryItems(categoryName) {
             <p class="food-description">${item.description}</p>
             <p class="food-price">$${item.price.toFixed(2)}</p>
             <p class="food-availability">${item.available ? 'Available' : 'Not Available'}</p>
-            <button>Order Now</button>
+            <button class="order" data-name="${item.name} data-image="${item.image}" data-price="${item.price}" >Order Now</button>
           </div>
         `)
       )
@@ -226,7 +226,7 @@ function performSearch() {
             <p class="food-description">${item.description}</p>
             <p class="food-price">$${item.price.toFixed(2)}</p>
             <p class="food-availability">${item.available ? 'Available' : 'Not Available'}</p>
-            <button>Order Now</button>
+            <button class="order" data-name="${item.name} data-image="${item.image}" data-price="${item.price}" >Order Now</button>
           </div>
         `)
     )
@@ -248,7 +248,7 @@ function performSearch() {
             <p class="food-description">${item.description}</p>
             <p class="food-price">$${item.price.toFixed(2)}</p>
             <p class="food-availability">${item.available ? 'Available' : 'Not Available'}</p>
-            <button>Order Now</button>
+            <button class="order" data-name="${item.name} data-image="${item.image}" data-price="${item.price}" >Order Now</button>
           </div>
         `)
     )

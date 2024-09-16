@@ -7,11 +7,27 @@
     <link rel="stylesheet" href="search.css">
 </head>
 <body>
-    <span>
+    <header>
+        <nav>
+            <img src="../images/Logo.svg" alt="" id="logo">
+            <p>Deiliver to <img src="../images/small-location-icon.png" alt="">
+                <span>
+                    Current location
+                </span> Coffeen St, Watertown
+            </p>
+            <div id="header-buttons">
+                <button id="user-btn">
+                    <img src="../images/user.svg" alt="">Login
+                </button>
+                <button id="cart">
+                    <img src="../images/trolley_6337212.png" alt="">
+                </button>
+            </div>
+        </nav>
+    </header>
         <input type="search" id="search" autocomplete="off" placeholder="Search for Food and Restaurant">
         <button id="searchbtn">Search</button>
         <div id="search-results"></div>
-    </span>
     <div id="category">
         <div id="category-container"></div>
         <button id="previous">Previous</button>
