@@ -9,7 +9,7 @@
 <body>
     <header>
         <nav>
-            <img src="../images/Logo.svg" alt="" id="logo">
+            <a href="../index.html"><img src="../images/Logo.svg" alt="" id="logo"></a>
             <p>Deiliver to <img src="../images/small-location-icon.png" alt="">
                 <span>
                     Current location
@@ -35,7 +35,17 @@
     </div>
     <div id="restaurant-container"></div>
     <div id="food-container"></div>
-    <script src="search.js"></script>
+    <div id="order-container">
+        <h1>Your ordered Food</h1>
+        <p id="no-food">You have not order food</p>
+        <ul id="order-items">
+        </ul>
+        <button id="cross">&#10006;</button>
+    </div>
+    <div id="order-message">
+        <p id="order-para">Your order for chicken is placed</p>
+    </div>
+    <script src="search.js" defer></script>
     <!-- <img src="../images/" alt=""> -->
 </body>
 </html>

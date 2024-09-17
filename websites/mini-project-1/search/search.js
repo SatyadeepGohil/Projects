@@ -4,7 +4,14 @@ const searchBtn = document.getElementById('searchbtn');
 const foodContainer = document.getElementById('food-container');
 const categoryContainer = document.getElementById('category-container');
 const restaurantContainer = document.getElementById('restaurant-container');
+const cartButton = document.getElementById('cart');
+const closedButton = document.getElementById('cross');
 let searchResults = document.getElementById('search-results');
+const orderContainer = document.getElementById('order-container');
+const orderItems = document.getElementById('order-items');
+let orderMessage = document.getElementById('order-message');
+let orderPara = document.getElementById('order-para');
+let orders = [];
 let data;
 
 xhr.open('GET', '/search/restaurant.json', true);
@@ -92,9 +99,6 @@ function setupCategorySlider() {
 }
 
 
-
-
-
 function displayCategoryItems(categoryName) {
   if (!data) return;
   foodContainer.innerHTML = '';
@@ -114,13 +118,17 @@ function displayCategoryItems(categoryName) {
             <p class="food-description">${item.description}</p>
             <p class="food-price">$${item.price.toFixed(2)}</p>
             <p class="food-availability">${item.available ? 'Available' : 'Not Available'}</p>
-            <button class="order" data-name="${item.name} data-image="${item.image}" data-price="${item.price}" >Order Now</button>
+            <button class="order" data-name="${item.name}" data-image="${item.image}" data-restaurant="${item.restaurant}" data-price="${item.price}" >Order Now</button>
           </div>
         `)
       )
   ).join('');
 
   foodContainer.innerHTML = foodHTML || `<p>No items found in the ${categoryName} category</p>`;
+
+  document.querySelectorAll('.order').forEach(button => {
+    button.addEventListener('click', GetOrderDetails);
+  })
 }
 
 function autocompleteMatch(val) {
@@ -226,11 +234,12 @@ function performSearch() {
             <p class="food-description">${item.description}</p>
             <p class="food-price">$${item.price.toFixed(2)}</p>
             <p class="food-availability">${item.available ? 'Available' : 'Not Available'}</p>
-            <button class="order" data-name="${item.name} data-image="${item.image}" data-price="${item.price}" >Order Now</button>
+            <button class="order" data-name="${item.name}" data-image="${item.image}" data-restaurant="${item.restaurant}" data-price="${item.price}" >Order Now</button>
           </div>
         `)
     )
   ).join('');
+
   } else {
 
     foodHTML = data.restaurants.flatMap(restaurant => 
@@ -248,7 +257,7 @@ function performSearch() {
             <p class="food-description">${item.description}</p>
             <p class="food-price">$${item.price.toFixed(2)}</p>
             <p class="food-availability">${item.available ? 'Available' : 'Not Available'}</p>
-            <button class="order" data-name="${item.name} data-image="${item.image}" data-price="${item.price}" >Order Now</button>
+            <button class="order" data-name="${item.name}" data-image="${item.image}" data-restaurant="${item.restaurant}" data-price="${item.price}" >Order Now</button>
           </div>
         `)
     )
@@ -256,4 +265,99 @@ function performSearch() {
   }
   restaurantContainer.innerHTML = restaurantHTML;
   foodContainer.innerHTML = foodHTML || '<p>No Food Items Found</p>';
+  document.querySelectorAll('.order').forEach(button => {
+    button.addEventListener('click', GetOrderDetails);
+  })
+}
+
+function GetOrderDetails (event) {
+  const button = event.target;
+  const itemDetails = {
+    name: button.getAttribute('data-name'),
+    image: button.getAttribute('data-image'),
+    price: button.getAttribute('data-price'),
+    restaurant: button.getAttribute('data-restaurant'),
+    quantity: 1
+  }
+  addToOrders(itemDetails);
+}
+
+function addToOrders(itemDetails) {
+  const existingOrderIndex = orders.findIndex(order => order.name === itemDetails.name && order.restaurant === itemDetails.restaurant);
+
+  if (existingOrderIndex !== -1) {
+    orders[existingOrderIndex].quantity += 1;
+    orderPara.innerText = `Your order for ${itemDetails.name} is placed`;
+    orderMessage.style.height = '50px';
+    setTimeout(() => {
+      orderMessage.style.height = '0';
+    },1500);
+  }
+  else {
+    orders.push(itemDetails);
+    orderPara.innerText = `Your order for ${itemDetails.name} is placed`;
+    orderMessage.style.height = '50px';
+    setTimeout(() => {
+      orderMessage.style.height = '0';
+    },1500);
+  }
+  displayOrderDetails();
+}
+
+function displayOrderDetails() {
+  let orderHTML = '';
+  let totalPrice = 0;
+
+
+  orders.forEach((item, index) => {
+    const itemTotal = item.price * item.quantity;
+    totalPrice += itemTotal;
+
+    orderHTML += `
+    <li>
+      <img src="${item.image}" alt="${item.name}">
+      <span>
+        <p>${item.name}</p>
+        <p>${item.restaurant}</p>
+      </span>
+      <p>$${item.price} x ${item.quantity}</p>
+      <p>$${itemTotal.toFixed(2)}</p>
+      <button onclick="removeOrder(${index})">Remove</button>
+    </li>`;
+  })
+
+  orderItems.innerHTML = orderHTML;
+  const totalElement = document.createElement('p');
+  totalElement.textContent = `Total: $${totalPrice.toFixed(2)}`;
+  orderItems.appendChild(totalElement);
+
+  if (orders.length > 0) {
+    document.getElementById('no-food').textContent = '';
+  }
+
+  if (orders.length === 0) {
+    totalElement.textContent = '';
+    document.getElementById('no-food').textContent = 'You have not any order food';
+  }
+}
+
+cartButton.addEventListener('click', () => {
+   orderContainer.style.display = 'block';
+   displayOrderDetails();
+})
+
+closedButton.addEventListener('click', () => {
+  orderContainer.style.display = 'none';
+})
+
+function removeOrder(index) {
+  orders.splice(index, 1);
+  displayOrderDetails();
+}
+
+
+function clearCart() {
+  orders = [];
+  document.getElementById('no-food').textContent = 'You have not any order food';
+  displayCategoryItems();
 }

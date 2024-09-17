@@ -11,6 +11,7 @@ body {
     flex-direction: column;
     height: 100%;
     gap: 50px;
+    font-family: 'Moderustic', sans-serif;
 }
 
 header {
@@ -146,4 +147,39 @@ header {
     gap: 20px;
     flex-wrap: wrap;
     width: 80%;
+}
+
+#order-container{
+    position: absolute;
+    display: none;
+    z-index: 100;
+    background-color: blue;
+    height: auto;
+    width: 50%;
+
+    #cross {
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+    }
+    #cross:active {
+        color: orange;
+    }
+}
+
+#order-message {
+    position: fixed;
+    bottom: 0;
+    transition: height linear 0.5s;
+    height: 0;
+    margin: 10px;
+    background: linear-gradient(76deg, #FFB800, #FF8A00);
+    border-radius: 10px;
+    p {
+        font-size: 1.5rem;
+        color: white;
+        font-weight: bold;
+        padding: 10px;
+    }
 }
