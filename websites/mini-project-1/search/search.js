@@ -14,6 +14,11 @@ let orderPara = document.getElementById('order-para');
 let orders = [];
 let data;
 
+
+const address = localStorage.getItem('address');
+let searchAddress = document.getElementById('top-address');
+if (address) {searchAddress.innerText = address}
+
 xhr.open('GET', '/search/restaurant.json', true);
 xhr.onload = function() {
   if (xhr.status >= 200 && xhr.status < 300) {
@@ -98,6 +103,23 @@ function setupCategorySlider() {
   });
 }
 
+function renderCard(item, restaurant) {
+  return `
+    <div class="card">
+      <img src="${item.image}" alt="${item.name}" class="card-img">
+      <h3>${item.name}</h3>
+      <span>
+        <img src="../images/small-location-icon.png" alt="">
+        <p>${restaurant.name}</p>
+      </span>
+      <p class="food-description">${item.description}</p>
+      <p class="food-price">$${item.price.toFixed(2)}</p>
+      <p class="food-availability">${item.available ? 'Available' : 'Not Available'}</p>
+      <button class="order" data-name="${item.name}" data-image="${item.image}" data-restaurant="${restaurant.name}" data-price="${item.price}">Order Now</button>
+    </div>
+  `;
+}
+
 
 function displayCategoryItems(categoryName) {
   if (!data) return;
@@ -108,20 +130,7 @@ function displayCategoryItems(categoryName) {
     restaurant.menu
       .filter(category => category.name === categoryName)
       .flatMap(category => 
-        category.items.map(item => `
-          <div class="card">
-            <img src="${item.image}" alt="${item.name}" class="card-img">
-            <h3>${item.name}</h3>
-            <span>
-              <img src="../images/small-location-icon.png" alt="">
-              <p>${restaurant.name}</p>
-            </span>
-            <p class="food-description">${item.description}</p>
-            <p class="food-price">$${item.price.toFixed(2)}</p>
-            <p class="food-availability">${item.available ? 'Available' : 'Not Available'}</p>
-            <button class="order" data-name="${item.name}" data-image="${item.image}" data-restaurant="${restaurant.name}" data-price="${item.price}" >Order Now</button>
-          </div>
-        `)
+        category.items.map(item => renderCard(item, restaurant))
       )
   ).join('');
 
@@ -224,20 +233,7 @@ function performSearch() {
 
     foodHTML = matchedRestaurants.flatMap(restaurant => 
     restaurant.menu.flatMap(category => 
-      category.items.map(item => `
-          <div class="card">
-            <img src="${item.image}" alt="${item.name}" class="card-img">
-            <h3>${item.name}</h3>
-            <span>
-              <img src="../images/small-location-icon.png" alt="">
-              <p>${restaurant.name}</p>
-            </span>
-            <p class="food-description">${item.description}</p>
-            <p class="food-price">$${item.price.toFixed(2)}</p>
-            <p class="food-availability">${item.available ? 'Available' : 'Not Available'}</p>
-           <button class="order" data-name="${item.name}" data-image="${item.image}" data-restaurant="${restaurant.name}" data-price="${item.price}" >Order Now</button>
-          </div>
-        `)
+      category.items.map(item => renderCard(item, restaurant))
     )
   ).join('');
 
@@ -247,20 +243,7 @@ function performSearch() {
     restaurant.menu.flatMap(category => 
       category.items
         .filter(item => item.name.toLowerCase().includes(search))
-        .map(item => `
-          <div class="card">
-            <img src="${item.image}" alt="${item.name}" class="card-img">
-            <h3>${item.name}</h3>
-            <span>
-              <img src="../images/small-location-icon.png" alt="">
-              <p>${restaurant.name}</p>
-            </span>
-            <p class="food-description">${item.description}</p>
-            <p class="food-price">$${item.price.toFixed(2)}</p>
-            <p class="food-availability">${item.available ? 'Available' : 'Not Available'}</p>
-            <button class="order" data-name="${item.name}" data-image="${item.image}" data-restaurant="${restaurant.name}" data-price="${item.price}" >Order Now</button>
-          </div>
-        `)
+        .map(item => renderCard(item, restaurant))
     )
   ).join('');
   }

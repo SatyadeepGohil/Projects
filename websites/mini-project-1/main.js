@@ -66,7 +66,7 @@ window.addEventListener('load', () => {
     let lat = position.coords.latitude;
     let long = position.coords.longitude;
   console.log(lat, long);
-  /* fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${long}`)
+  fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${long}`)
   .then(response => response.json())
   .then(data => {
     const street = data.address.road || data.address.neighbourhood || data.address.suburb || 'Street not found';
@@ -75,11 +75,14 @@ window.addEventListener('load', () => {
     address.innerText = `${street}, ${city}`;
     addressInput.value = address.innerText;
     console.log(data.display_name);
-  }) */
+
+    localStorage.setItem('address', address.innerText);
+  })
 }, function(error) {
   if(error.PERMISSION_DENIED) {
     console.log('permission was denied');
     addressInput.value = address.innerText;
+    localStorage.setItem('address', address.innerText);
   }
 })
 })
