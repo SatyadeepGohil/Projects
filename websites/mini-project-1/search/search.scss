@@ -156,11 +156,11 @@ header {
 }
 
 #order-container{
-    position: fixed;
-    top: 40%;
+    position: absolute;
+    top: 10%;
     display: none;
     z-index: 100;
-    background-color: blue;
+    background-color: grey;
     height: auto;
     width: 50%;
 
