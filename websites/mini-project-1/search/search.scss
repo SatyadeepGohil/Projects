@@ -46,6 +46,9 @@ header {
                 font-weight: 400;
                 margin-right: 5px;
             }
+            #top-address {
+                font-weight: 600;
+            }
         }
 
         #header-buttons {
@@ -153,9 +156,8 @@ header {
 }
 
 #order-container{
-    position: absolute;
-    overflow: auto;
-    top: 20%;
+    position: fixed;
+    top: 40%;
     display: none;
     z-index: 100;
     background-color: blue;
