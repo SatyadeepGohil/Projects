@@ -42,7 +42,7 @@ header {
                 margin-left: 5px;
                 margin-right: 5px;
             }
-            span {
+            #top-light-text {
                 font-weight: 400;
                 margin-right: 5px;
             }
@@ -50,16 +50,21 @@ header {
 
         #header-buttons {
             display: flex;
-            gap: 10px;
+            gap: 15px;
             button {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 5px;
                 border-radius: 5px;
                 padding: 5px;
                 border: none;
                 font-weight: 600;
+            }
+
+            a {
+                text-decoration: none;
+
+                p img {
+                    width: 16px;
+                    margin-right: 5px;
+                }
             }
 
             button:hover {
@@ -118,6 +123,30 @@ main {
         padding: 20px;
         span {
             display: flex;
+        }
+
+        #find-food,
+        button {
+            width: 130px;
+            padding: 10px;
+            margin: 10px;
+            font-weight: 800;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            border-radius: 10px;
+
+            img {
+                margin-right: 10px;
+            }
+        }
+
+        button:hover {
+            background-color: rgba(0, 0, 0, 0.103);
+        }
+        form {
+            display: flex;
             justify-content: center;
             align-items: center;
             input {
@@ -125,31 +154,24 @@ main {
                 margin-left: 10px;
                 border: none;
             }
-            button {
-                width: 130px;
-                padding: 10px;
-                margin: 10px;
-                font-weight: 800;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border: none;
-                border-radius: 10px;
-                img {
-                    margin-right: 10px;
-                }
-            }
-
-            button:hover {
-                background-color: rgba(0, 0, 0, 0.103);
-            }
         }
     }
 }
 
 #find-food {
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+    }
     background: linear-gradient(72deg,#FF7A7A, #F65900);
     border-radius: 5px;
+}
+
+#find-food:hover {
+    filter: brightness(1.2) contrast(1.1);
+    box-shadow: 0 0 20px 2px #FF7A7A;
 }
 
 #discount-food {

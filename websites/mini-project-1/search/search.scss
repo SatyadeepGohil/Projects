@@ -15,10 +15,13 @@ body {
 }
 
 header {
+    position: sticky;
+    top: 0;
     width: 100%;
     padding: 10px;
     display: flex;
     justify-content: center;
+    z-index: 1000;
     nav {
         display: flex;
         justify-content: space-between;
@@ -151,6 +154,8 @@ header {
 
 #order-container{
     position: absolute;
+    overflow: auto;
+    top: 20%;
     display: none;
     z-index: 100;
     background-color: blue;

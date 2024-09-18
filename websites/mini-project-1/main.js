@@ -57,3 +57,29 @@ foodPrevious.addEventListener('click', () => {
         slideFoodCards();
     }
 })
+
+let address = document.getElementById('top-address');
+let addressInput = document.getElementById('address-input');
+
+window.addEventListener('load', () => {
+  navigator.geolocation.getCurrentPosition(position => {
+    let lat = position.coords.latitude;
+    let long = position.coords.longitude;
+  console.log(lat, long);
+  /* fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${long}`)
+  .then(response => response.json())
+  .then(data => {
+    const street = data.address.road || data.address.neighbourhood || data.address.suburb || 'Street not found';
+    const city = data.address.city || data.address.town || data.address.village || data.address.county || data.address.locality || 'City not found';
+
+    address.innerText = `${street}, ${city}`;
+    addressInput.value = address.innerText;
+    console.log(data.display_name);
+  }) */
+}, function(error) {
+  if(error.PERMISSION_DENIED) {
+    console.log('permission was denied');
+    addressInput.value = address.innerText;
+  }
+})
+})

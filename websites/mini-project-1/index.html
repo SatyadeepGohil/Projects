@@ -13,16 +13,25 @@
     <header>
         <nav>
             <img src="./images/Logo.svg" alt="" id="logo">
-            <p>Deiliver to <img src="images/small-location-icon.png" alt=""> 
-            <span>
-                Current location
-            </span> Coffeen St, Watertown</p>
+            <p>
+                Deiliver to <img src="images/small-location-icon.png" alt="">
+                <span id="top-light-text">
+                    Current location
+                </span>
+                <span id="top-address">
+                    Coffeen St, Watertown
+                </span>
+            </p>
             <div id="header-buttons">
                 <button id="search-btn">
-                    <img src="./images/Search.svg" alt="">Search Food
+                    <a href="search/search.html">
+                        <p><img src="./images/Search.svg" alt=""> Search Food</p>
+                    </a>
                 </button>
                 <button id="user-btn">
-                    <img src="./images/user.svg" alt="">Login
+                    <a href="#">
+                        <p><img src="./images/user.svg" alt=""> Login</p>
+                    </a>
                 </button>
             </div>
         </nav>
@@ -42,14 +51,16 @@
                         Pickup
                     </button>
                 </span>
-                <span>
+                <form action="">
                     <img src="./images/location.svg" alt="">
-                    <input type="text" placeholder="Enter Your Address">
-                    <button id="find-food">
-                        <img src="./images/magnifier.png" alt="">
-                        Find Food
+                    <input type="text" placeholder="Enter Your Address" id="address-input" required>
+                    <button id="find-food" type="submit">
+                        <a href="search/search.html">
+                            <img src="./images/magnifier.png" alt="">
+                            Find Food
+                        </a>
                     </button>
-                </span>
+                </form>
             </div>
         </div>
         <img src="./images/intro-dish.png" alt="" id="intro-dish">
@@ -79,7 +90,7 @@
                     <p>off</p>
                 </span>
             </div>
-            <p id="food-name">Greys Vage</p>
+            <p id="food-name">Pasta salad with pesto</p>
             <p id="discount-expiry">6 Days Remaining</p>
         </div>
 
@@ -92,7 +103,7 @@
                     <p>off</p>
                 </span>
             </div>
-            <p id="food-name">Greys Vage</p>
+            <p id="food-name">Salad</p>
             <p id="discount-expiry">7 Days Remaining</p>
         </div>
 
@@ -105,7 +116,7 @@
                     <p>off</p>
                 </span>
             </div>
-            <p id="food-name">Greys Vage</p>
+            <p id="food-name">Creamy Thai red chicken curry</p>
             <p id="discount-expiry">6 Days Remaining</p>
         </div>
     </section>
