@@ -7,7 +7,6 @@
         "phone": "123-456-7890",
         "email": "info@burgerjoint.com"
       },
-      "logo": "https://example.com/images/burger_joint_logo.png",
       "openingHours": {
         "monday": "10:00 AM - 10:00 PM",
         "tuesday": "10:00 AM - 10:00 PM",
@@ -20,124 +19,124 @@
       "menu": [
         {
           "name": "Burgers",
-          "image": "https://example.com/images/burgers_category.png",
+          "image": "../images/food-category/burger.jpg",
           "items": [
             {
               "name": "Classic Burger",
               "description": "A classic beef burger with lettuce, tomato, and cheese.",
               "price": 5.99,
               "available": true,
-              "image": "https://example.com/images/classic_burger.png"
+              "image": "../images/Food/classic-burger.jpg"
             },
             {
               "name": "Veggie Burger",
               "description": "A delicious burger made with a veggie patty, lettuce, and tomato.",
               "price": 6.49,
               "available": true,
-              "image": "https://example.com/images/veggie_burger.png"
+              "image": "../images/Food/veggie-burger.jpg"
             },
             {
               "name": "Cheeseburger",
               "description": "A juicy beef burger with melted cheddar cheese, pickles, and ketchup.",
               "price": 6.29,
               "available": true,
-              "image": "https://example.com/images/cheeseburger.png"
+              "image": "../images/Food/cheese-burger.jpg"
             },
             {
               "name": "Bacon Burger",
               "description": "A beef burger topped with crispy bacon, lettuce, and BBQ sauce.",
               "price": 7.99,
               "available": true,
-              "image": "https://example.com/images/bacon_burger.png"
+              "image": "../images/Food/bacon-burger.jpg"
             },
             {
               "name": "Chicken Burger",
               "description": "Grilled chicken breast with lettuce, tomato, and mayo.",
               "price": 6.99,
               "available": true,
-              "image": "https://example.com/images/chicken_burger.png"
+              "image": "../images/Food/chicken-burger.jpg"
             }
           ]
         },
         {
           "name": "Sides",
-          "image": "https://example.com/images/sides_category.png",
+          "image": "../images/food-category/sides.jpg",
           "items": [
             {
               "name": "Fries",
               "description": "Crispy golden fries.",
               "price": 2.49,
               "available": true,
-              "image": "https://example.com/images/fries.png"
+              "image": "../images/Food/fries.jpg"
             },
             {
               "name": "Onion Rings",
               "description": "Crispy onion rings with a side of dipping sauce.",
               "price": 3.49,
               "available": false,
-              "image": "https://example.com/images/onion_rings.png"
+              "image": "../images/Food/onion-rings.jpg"
             },
             {
               "name": "Sweet Potato Fries",
               "description": "Seasoned sweet potato fries, served with a side of ranch.",
               "price": 2.99,
               "available": true,
-              "image": "https://example.com/images/sweet_potato_fries.png"
+              "image": "../images/Food/sweet-potato-fries.jpg"
             },
             {
               "name": "Mozzarella Sticks",
               "description": "Fried mozzarella sticks served with marinara sauce.",
               "price": 4.99,
               "available": true,
-              "image": "https://example.com/images/mozzarella_sticks.png"
+              "image": "../images/Food/mozzarella-sticks.jpg"
             },
             {
               "name": "Chicken Nuggets",
               "description": "Crispy chicken nuggets served with your choice of dipping sauce.",
               "price": 3.99,
               "available": true,
-              "image": "https://example.com/images/chicken_nuggets.png"
+              "image": "../images/Food/chicken-nuggets.jpg"
             }
           ]
         },
         {
           "name": "Drinks",
-          "image": "https://example.com/images/drinks_category.png",
+          "image": "../images/food-category/drink.jpg",
           "items": [
             {
               "name": "Soft Drink",
               "description": "Choice of Coke, Pepsi, Sprite, or Fanta.",
               "price": 1.99,
               "available": true,
-              "image": "https://example.com/images/soft_drink.png"
+              "image": "../images/Food/soft-drinks.jpg"
             },
             {
               "name": "Water",
               "description": "Bottled mineral water.",
               "price": 1.49,
               "available": true,
-              "image": "https://example.com/images/water.png"
+              "image": "../images/Food/water.jpg"
             },
             {
               "name": "Iced Tea",
               "description": "Freshly brewed iced tea, available in sweetened or unsweetened.",
               "price": 1.99,
               "available": true,
-              "image": "https://example.com/images/iced_tea.png"
+              "image": "../images/Food/icedtea.jpg"
             },
             {
               "name": "Milkshake",
               "description": "Choice of vanilla, chocolate, or strawberry milkshake.",
               "price": 3.99,
               "available": true,
-              "image": "https://example.com/images/milkshake.png"
+              "image": "../images/Food/milkshake.jpg"
             },
             {
               "name": "Lemonade",
               "description": "Freshly squeezed lemonade.",
               "price": 2.49,
               "available": true,
-              "image": "https://example.com/images/lemonade.png"
+              "image": "../images/Food/lemonade.jpg"
             }
           ]
         }
@@ -150,7 +149,6 @@
         "phone": "987-654-3210",
         "email": "contact@pastapalace.com"
       },
-      "logo": "https://example.com/images/pasta_palace_logo.png",
       "openingHours": {
         "monday": "11:00 AM - 9:00 PM",
         "tuesday": "11:00 AM - 9:00 PM",
@@ -163,7 +161,7 @@
       "menu": [
         {
           "name": "Pasta",
-          "image": "https://example.com/images/pasta_category.png",
+          "image": "../images/food-category/pasta.jpg",
           "items": [
             {
               "name": "Spaghetti Carbonara",
@@ -204,7 +202,7 @@
         },
         {
           "name": "Salads",
-          "image": "https://example.com/images/salads_category.png",
+          "image": "../images/food-category/salad.jpg",
           "items": [
             {
               "name": "Caesar Salad",
@@ -238,7 +236,7 @@
         },
         {
           "name": "Drinks",
-          "image": "https://example.com/images/drinks_category.png",
+          "image": "../images/food-category/drink.jpg",
           "items": [
             {
               "name": "Red Wine",
@@ -286,7 +284,6 @@
         "phone": "555-123-4567",
         "email": "contact@sushidelight.com"
       },
-      "logo": "https://example.com/images/sushi_delight_logo.png",
       "openingHours": {
         "monday": "12:00 PM - 9:00 PM",
         "tuesday": "12:00 PM - 9:00 PM",
@@ -299,7 +296,7 @@
       "menu": [
         {
           "name": "Sushi Rolls",
-          "image": "https://example.com/images/sushi_category.png",
+          "image": "../images/food-category/sushi-rolls.jpg",
           "items": [
             {
               "name": "California Roll",
@@ -340,7 +337,7 @@
         },
         {
           "name": "Sashimi",
-          "image": "https://example.com/images/sashimi_category.png",
+          "image": "../images/food-category/sashimi.jpg",
           "items": [
             {
               "name": "Salmon Sashimi",
@@ -381,7 +378,7 @@
         },
         {
           "name": "Drinks",
-          "image": "https://example.com/images/drinks_category.png",
+          "image": "../images/food-category/drink.jpg",
           "items": [
             {
               "name": "Green Tea",
@@ -429,7 +426,6 @@
         "phone": "555-789-1234",
         "email": "info@tacofiesta.com"
       },
-      "logo": "https://example.com/images/taco_fiesta_logo.png",
       "openingHours": {
         "monday": "10:00 AM - 10:00 PM",
         "tuesday": "10:00 AM - 10:00 PM",
@@ -442,7 +438,7 @@
       "menu": [
         {
           "name": "Tacos",
-          "image": "https://example.com/images/tacos_category.png",
+          "image": "../images/food-category/tacos.jpg",
           "items": [
             {
               "name": "Beef Taco",
@@ -483,7 +479,7 @@
         },
         {
           "name": "Quesadillas",
-          "image": "https://example.com/images/quesadillas_category.png",
+          "image": "../images/food-category/quesadilla.jpg",
           "items": [
             {
               "name": "Cheese Quesadilla",
@@ -517,7 +513,7 @@
         },
         {
           "name": "Drinks",
-          "image": "https://example.com/images/drinks_category.png",
+          "image": "../images/food-category/drink.jpg",
           "items": [
             {
               "name": "Horchata",
@@ -565,7 +561,6 @@
         "phone": "555-234-5678",
         "email": "contact@pizzaparadise.com"
       },
-      "logo": "https://example.com/images/pizza_paradise_logo.png",
       "openingHours": {
         "monday": "11:00 AM - 11:00 PM",
         "tuesday": "11:00 AM - 11:00 PM",
@@ -578,7 +573,7 @@
       "menu": [
         {
           "name": "Pizzas",
-          "image": "https://example.com/images/pizzas_category.png",
+          "image": "../images/food-category/pizza.jpg",
           "items": [
             {
               "name": "Margherita Pizza",
@@ -654,7 +649,7 @@
         },
         {
           "name": "Appetizers",
-          "image": "https://example.com/images/appetizers_category.png",
+          "image": "../images/food-category/appetizers.jpg",
           "items": [
             {
               "name": "Garlic Bread",
@@ -702,7 +697,7 @@
         },
         {
           "name": "Drinks",
-          "image": "https://example.com/images/drinks_category.png",
+          "image": "../images/food-category/drink.jpg",
           "items": [
             {
               "name": "Soda",
@@ -757,7 +752,6 @@
         "phone": "555-432-8765",
         "email": "info@grillhouse.com"
       },
-      "logo": "https://example.com/images/grill_house_logo.png",
       "openingHours": {
         "monday": "12:00 PM - 10:00 PM",
         "tuesday": "12:00 PM - 10:00 PM",
@@ -770,7 +764,7 @@
       "menu": [
         {
           "name": "BBQ Specials",
-          "image": "https://example.com/images/bbq_category.png",
+          "image": "../images/food-category/bbq.jpg",
           "items": [
             {
               "name": "BBQ Ribs",
@@ -790,7 +784,7 @@
         },
         {
           "name": "Steaks",
-          "image": "https://example.com/images/steaks_category.png",
+          "image": "../images/food-category/steak.jpg",
           "items": [
             {
               "name": "Ribeye Steak",
@@ -810,7 +804,7 @@
         },
         {
           "name": "Drinks",
-          "image": "https://example.com/images/drinks_category.png",
+          "image": "../images/food-category/drink.jpg",
           "items": [
             {
               "name": "Iced Tea",
@@ -837,7 +831,6 @@
         "phone": "555-876-5432",
         "email": "contact@indianspice.com"
       },
-      "logo": "https://example.com/images/indian_spice_logo.png",
       "openingHours": {
         "monday": "12:00 PM - 9:00 PM",
         "tuesday": "12:00 PM - 9:00 PM",
@@ -850,7 +843,7 @@
       "menu": [
         {
           "name": "Curry Dishes",
-          "image": "https://example.com/images/curry_category.png",
+          "image": "../images/food-category/curry.jpg",
           "items": [
             {
               "name": "Chicken Tikka Masala",
@@ -870,7 +863,7 @@
         },
         {
           "name": "Sides",
-          "image": "https://example.com/images/naan_category.png",
+          "image": "../images/food-category/sides.jpg",
           "items": [
             {
               "name": "Garlic Naan",
@@ -890,7 +883,7 @@
         },
         {
           "name": "Drinks",
-          "image": "https://example.com/images/drinks_category.png",
+          "image": "../images/food-category/drink.jpg",
           "items": [
             {
               "name": "Mango Lassi",
@@ -917,7 +910,6 @@
         "phone": "555-345-6789",
         "email": "info@mediterraneanbistro.com"
       },
-      "logo": "https://example.com/images/mediterranean_bistro_logo.png",
       "openingHours": {
         "monday": "11:00 AM - 9:00 PM",
         "tuesday": "11:00 AM - 9:00 PM",
@@ -930,7 +922,7 @@
       "menu": [
         {
           "name": "Grilled Dishes",
-          "image": "https://example.com/images/grilled_dishes.png",
+          "image": "../images/food-category/grilled-dish.jpg",
           "items": [
             {
               "name": "Grilled Lamb Chops",
@@ -950,7 +942,7 @@
         },
         {
           "name": "Salads",
-          "image": "https://example.com/images/med_salads.png",
+          "image": "../images/food-category/salad.jpg",
           "items": [
             {
               "name": "Greek Salad",
@@ -970,7 +962,7 @@
         },
         {
           "name": "Drinks",
-          "image": "https://example.com/images/drinks.png",
+          "image": "../images/food-category/drink.jpg",
           "items": [
             {
               "name": "Mint Lemonade",
@@ -997,7 +989,6 @@
         "phone": "555-987-6543",
         "email": "contact@veganvibes.com"
       },
-      "logo": "https://example.com/images/vegan_vibes_logo.png",
       "openingHours": {
         "monday": "10:00 AM - 8:00 PM",
         "tuesday": "10:00 AM - 8:00 PM",
@@ -1010,7 +1001,7 @@
       "menu": [
         {
           "name": "Bowls",
-          "image": "https://example.com/images/bowls.png",
+          "image": "../images/food-category/bowls.jpg",
           "items": [
             {
               "name": "Quinoa Bowl",
@@ -1030,7 +1021,7 @@
         },
         {
           "name": "Smoothies",
-          "image": "https://example.com/images/smoothies.png",
+          "image": "../images/food-category/smoothies.jpg",
           "items": [
             {
               "name": "Green Detox",
@@ -1057,7 +1048,6 @@
         "phone": "555-765-4321",
         "email": "info@seafoodshack.com"
       },
-      "logo": "https://example.com/images/seafood_shack_logo.png",
       "openingHours": {
         "monday": "11:00 AM - 10:00 PM",
         "tuesday": "11:00 AM - 10:00 PM",
@@ -1070,7 +1060,7 @@
       "menu": [
         {
           "name": "Seafood Platters",
-          "image": "https://example.com/images/seafood_platters.png",
+          "image": "../images/food-category/seafood-platter.jpg",
           "items": [
             {
               "name": "Grilled Salmon",
@@ -1090,7 +1080,7 @@
         },
         {
           "name": "Sides",
-          "image": "https://example.com/images/sides.png",
+          "image": "../images/food-category/sides.jpg",
           "items": [
             {
               "name": "Coleslaw",

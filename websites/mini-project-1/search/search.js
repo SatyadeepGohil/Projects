@@ -208,16 +208,11 @@ function performSearch() {
 
     restaurantHTML = matchedRestaurants.flatMap(restaurant => `
       <div id="restaurant-card">
-        <img src="" alt="">
-        <div id="restaurant-details">
             <h1>Restaurant Details</h1>
-            <span>
             <p>Name: ${restaurant.name}</p>
-            <img src="${restaurant.logo}" alt="${restaurant.name}">
-            </span>
             <p>Location: ${restaurant.location}</p>
             <p>Contact: ${restaurant.contact.phone} | ${restaurant.contact.email}</p>
-            <h5>Opening Hours</h5>
+            <h3>Opening Hours</h5>
             <ul>
               <li>Monday: ${restaurant.openingHours.monday}</li>
               <li>Tuesday: ${restaurant.openingHours.tuesday}</li>
@@ -227,7 +222,6 @@ function performSearch() {
               <li>Saturday: ${restaurant.openingHours.saturday}</li>
               <li>Sunday: ${restaurant.openingHours.sunday}</li>
             </ul>
-        </div>
     </div>`);
 
 
@@ -299,11 +293,7 @@ function displayOrderDetails() {
 
     orderHTML += `
     <li>
-      <img src="${item.image}" alt="${item.name}">
-      <span>
-        <p>${item.name}</p>
-        <p>${item.restaurant}</p>
-      </span>
+      <p>${item.name} from ${item.restaurant}</p>
       <p>$${item.price} x ${item.quantity}</p>
       <p>$${itemTotal.toFixed(2)}</p>
       <button onclick="removeOrder(${index})">Remove</button>
