@@ -73,7 +73,7 @@
               "name": "Onion Rings",
               "description": "Crispy onion rings with a side of dipping sauce.",
               "price": 3.49,
-              "available": false,
+              "available": true,
               "image": "../images/Food/onion-rings.jpg"
             },
             {
@@ -168,35 +168,35 @@
               "description": "Classic spaghetti with creamy carbonara sauce.",
               "price": 8.99,
               "available": true,
-              "image": "https://example.com/images/spaghetti_carbonara.png"
+              "image": "../images/Food/spaghetti-carbonara.jpg"
             },
             {
               "name": "Penne Arrabbiata",
               "description": "Penne pasta with a spicy tomato sauce.",
               "price": 7.49,
               "available": true,
-              "image": "https://example.com/images/penne_arrabbiata.png"
+              "image": "../images/Food/penne-arrabbiata.jpg"
             },
             {
               "name": "Fettuccine Alfredo",
               "description": "Fettuccine pasta with a creamy Alfredo sauce.",
               "price": 9.49,
               "available": true,
-              "image": "https://example.com/images/fettuccine_alfredo.png"
+              "image": "../images/Food/fettuccine-alfredo.jpg"
             },
             {
               "name": "Lasagna",
               "description": "Layered pasta with ground beef, cheese, and marinara sauce.",
               "price": 10.99,
               "available": true,
-              "image": "https://example.com/images/lasagna.png"
+              "image": "../images/Food/lasagna-4620949_640.jpg"
             },
             {
               "name": "Gnocchi Pesto",
               "description": "Potato gnocchi with a basil pesto sauce.",
               "price": 8.99,
               "available": true,
-              "image": "https://example.com/images/gnocchi_pesto.png"
+              "image": "../images/Food/gnoochi-pesto.jpg"
             }
           ]
         },
@@ -209,28 +209,28 @@
               "description": "Crisp romaine lettuce with Caesar dressing.",
               "price": 4.99,
               "available": true,
-              "image": "https://example.com/images/caesar_salad.png"
+              "image": "../images/Food/caesar-salad.jpg"
             },
             {
               "name": "Caprese Salad",
               "description": "Tomatoes, mozzarella, and basil with olive oil.",
               "price": 5.99,
               "available": true,
-              "image": "https://example.com/images/caprese_salad.png"
+              "image": "../images/Food/caprese.jpg"
             },
             {
               "name": "Greek Salad",
               "description": "Mixed greens, feta cheese, olives, and cucumber with a vinaigrette.",
               "price": 5.49,
               "available": true,
-              "image": "https://example.com/images/greek_salad.png"
+              "image": "../images/Food/greek-salad.jpg"
             },
             {
               "name": "Antipasto Salad",
               "description": "A mix of Italian meats, cheeses, olives, and peppers on a bed of lettuce.",
               "price": 6.99,
               "available": true,
-              "image": "https://example.com/images/antipasto_salad.png"
+              "image": "../images/Food/antipasto-salad.jpg"
             }
           ]
         },
@@ -243,35 +243,35 @@
               "description": "A glass of house red wine.",
               "price": 4.99,
               "available": true,
-              "image": "https://example.com/images/red_wine.png"
+              "image": "../images/Food/red-wine.jpg"
             },
             {
               "name": "Iced Tea",
               "description": "Freshly brewed iced tea with lemon.",
               "price": 1.99,
               "available": true,
-              "image": "https://example.com/images/iced_tea.png"
+              "image": "../images/Food/iced-tea-7125271_640.jpg"
             },
             {
               "name": "White Wine",
               "description": "A glass of house white wine.",
               "price": 4.99,
               "available": true,
-              "image": "https://example.com/images/white_wine.png"
+              "image": "../images/Food/white-wine.jpg"
             },
             {
               "name": "Espresso",
               "description": "Rich and bold Italian espresso.",
               "price": 2.49,
               "available": true,
-              "image": "https://example.com/images/espresso.png"
+              "image": "../images/Food/espresso.jpg"
             },
             {
               "name": "Sparkling Water",
               "description": "Refreshing bottled sparkling water.",
               "price": 1.99,
               "available": true,
-              "image": "https://example.com/images/sparkling_water.png"
+              "image": "../images/Food/sparkling-water.jpg"
             }
           ]
         }
@@ -303,35 +303,21 @@
               "description": "Crab, avocado, and cucumber.",
               "price": 8.99,
               "available": true,
-              "image": "https://example.com/images/california_roll.png"
+              "image": "../images/Food/california-roll.jpg"
             },
             {
               "name": "Spicy Tuna Roll",
               "description": "Tuna, spicy mayo, and cucumber.",
               "price": 9.49,
               "available": true,
-              "image": "https://example.com/images/spicy_tuna_roll.png"
+              "image": "../images/Food/spicy-tuna-roll.jpg"
             },
             {
               "name": "Dragon Roll",
               "description": "Eel, avocado, cucumber, and eel sauce.",
               "price": 12.99,
               "available": true,
-              "image": "https://example.com/images/dragon_roll.png"
-            },
-            {
-              "name": "Philadelphia Roll",
-              "description": "Smoked salmon, cream cheese, and cucumber.",
-              "price": 9.99,
-              "available": true,
-              "image": "https://example.com/images/philadelphia_roll.png"
-            },
-            {
-              "name": "Rainbow Roll",
-              "description": "Crab, avocado, cucumber, topped with assorted fish.",
-              "price": 13.49,
-              "available": true,
-              "image": "https://example.com/images/rainbow_roll.png"
+              "image": "../images/Food/dragon-roll.jpg"
             }
           ]
         },
@@ -344,35 +330,28 @@
               "description": "Freshly sliced salmon.",
               "price": 12.99,
               "available": true,
-              "image": "https://example.com/images/salmon_sashimi.png"
+              "image": "../images/Food/salmon-sashimi.jpg"
             },
             {
               "name": "Tuna Sashimi",
               "description": "Freshly sliced tuna.",
               "price": 13.99,
               "available": true,
-              "image": "https://example.com/images/tuna_sashimi.png"
-            },
-            {
-              "name": "Yellowtail Sashimi",
-              "description": "Freshly sliced yellowtail.",
-              "price": 14.99,
-              "available": true,
-              "image": "https://example.com/images/yellowtail_sashimi.png"
+              "image": "../images/Food/tuna-sashimi.jpg"
             },
             {
               "name": "Octopus Sashimi",
               "description": "Freshly sliced octopus.",
               "price": 11.99,
               "available": true,
-              "image": "https://example.com/images/octopus_sashimi.png"
+              "image": "../images/Food/octopus-sashimi.jpg"
             },
             {
               "name": "Shrimp Sashimi",
               "description": "Freshly sliced shrimp.",
               "price": 10.99,
               "available": true,
-              "image": "https://example.com/images/shrimp_sashimi.png"
+              "image": "../images/Food/shrimp-sashimi.jpg"
             }
           ]
         },
@@ -385,35 +364,35 @@
               "description": "Traditional Japanese green tea.",
               "price": 2.49,
               "available": true,
-              "image": "https://example.com/images/green_tea.png"
+              "image": "../images/Food/green-tea.jpg"
             },
             {
               "name": "Sake",
               "description": "Japanese rice wine.",
               "price": 5.99,
               "available": true,
-              "image": "https://example.com/images/sake.png"
+              "image": "../images/Food/sake.jpg"
             },
             {
               "name": "Plum Wine",
               "description": "Sweet Japanese plum wine.",
               "price": 4.99,
               "available": true,
-              "image": "https://example.com/images/plum_wine.png"
+              "image": "../images/Food/plum-wine.jpg"
             },
             {
               "name": "Asahi Beer",
               "description": "Japanese beer.",
               "price": 6.99,
               "available": true,
-              "image": "https://example.com/images/asahi_beer.png"
+              "image": "../images/Food/asashi-beer.jpg"
             },
             {
               "name": "Cucumber Water",
               "description": "Refreshing cucumber-infused water.",
               "price": 1.99,
               "available": true,
-              "image": "https://example.com/images/cucumber_water.png"
+              "image": "../images/Food/cucumber-water.jpg"
             }
           ]
         }

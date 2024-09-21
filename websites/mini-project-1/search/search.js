@@ -212,7 +212,7 @@ function performSearch() {
             <p>Name: ${restaurant.name}</p>
             <p>Location: ${restaurant.location}</p>
             <p>Contact: ${restaurant.contact.phone} | ${restaurant.contact.email}</p>
-            <h3>Opening Hours</h5>
+            <h3>Opening Hours</h3>
             <ul>
               <li>Monday: ${restaurant.openingHours.monday}</li>
               <li>Tuesday: ${restaurant.openingHours.tuesday}</li>

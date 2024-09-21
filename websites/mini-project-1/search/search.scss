@@ -87,21 +87,65 @@ header {
     }
 }
 
+#search-container {
+        input {
+                font-family: inherit;
+                font-size: 1.5rem;
+                width: 500px;
+                padding: 10px;
+                border-radius: 10px;
+                color: grey;
+                font-weight: 600;
+                margin: 10px;
+            }
+
+            button {
+                background-image: linear-gradient(75deg,
+                            hsl(35deg 100% 51%) 7%,
+                            hsl(34deg 99% 50%) 33%,
+                            hsl(32deg 100% 50%) 43%,
+                            hsl(31deg 100% 50%) 49%,
+                            hsl(29deg 100% 49%) 54%,
+                            hsl(28deg 100% 49%) 58%,
+                            hsl(26deg 100% 49%) 63%,
+                            hsl(24deg 99% 49%) 68%,
+                            hsl(22deg 97% 49%) 75%,
+                            hsl(19deg 94% 50%) 96%);
+                color: white;
+                font-size: 1.6rem;
+                font-weight: 550;
+                padding: 10px;
+                border-radius: 10px;
+                border: none;
+                transition: all ease 0.3s;
+            }
+
+            button:active {
+                transform: scale(0.9);
+                filter: brightness(1.5) contrast(1.1);
+            }
+
+}
+
 #search-results {
     position: absolute;
-    top: 15%;
-    background-color: grey;
+    width: 250px;
+    top: 21%;
+    background-color: black;
     color: white;
-    width: 220px;
     z-index: 10;
+    font-size: 1.5rem;
+    margin-left: 10px;
+    border-radius: 10px;
     li {
         list-style-type: none;
         margin-top: 5px;
         margin-bottom: 5px;
+        padding: 5px;
     }
     li:hover {
         background-color: grey;
-        font-size: 1.1rem;
+        font-size: 1.6rem;
     }
 }
 
@@ -175,6 +219,7 @@ header {
 
 .card {
     max-width: 300px;
+    margin-bottom: 20px;
     .card-img {
             width: 300px;
             height: 400px;
@@ -222,13 +267,14 @@ header {
 
 #restaurant-container {
     margin-top: 50px;
-    background-color: white;
-    color: grey;
-    font-weight: 600;
     #restaurant-card {
-        border-radius: 20px;
+        border-radius: 10px;
         padding: 20px;
-        box-shadow: 0 0 20px 0.5px black;
+        font-weight: 600;
+        background: linear-gradient(46deg, #FB3C00, #FFB800);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        box-shadow: 0 0 20px -5px#FB3C00;
         h1 {
             font-size: 3rem;
         }
@@ -239,7 +285,7 @@ header {
             font-size: 1.5rem;
         }
 
-        h5 {
+        h3 {
             margin-top: 10px;
             margin-bottom: 10px;
         }
