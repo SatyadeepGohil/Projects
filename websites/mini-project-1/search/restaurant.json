@@ -246,13 +246,6 @@
               "image": "../images/Food/red-wine.jpg"
             },
             {
-              "name": "Iced Tea",
-              "description": "Freshly brewed iced tea with lemon.",
-              "price": 1.99,
-              "available": true,
-              "image": "../images/Food/iced-tea-7125271_640.jpg"
-            },
-            {
               "name": "White Wine",
               "description": "A glass of house white wine.",
               "price": 4.99,
@@ -424,35 +417,28 @@
               "description": "Ground beef taco with lettuce, cheese, and salsa.",
               "price": 2.99,
               "available": true,
-              "image": "https://example.com/images/beef_taco.png"
+              "image": "../images/Food/beef-taco.jpg"
             },
             {
               "name": "Chicken Taco",
               "description": "Shredded chicken taco with lettuce, cheese, and guacamole.",
               "price": 3.49,
               "available": true,
-              "image": "https://example.com/images/chicken_taco.png"
-            },
-            {
-              "name": "Carnitas Taco",
-              "description": "Slow-cooked pork taco with cilantro and onions.",
-              "price": 3.99,
-              "available": true,
-              "image": "https://example.com/images/carnitas_taco.png"
+              "image": "../images/Food/chicken-taco.jpg"
             },
             {
               "name": "Fish Taco",
               "description": "Grilled fish taco with cabbage and chipotle mayo.",
               "price": 4.49,
               "available": true,
-              "image": "https://example.com/images/fish_taco.png"
+              "image": "../images/Food/fish-taco.jpg"
             },
             {
               "name": "Veggie Taco",
               "description": "Taco with grilled veggies, black beans, and salsa.",
               "price": 2.99,
               "available": true,
-              "image": "https://example.com/images/veggie_taco.png"
+              "image": "../images/Food/veggie-taco.jpg"
             }
           ]
         },
@@ -465,28 +451,14 @@
               "description": "Grilled tortilla with melted cheese.",
               "price": 4.99,
               "available": true,
-              "image": "https://example.com/images/cheese_quesadilla.png"
-            },
-            {
-              "name": "Chicken Quesadilla",
-              "description": "Grilled tortilla with shredded chicken and cheese.",
-              "price": 5.99,
-              "available": true,
-              "image": "https://example.com/images/chicken_quesadilla.png"
-            },
-            {
-              "name": "Steak Quesadilla",
-              "description": "Grilled tortilla with steak and melted cheese.",
-              "price": 6.99,
-              "available": true,
-              "image": "https://example.com/images/steak_quesadilla.png"
+              "image": "../images/Food/cheese-q.jpg"
             },
             {
               "name": "Veggie Quesadilla",
               "description": "Grilled tortilla with roasted vegetables and cheese.",
               "price": 5.49,
               "available": true,
-              "image": "https://example.com/images/veggie_quesadilla.png"
+              "image": "../images/Food/veggie-q.jpg"
             }
           ]
         },
@@ -499,35 +471,35 @@
               "description": "Traditional Mexican rice drink.",
               "price": 2.99,
               "available": true,
-              "image": "https://example.com/images/horchata.png"
+              "image": "../images/Food/horchata.jpg"
             },
             {
               "name": "Margarita",
               "description": "Classic margarita with lime and tequila.",
               "price": 6.99,
               "available": true,
-              "image": "https://example.com/images/margarita.png"
+              "image": "../images/Food/margarita.jpg"
             },
             {
               "name": "Jarritos",
               "description": "Mexican soda, choice of tamarind, lime, or mandarin.",
               "price": 1.99,
               "available": true,
-              "image": "https://example.com/images/jarritos.png"
+              "image": "../images/Food/jarritos.jpg"
             },
             {
               "name": "Mexican Coke",
               "description": "Coca-Cola made with cane sugar, served in a glass bottle.",
               "price": 2.49,
               "available": true,
-              "image": "https://example.com/images/mexican_coke.png"
+              "image": "../images/Food/mexican-coke.jpg"
             },
             {
               "name": "Agua Fresca",
               "description": "Refreshing fruit-flavored water (options: watermelon, pineapple, or cucumber).",
               "price": 3.49,
               "available": true,
-              "image": "https://example.com/images/agua_fresca.png"
+              "image": "../images/Food/agua-fresca.jpg"
             }
           ]
         }
@@ -559,70 +531,28 @@
               "description": "Classic pizza with fresh tomatoes, mozzarella, and basil.",
               "price": 9.99,
               "available": true,
-              "image": "https://example.com/images/margherita_pizza.png"
+              "image": "../images/Food/margherita-pizza.jpg"
             },
             {
               "name": "Pepperoni Pizza",
               "description": "A crowd favorite with pepperoni and mozzarella.",
               "price": 10.99,
               "available": true,
-              "image": "https://example.com/images/pepperoni_pizza.png"
-            },
-            {
-              "name": "BBQ Chicken Pizza",
-              "description": "Grilled chicken with BBQ sauce, red onions, and cilantro.",
-              "price": 11.99,
-              "available": true,
-              "image": "https://example.com/images/bbq_chicken_pizza.png"
-            },
-            {
-              "name": "Hawaiian Pizza",
-              "description": "Ham, pineapple, and mozzarella cheese.",
-              "price": 10.99,
-              "available": true,
-              "image": "https://example.com/images/hawaiian_pizza.png"
+              "image": "../images/Food/pepperoni-pizza.jpg"
             },
             {
               "name": "Veggie Pizza",
               "description": "Bell peppers, onions, mushrooms, olives, and mozzarella.",
               "price": 9.99,
               "available": true,
-              "image": "https://example.com/images/veggie_pizza.png"
-            },
-            {
-              "name": "Meat Lovers Pizza",
-              "description": "Pepperoni, sausage, bacon, ham, and mozzarella.",
-              "price": 12.99,
-              "available": true,
-              "image": "https://example.com/images/meat_lovers_pizza.png"
-            },
-            {
-              "name": "Four Cheese Pizza",
-              "description": "Mozzarella, parmesan, ricotta, and gorgonzola.",
-              "price": 11.49,
-              "available": true,
-              "image": "https://example.com/images/four_cheese_pizza.png"
-            },
-            {
-              "name": "Buffalo Chicken Pizza",
-              "description": "Buffalo sauce, grilled chicken, and mozzarella, with ranch drizzle.",
-              "price": 11.99,
-              "available": true,
-              "image": "https://example.com/images/buffalo_chicken_pizza.png"
-            },
-            {
-              "name": "Supreme Pizza",
-              "description": "Pepperoni, sausage, onions, peppers, mushrooms, and olives.",
-              "price": 12.99,
-              "available": true,
-              "image": "https://example.com/images/supreme_pizza.png"
+              "image": "../images/Food/veggie-pizza.jpg"
             },
             {
               "name": "White Pizza",
               "description": "Ricotta, mozzarella, garlic, and spinach.",
               "price": 10.99,
               "available": true,
-              "image": "https://example.com/images/white_pizza.png"
+              "image": "../images/Food/white-pizza.jpg"
             }
           ]
         },
@@ -635,42 +565,21 @@
               "description": "Freshly baked garlic bread with herbs.",
               "price": 3.99,
               "available": true,
-              "image": "https://example.com/images/garlic_bread.png"
-            },
-            {
-              "name": "Mozzarella Sticks",
-              "description": "Fried mozzarella sticks with marinara sauce.",
-              "price": 5.99,
-              "available": true,
-              "image": "https://example.com/images/mozzarella_sticks.png"
+              "image": "../images/Food/garlic-bread.jpg"
             },
             {
               "name": "Bruschetta",
               "description": "Grilled bread topped with tomatoes, garlic, and basil.",
               "price": 4.99,
               "available": true,
-              "image": "https://example.com/images/bruschetta.png"
+              "image": "../images/Food/bruschetta.jpg"
             },
             {
               "name": "Chicken Wings",
               "description": "Spicy buffalo or BBQ chicken wings served with ranch.",
               "price": 6.99,
               "available": true,
-              "image": "https://example.com/images/chicken_wings.png"
-            },
-            {
-              "name": "Stuffed Mushrooms",
-              "description": "Mushrooms stuffed with cheese and garlic.",
-              "price": 5.49,
-              "available": true,
-              "image": "https://example.com/images/stuffed_mushrooms.png"
-            },
-            {
-              "name": "Caprese Salad",
-              "description": "Tomato, mozzarella, basil, and balsamic drizzle.",
-              "price": 5.99,
-              "available": true,
-              "image": "https://example.com/images/caprese_salad.png"
+              "image": "../images/Food/chicken-wings.jpg"
             }
           ]
         },
@@ -683,42 +592,42 @@
               "description": "Choice of Coke, Sprite, or Root Beer.",
               "price": 1.99,
               "available": true,
-              "image": "https://example.com/images/soda.png"
+              "image": "../images/Food/soda.jpg"
             },
             {
               "name": "Lemonade",
               "description": "Freshly squeezed lemonade.",
               "price": 2.49,
               "available": true,
-              "image": "https://example.com/images/lemonade.png"
+              "image": "../images/Food/lemonade-pizza-paradise.jpg"
             },
             {
               "name": "Iced Tea",
               "description": "Freshly brewed iced tea with lemon.",
               "price": 1.99,
               "available": true,
-              "image": "https://example.com/images/iced_tea.png"
+              "image": "../images/Food/iced-tea-pizza.jpg"
             },
             {
               "name": "Sparkling Water",
               "description": "Refreshing sparkling water with a hint of lime.",
               "price": 2.49,
               "available": true,
-              "image": "https://example.com/images/sparkling_water.png"
+              "image": "../images/Food/water-glass-3971098_640.jpg"
             },
             {
               "name": "Beer",
               "description": "Choice of local craft beer or imported beer.",
               "price": 4.99,
               "available": true,
-              "image": "https://example.com/images/beer.png"
+              "image": "../images/Food/beer-pizza-paradise.jpg"
             },
             {
               "name": "Red Wine",
               "description": "A glass of house red wine.",
               "price": 5.99,
               "available": true,
-              "image": "https://example.com/images/red_wine.png"
+              "image": "../images/Food/red-wine-pizza-paradise.jpg"
             }
           ]
         }
@@ -750,14 +659,14 @@
               "description": "Slow-cooked ribs with house BBQ sauce.",
               "price": 14.99,
               "available": true,
-              "image": "https://example.com/images/bbq_ribs.png"
+              "image": "../images/Food/bbq-ribs.jpg"
             },
             {
               "name": "Grilled Chicken",
               "description": "Chargrilled chicken with a side of BBQ sauce.",
               "price": 11.99,
               "available": true,
-              "image": "https://example.com/images/grilled_chicken.png"
+              "image": "../images/Food/grilled-chicken.jpg"
             }
           ]
         },
@@ -770,14 +679,14 @@
               "description": "Juicy ribeye steak cooked to your preference.",
               "price": 19.99,
               "available": true,
-              "image": "https://example.com/images/ribeye_steak.png"
+              "image": "../images/Food/ribeye-steak.jpg"
             },
             {
               "name": "Sirloin Steak",
-              "description": "Grilled sirloin steak with a side of garlic butter.",
+              "description": "Luxourious sirloin steak.",
               "price": 16.99,
               "available": true,
-              "image": "https://example.com/images/sirloin_steak.png"
+              "image": "../images/Food/sirloin-steak.jpg"
             }
           ]
         },
@@ -786,18 +695,11 @@
           "image": "../images/food-category/drink.jpg",
           "items": [
             {
-              "name": "Iced Tea",
-              "description": "Freshly brewed iced tea.",
-              "price": 1.99,
-              "available": true,
-              "image": "https://example.com/images/iced_tea.png"
-            },
-            {
               "name": "Beer",
               "description": "Choice of local craft beers.",
               "price": 4.99,
               "available": true,
-              "image": "https://example.com/images/beer.png"
+              "image": "../images/Food/beer.jpg"
             }
           ]
         }
@@ -829,14 +731,7 @@
               "description": "Grilled chicken in a creamy tomato sauce.",
               "price": 12.99,
               "available": true,
-              "image": "https://example.com/images/chicken_tikka_masala.png"
-            },
-            {
-              "name": "Lamb Vindaloo",
-              "description": "Spicy lamb curry with potatoes.",
-              "price": 14.99,
-              "available": true,
-              "image": "https://example.com/images/lamb_vindaloo.png"
+              "image": "../images/Food/chicken-tikka-masala.jpg"
             }
           ]
         },
@@ -849,14 +744,14 @@
               "description": "Soft naan bread with garlic and butter.",
               "price": 2.99,
               "available": true,
-              "image": "https://example.com/images/garlic_naan.png"
+              "image": "../images/Food/garlic-naan.jpg"
             },
             {
               "name": "Raita",
               "description": "Cool yogurt dip with cucumbers.",
               "price": 1.99,
               "available": true,
-              "image": "https://example.com/images/raita.png"
+              "image": "../images/Food/raita.jpg"
             }
           ]
         },
@@ -869,14 +764,14 @@
               "description": "Sweet yogurt-based mango drink.",
               "price": 3.49,
               "available": true,
-              "image": "https://example.com/images/mango_lassi.png"
+              "image": "../images/Food/mango-lassi.jpg"
             },
             {
               "name": "Chai Tea",
               "description": "Spiced Indian tea with milk.",
               "price": 2.49,
               "available": true,
-              "image": "https://example.com/images/chai_tea.png"
+              "image": "../images/Food/chai.jpg"
             }
           ]
         }
@@ -908,14 +803,7 @@
               "description": "Tender lamb chops grilled with Mediterranean herbs.",
               "price": 15.99,
               "available": true,
-              "image": "https://example.com/images/grilled_lamb_chops.png"
-            },
-            {
-              "name": "Grilled Chicken Souvlaki",
-              "description": "Grilled chicken skewers served with tzatziki sauce.",
-              "price": 12.99,
-              "available": true,
-              "image": "https://example.com/images/chicken_souvlaki.png"
+              "image": "../images/Food/grilled-lamb-chops.jpg"
             }
           ]
         },
@@ -928,14 +816,14 @@
               "description": "Crisp salad with feta cheese, olives, and olive oil dressing.",
               "price": 6.99,
               "available": true,
-              "image": "https://example.com/images/greek_salad.png"
+              "image": "../images/Food/greek-salad-mediterranean.jpg"
             },
             {
               "name": "Tabbouleh",
               "description": "Fresh parsley, tomatoes, and bulgur with lemon dressing.",
               "price": 5.99,
               "available": true,
-              "image": "https://example.com/images/tabbouleh.png"
+              "image": "../images/Food/tabbouleh.jpg"
             }
           ]
         },
@@ -948,73 +836,14 @@
               "description": "Fresh lemonade with mint.",
               "price": 2.99,
               "available": true,
-              "image": "https://example.com/images/mint_lemonade.png"
+              "image": "../images/Food/mint-lemonade.jpg"
             },
             {
               "name": "Turkish Coffee",
               "description": "Strong and flavorful Turkish coffee.",
               "price": 3.49,
               "available": true,
-              "image": "https://example.com/images/turkish_coffee.png"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Vegan Vibes",
-      "location": "321 Green Avenue, Veggieville",
-      "contact": {
-        "phone": "555-987-6543",
-        "email": "contact@veganvibes.com"
-      },
-      "openingHours": {
-        "monday": "10:00 AM - 8:00 PM",
-        "tuesday": "10:00 AM - 8:00 PM",
-        "wednesday": "10:00 AM - 8:00 PM",
-        "thursday": "10:00 AM - 8:00 PM",
-        "friday": "10:00 AM - 9:00 PM",
-        "saturday": "11:00 AM - 9:00 PM",
-        "sunday": "Closed"
-      },
-      "menu": [
-        {
-          "name": "Bowls",
-          "image": "../images/food-category/bowls.jpg",
-          "items": [
-            {
-              "name": "Quinoa Bowl",
-              "description": "Quinoa with roasted vegetables and tahini sauce.",
-              "price": 9.99,
-              "available": true,
-              "image": "https://example.com/images/quinoa_bowl.png"
-            },
-            {
-              "name": "Falafel Bowl",
-              "description": "Crispy falafel with hummus and mixed greens.",
-              "price": 8.99,
-              "available": true,
-              "image": "https://example.com/images/falafel_bowl.png"
-            }
-          ]
-        },
-        {
-          "name": "Smoothies",
-          "image": "../images/food-category/smoothies.jpg",
-          "items": [
-            {
-              "name": "Green Detox",
-              "description": "Kale, spinach, banana, and almond milk smoothie.",
-              "price": 4.99,
-              "available": true,
-              "image": "https://example.com/images/green_detox.png"
-            },
-            {
-              "name": "Berry Blast",
-              "description": "Mixed berries and coconut water smoothie.",
-              "price": 4.99,
-              "available": true,
-              "image": "https://example.com/images/berry_blast.png"
+              "image": "../images/Food/turkish-coffee.jpg"
             }
           ]
         }
@@ -1046,14 +875,14 @@
               "description": "Fresh salmon fillet grilled with lemon butter.",
               "price": 14.99,
               "available": true,
-              "image": "https://example.com/images/grilled_salmon.png"
+              "image": "../images/Food/grilled-salmon.jpg"
             },
             {
               "name": "Lobster Tail",
               "description": "Succulent lobster tail with garlic butter.",
               "price": 24.99,
               "available": true,
-              "image": "https://example.com/images/lobster_tail.png"
+              "image": "../images/Food/lobster-tail.jpg"
             }
           ]
         },
@@ -1066,14 +895,14 @@
               "description": "Creamy coleslaw with a hint of sweetness.",
               "price": 2.99,
               "available": true,
-              "image": "https://example.com/images/coleslaw.png"
+              "image": "../images/Food/coleslaw.jpg"
             },
             {
               "name": "Hush Puppies",
               "description": "Deep-fried cornmeal batter, crispy and golden.",
               "price": 3.49,
               "available": true,
-              "image": "https://example.com/images/hush_puppies.png"
+              "image": "../images/Food/hush-puppies.jpg"
             }
           ]
         }
