@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>FoodWagon</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Moderustic:wght@300..800&display=swap" rel="stylesheet">
@@ -29,13 +29,21 @@
                     </a>
                 </button>
                 <button id="user-btn">
-                    <a href="#">
                         <p><img src="./images/user.svg" alt=""> Login</p>
-                    </a>
                 </button>
             </div>
         </nav>
     </header>
+
+    <div id="login-container">
+        <form id="login-form">
+            <p id="login-information"></p>
+            <input type="text" placeholder="Enter your name" required id="username"><br>
+            <input type="password" placeholder="password" required id="password"><br>
+            <button type="submit" id="login-btn">Login</button>
+            <button id="logout-btn">Logout</button>
+        </form>
+    </div>
     <main>
         <div id="Delivery-panel">
             <h1>Are you straving?</h1>
@@ -46,21 +54,20 @@
                         <img src="./images/motorcycle.svg" alt="">
                         Delivery
                     </button>
-                    <button>
+                    <button id="pickup">
                         <img src="./images/basket.png" alt="">
                         Pickup
                     </button>
                 </span>
-                <form action="">
+                <form id="address-form">
                     <img src="./images/location.svg" alt="">
-                    <input type="text" placeholder="Enter Your Address" id="address-input" required>
-                    <button id="find-food" type="submit">
-                        <a href="search/search.html">
-                            <img src="./images/magnifier.png" alt="">
-                            Find Food
-                        </a>
+                    <input type="text" placeholder="Enter Your Street and Town" id="address-input" required>
+                    <button type="submit" id="find-food">
+                        <img src="./images/magnifier.png" alt="">
+                        Find Food
                     </button>
                 </form>
+
             </div>
         </div>
         <img src="./images/intro-dish.png" alt="" id="intro-dish">
@@ -424,7 +431,11 @@
 
         </div>
 
-        <button>View All &#8250;</button>
+        <button>
+            <a href="search/search.html">
+                View All
+            </a>
+        </button>
     </section>
 
     <section id="food-search">
@@ -432,7 +443,7 @@
             <h1>Search by Food</h1>
 
             <div id="food-category-button">
-                <a href="#">View All &#8250;</a>
+                <a href="search/search.html">View All &#8250;</a>
                 <button id="food-category-previous">&#8249;</button>
                 <button id="food-category-next">&#8250;</button>
             </div>
@@ -526,7 +537,11 @@
                 <h1>Best deals <span> Crispy Sandwiches</span></h1>
                 <p>Enjoy the large size of sandwiches. Complete
                 perfect slice of sandwiches.</p>
-                <button>PROCEED TO ORDER ></button>
+                <button>
+                    <a href="search/search.html">
+                        PROCEED TO ORDER
+                    </a>
+                </button>
             </div>
             <img src="images/double-sandwich.png" alt="">
         </div>
@@ -537,7 +552,11 @@
                 <h1>Celebrate parties with<span> Fried Chicken</span></h1>
                 <p>Get the best fried chicken smeared with a lip smacking lemon chili flavor. Check out
                 best deals for fried chicken.</p>
-                <button>PROCEED TO ORDER ></button>
+                <button>
+                    <a href="search/search.html">
+                        PROCEED TO ORDER
+                    </a>
+                </button>
             </div>
         </div>
 
@@ -547,7 +566,11 @@
                 <p>Pair up with a friend and enjoy the
                 hot and crispy pizza pops. Try it
                 with the best deals.</p>
-                <button>PROCEED TO ORDER ></button>
+                <button>
+                    <a href="search/search.html">
+                        PROCEED TO ORDER
+                    </a>
+                </button>
             </div>
             <img src="images/spicy-pizza.png" alt="">
         </div>
@@ -558,7 +581,11 @@
     <section id="bottom-order">
         <div>
             <h1>Are you ready to order with the best deals?</h1>
-            <button>PROCEED TO ORDER ></button>
+            <button>
+                <a href="search/search.html">
+                    PROCEED TO ORDER
+                </a>
+            </button>
         </div>
     </section>
 
@@ -616,7 +643,7 @@
                 
                 <div>
                     <h1>Company</h1>
-                    <li><a href="#">About us</a></li>
+                    <li><a href="about.html">About us</a></li>
                     <li><a href="#">Team</a></li>
                     <li><a href="#">Careers</a></li>
                     <li><a href="#">Blog</a></li>

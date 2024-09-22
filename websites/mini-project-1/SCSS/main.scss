@@ -13,7 +13,7 @@ body {
         transition: all linear 0.2s;
     }
     button:active {
-            transform: scale(0.8);
+            transform: scale(0.9);
         }
 }
 
@@ -30,6 +30,10 @@ header {
         align-items: center;
         #logo {
             width: 200px;
+        }
+
+        #logo:hover {
+            cursor: pointer;
         }
 
         p {
@@ -67,12 +71,61 @@ header {
                 }
             }
 
+            #user-btn {
+                p img {
+                        width: 16px;
+                        margin-right: 5px;
+                    }
+            }
+
             button:hover {
             box-shadow: 1px 3px 5px -2px black;
             background: linear-gradient(55deg, #FFB800, #FFBA00);
             background-clip: text;
              -webkit-text-fill-color: transparent;
             }
+        }
+    }
+}
+
+#login-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    width: 40%;
+    border-radius: 10px;
+    height: auto;
+    padding: 30px;
+    background-color: white;
+    z-index: 100;
+
+    form {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+        input {
+                width: 100%;
+                font-size: 1.5rem;
+                padding: 10px;
+                color: grey;
+                font-weight: 600;
+            }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background: #F17228;
+            color: white;
+            font-weight: 700;
+            margin-top: 10px;
         }
     }
 }
@@ -377,10 +430,13 @@ main {
         padding: 10px;
         border: none;
         background: linear-gradient(68deg,#FFBA26,#FF9A0E);
-        color: white;
         width: 120px;
-        font-weight: 700;
         border-radius: 10px;
+        a {
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
     }
 
     #restaurant-showcase-container {
@@ -682,9 +738,12 @@ main {
                 padding: 10px;
                 border: none;
                 background: linear-gradient(76deg,#FFB800,#FF8A00);
-                color: white;
-                font-weight: 700;
                 border-radius: 5px;
+                a {
+                        text-decoration: none;
+                        color: white;
+                        font-weight: 700;
+                    }
             }
         }
     }
@@ -719,9 +778,14 @@ main {
             padding: 10px;
             border: none;
             background: linear-gradient(73deg, #F17228, #F15E28);
-            color: white;
-            font-weight: 700;
+            
             border-radius: 5px;
+
+            a {
+                text-decoration: none;
+                color: white;
+                font-weight: 700;
+            }
         }
     }
 }

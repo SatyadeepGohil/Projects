@@ -293,16 +293,22 @@ function displayOrderDetails() {
 
     orderHTML += `
     <li>
-      <p>${item.name} from ${item.restaurant}</p>
-      <p>$${item.price} x ${item.quantity}</p>
-      <p>$${itemTotal.toFixed(2)}</p>
-      <button onclick="removeOrder(${index})">Remove</button>
+      <p>${item.name}</p>
+      <span>
+          <p>$${item.price} x ${item.quantity}</p>
+          <p>$${itemTotal.toFixed(2)}</p>
+      <span/>
+      <button onclick="removeOrder(${index})">&#10006;</button>
     </li>`;
   })
 
   orderItems.innerHTML = orderHTML;
   const totalElement = document.createElement('p');
+  const hr = document.createElement('hr');
   totalElement.textContent = `Total: $${totalPrice.toFixed(2)}`;
+  totalElement.style.textAlign = 'right';
+  totalElement.style.marginRight = '40px';
+  orderItems.appendChild(hr);
   orderItems.appendChild(totalElement);
 
   if (orders.length > 0) {
@@ -311,7 +317,7 @@ function displayOrderDetails() {
 
   if (orders.length === 0) {
     totalElement.textContent = '';
-    document.getElementById('no-food').textContent = 'You have not any order food';
+    document.getElementById('no-food').textContent = 'No Food ordered yet';
   }
 }
 
@@ -337,6 +343,6 @@ function removeOrder(index) {
 
 function clearCart() {
   orders = [];
-  document.getElementById('no-food').textContent = 'You have not any order food';
+  document.getElementById('no-food').textContent = 'No Food ordered yet';
   displayCategoryItems();
 }

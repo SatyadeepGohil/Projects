@@ -248,13 +248,14 @@ header {
         p {
             color: #FFB30E;
             font-weight: 700;
+            font-size: 1.1rem;
         }
     }
 
     p {
         text-wrap: nowrap;
         margin-bottom: 5px;
-        font-size: 0.9rem;
+        font-size: 0.7rem;
     }
 
     button {
@@ -313,13 +314,69 @@ header {
     height: 50%;
     display: none;
     z-index: 100;
-    background-color: grey;
+    background-color: white;
     width: 50%;
+    padding: 30px;
+
+    h1 {
+            text-align: center;
+            margin: 20px;
+    }
+
+    hr {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        list-style-type: none;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        span {
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            width: 20px;
+            height: 20px;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #F17228;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:active {
+            transform: scale(0.95);
+            background-color: white;
+            color: #F17228;
+        }
+    }
+
+    #no-food {
+        text-align: center;
+        color: orange;
+        font-weight: 600;
+        font-size: larger;
+    }
 
     #cross {
         position: absolute;
         top: 0;
         right: 0;
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+        font-weight: 700;
+        border: none;
         cursor: pointer;
     }
     #cross:active {
