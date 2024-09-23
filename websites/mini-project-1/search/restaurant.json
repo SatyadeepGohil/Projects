@@ -1,0 +1,912 @@
+{
+  "restaurants": [
+    {
+      "name": "Burger Joint",
+      "location": "123 Main Street, Anytown",
+      "contact": {
+        "phone": "123-456-7890",
+        "email": "info@burgerjoint.com"
+      },
+      "openingHours": {
+        "monday": "10:00 AM - 10:00 PM",
+        "tuesday": "10:00 AM - 10:00 PM",
+        "wednesday": "10:00 AM - 10:00 PM",
+        "thursday": "10:00 AM - 10:00 PM",
+        "friday": "10:00 AM - 11:00 PM",
+        "saturday": "11:00 AM - 11:00 PM",
+        "sunday": "Closed"
+      },
+      "menu": [
+        {
+          "name": "Burgers",
+          "image": "../images/food-category/burger.jpg",
+          "items": [
+            {
+              "name": "Classic Burger",
+              "description": "A classic beef burger with lettuce, tomato, and cheese.",
+              "price": 5.99,
+              "available": true,
+              "image": "../images/Food/classic-burger.jpg"
+            },
+            {
+              "name": "Veggie Burger",
+              "description": "A delicious burger made with a veggie patty, lettuce, and tomato.",
+              "price": 6.49,
+              "available": true,
+              "image": "../images/Food/veggie-burger.jpg"
+            },
+            {
+              "name": "Cheeseburger",
+              "description": "A juicy beef burger with melted cheddar cheese, pickles, and ketchup.",
+              "price": 6.29,
+              "available": true,
+              "image": "../images/Food/cheese-burger.jpg"
+            },
+            {
+              "name": "Bacon Burger",
+              "description": "A beef burger topped with crispy bacon, lettuce, and BBQ sauce.",
+              "price": 7.99,
+              "available": true,
+              "image": "../images/Food/bacon-burger.jpg"
+            },
+            {
+              "name": "Chicken Burger",
+              "description": "Grilled chicken breast with lettuce, tomato, and mayo.",
+              "price": 6.99,
+              "available": true,
+              "image": "../images/Food/chicken-burger.jpg"
+            }
+          ]
+        },
+        {
+          "name": "Sides",
+          "image": "../images/food-category/sides.jpg",
+          "items": [
+            {
+              "name": "Fries",
+              "description": "Crispy golden fries.",
+              "price": 2.49,
+              "available": true,
+              "image": "../images/Food/fries.jpg"
+            },
+            {
+              "name": "Onion Rings",
+              "description": "Crispy onion rings with a side of dipping sauce.",
+              "price": 3.49,
+              "available": true,
+              "image": "../images/Food/onion-rings.jpg"
+            },
+            {
+              "name": "Sweet Potato Fries",
+              "description": "Seasoned sweet potato fries, served with a side of ranch.",
+              "price": 2.99,
+              "available": true,
+              "image": "../images/Food/sweet-potato-fries.jpg"
+            },
+            {
+              "name": "Mozzarella Sticks",
+              "description": "Fried mozzarella sticks served with marinara sauce.",
+              "price": 4.99,
+              "available": true,
+              "image": "../images/Food/mozzarella-sticks.jpg"
+            },
+            {
+              "name": "Chicken Nuggets",
+              "description": "Crispy chicken nuggets served with your choice of dipping sauce.",
+              "price": 3.99,
+              "available": true,
+              "image": "../images/Food/chicken-nuggets.jpg"
+            }
+          ]
+        },
+        {
+          "name": "Drinks",
+          "image": "../images/food-category/drink.jpg",
+          "items": [
+            {
+              "name": "Soft Drink",
+              "description": "Choice of Coke, Pepsi, Sprite, or Fanta.",
+              "price": 1.99,
+              "available": true,
+              "image": "../images/Food/soft-drinks.jpg"
+            },
+            {
+              "name": "Water",
+              "description": "Bottled mineral water.",
+              "price": 1.49,
+              "available": true,
+              "image": "../images/Food/water.jpg"
+            },
+            {
+              "name": "Iced Tea",
+              "description": "Freshly brewed iced tea, available in sweetened or unsweetened.",
+              "price": 1.99,
+              "available": true,
+              "image": "../images/Food/icedtea.jpg"
+            },
+            {
+              "name": "Milkshake",
+              "description": "Choice of vanilla, chocolate, or strawberry milkshake.",
+              "price": 3.99,
+              "available": true,
+              "image": "../images/Food/milkshake.jpg"
+            },
+            {
+              "name": "Lemonade",
+              "description": "Freshly squeezed lemonade.",
+              "price": 2.49,
+              "available": true,
+              "image": "../images/Food/lemonade.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pasta Palace",
+      "location": "456 Elm Street, Food City",
+      "contact": {
+        "phone": "987-654-3210",
+        "email": "contact@pastapalace.com"
+      },
+      "openingHours": {
+        "monday": "11:00 AM - 9:00 PM",
+        "tuesday": "11:00 AM - 9:00 PM",
+        "wednesday": "11:00 AM - 9:00 PM",
+        "thursday": "11:00 AM - 9:00 PM",
+        "friday": "11:00 AM - 10:00 PM",
+        "saturday": "12:00 PM - 10:00 PM",
+        "sunday": "Closed"
+      },
+      "menu": [
+        {
+          "name": "Pasta",
+          "image": "../images/food-category/pasta.jpg",
+          "items": [
+            {
+              "name": "Spaghetti Carbonara",
+              "description": "Classic spaghetti with creamy carbonara sauce.",
+              "price": 8.99,
+              "available": true,
+              "image": "../images/Food/spaghetti-carbonara.jpg"
+            },
+            {
+              "name": "Penne Arrabbiata",
+              "description": "Penne pasta with a spicy tomato sauce.",
+              "price": 7.49,
+              "available": true,
+              "image": "../images/Food/penne-arrabbiata.jpg"
+            },
+            {
+              "name": "Fettuccine Alfredo",
+              "description": "Fettuccine pasta with a creamy Alfredo sauce.",
+              "price": 9.49,
+              "available": true,
+              "image": "../images/Food/fettuccine-alfredo.jpg"
+            },
+            {
+              "name": "Lasagna",
+              "description": "Layered pasta with ground beef, cheese, and marinara sauce.",
+              "price": 10.99,
+              "available": true,
+              "image": "../images/Food/lasagna-4620949_640.jpg"
+            },
+            {
+              "name": "Gnocchi Pesto",
+              "description": "Potato gnocchi with a basil pesto sauce.",
+              "price": 8.99,
+              "available": true,
+              "image": "../images/Food/gnoochi-pesto.jpg"
+            }
+          ]
+        },
+        {
+          "name": "Salads",
+          "image": "../images/food-category/salad.jpg",
+          "items": [
+            {
+              "name": "Caesar Salad",
+              "description": "Crisp romaine lettuce with Caesar dressing.",
+              "price": 4.99,
+              "available": true,
+              "image": "../images/Food/caesar-salad.jpg"
+            },
+            {
+              "name": "Caprese Salad",
+              "description": "Tomatoes, mozzarella, and basil with olive oil.",
+              "price": 5.99,
+              "available": true,
+              "image": "../images/Food/caprese.jpg"
+            },
+            {
+              "name": "Greek Salad",
+              "description": "Mixed greens, feta cheese, olives, and cucumber with a vinaigrette.",
+              "price": 5.49,
+              "available": true,
+              "image": "../images/Food/greek-salad.jpg"
+            },
+            {
+              "name": "Antipasto Salad",
+              "description": "A mix of Italian meats, cheeses, olives, and peppers on a bed of lettuce.",
+              "price": 6.99,
+              "available": true,
+              "image": "../images/Food/antipasto-salad.jpg"
+            }
+          ]
+        },
+        {
+          "name": "Drinks",
+          "image": "../images/food-category/drink.jpg",
+          "items": [
+            {
+              "name": "Red Wine",
+              "description": "A glass of house red wine.",
+              "price": 4.99,
+              "available": true,
+              "image": "../images/Food/red-wine.jpg"
+            },
+            {
+              "name": "White Wine",
+              "description": "A glass of house white wine.",
+              "price": 4.99,
+              "available": true,
+              "image": "../images/Food/white-wine.jpg"
+            },
+            {
+              "name": "Espresso",
+              "description": "Rich and bold Italian espresso.",
+              "price": 2.49,
+              "available": true,
+              "image": "../images/Food/espresso.jpg"
+            },
+            {
+              "name": "Sparkling Water",
+              "description": "Refreshing bottled sparkling water.",
+              "price": 1.99,
+              "available": true,
+              "image": "../images/Food/sparkling-water.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sushi Delight",
+      "location": "789 Oak Avenue, Sushi Town",
+      "contact": {
+        "phone": "555-123-4567",
+        "email": "contact@sushidelight.com"
+      },
+      "openingHours": {
+        "monday": "12:00 PM - 9:00 PM",
+        "tuesday": "12:00 PM - 9:00 PM",
+        "wednesday": "12:00 PM - 9:00 PM",
+        "thursday": "12:00 PM - 9:00 PM",
+        "friday": "12:00 PM - 10:00 PM",
+        "saturday": "12:00 PM - 10:00 PM",
+        "sunday": "Closed"
+      },
+      "menu": [
+        {
+          "name": "Sushi Rolls",
+          "image": "../images/food-category/sushi-rolls.jpg",
+          "items": [
+            {
+              "name": "California Roll",
+              "description": "Crab, avocado, and cucumber.",
+              "price": 8.99,
+              "available": true,
+              "image": "../images/Food/california-roll.jpg"
+            },
+            {
+              "name": "Spicy Tuna Roll",
+              "description": "Tuna, spicy mayo, and cucumber.",
+              "price": 9.49,
+              "available": true,
+              "image": "../images/Food/spicy-tuna-roll.jpg"
+            },
+            {
+              "name": "Dragon Roll",
+              "description": "Eel, avocado, cucumber, and eel sauce.",
+              "price": 12.99,
+              "available": true,
+              "image": "../images/Food/dragon-roll.jpg"
+            }
+          ]
+        },
+        {
+          "name": "Sashimi",
+          "image": "../images/food-category/sashimi.jpg",
+          "items": [
+            {
+              "name": "Salmon Sashimi",
+              "description": "Freshly sliced salmon.",
+              "price": 12.99,
+              "available": true,
+              "image": "../images/Food/salmon-sashimi.jpg"
+            },
+            {
+              "name": "Tuna Sashimi",
+              "description": "Freshly sliced tuna.",
+              "price": 13.99,
+              "available": true,
+              "image": "../images/Food/tuna-sashimi.jpg"
+            },
+            {
+              "name": "Octopus Sashimi",
+              "description": "Freshly sliced octopus.",
+              "price": 11.99,
+              "available": true,
+              "image": "../images/Food/octopus-sashimi.jpg"
+            },
+            {
+              "name": "Shrimp Sashimi",
+              "description": "Freshly sliced shrimp.",
+              "price": 10.99,
+              "available": true,
+              "image": "../images/Food/shrimp-sashimi.jpg"
+            }
+          ]
+        },
+        {
+          "name": "Drinks",
+          "image": "../images/food-category/drink.jpg",
+          "items": [
+            {
+              "name": "Green Tea",
+              "description": "Traditional Japanese green tea.",
+              "price": 2.49,
+              "available": true,
+              "image": "../images/Food/green-tea.jpg"
+            },
+            {
+              "name": "Sake",
+              "description": "Japanese rice wine.",
+              "price": 5.99,
+              "available": true,
+              "image": "../images/Food/sake.jpg"
+            },
+            {
+              "name": "Plum Wine",
+              "description": "Sweet Japanese plum wine.",
+              "price": 4.99,
+              "available": true,
+              "image": "../images/Food/plum-wine.jpg"
+            },
+            {
+              "name": "Asahi Beer",
+              "description": "Japanese beer.",
+              "price": 6.99,
+              "available": true,
+              "image": "../images/Food/asashi-beer.jpg"
+            },
+            {
+              "name": "Cucumber Water",
+              "description": "Refreshing cucumber-infused water.",
+              "price": 1.99,
+              "available": true,
+              "image": "../images/Food/cucumber-water.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Taco Fiesta",
+      "location": "321 Maple Street, Fiesta Town",
+      "contact": {
+        "phone": "555-789-1234",
+        "email": "info@tacofiesta.com"
+      },
+      "openingHours": {
+        "monday": "10:00 AM - 10:00 PM",
+        "tuesday": "10:00 AM - 10:00 PM",
+        "wednesday": "10:00 AM - 10:00 PM",
+        "thursday": "10:00 AM - 10:00 PM",
+        "friday": "10:00 AM - 11:00 PM",
+        "saturday": "10:00 AM - 11:00 PM",
+        "sunday": "Closed"
+      },
+      "menu": [
+        {
+          "name": "Tacos",
+          "image": "../images/food-category/tacos.jpg",
+          "items": [
+            {
+              "name": "Beef Taco",
+              "description": "Ground beef taco with lettuce, cheese, and salsa.",
+              "price": 2.99,
+              "available": true,
+              "image": "../images/Food/beef-taco.jpg"
+            },
+            {
+              "name": "Chicken Taco",
+              "description": "Shredded chicken taco with lettuce, cheese, and guacamole.",
+              "price": 3.49,
+              "available": true,
+              "image": "../images/Food/chicken-taco.jpg"
+            },
+            {
+              "name": "Fish Taco",
+              "description": "Grilled fish taco with cabbage and chipotle mayo.",
+              "price": 4.49,
+              "available": true,
+              "image": "../images/Food/fish-taco.jpg"
+            },
+            {
+              "name": "Veggie Taco",
+              "description": "Taco with grilled veggies, black beans, and salsa.",
+              "price": 2.99,
+              "available": true,
+              "image": "../images/Food/veggie-taco.jpg"
+            }
+          ]
+        },
+        {
+          "name": "Quesadillas",
+          "image": "../images/food-category/quesadilla.jpg",
+          "items": [
+            {
+              "name": "Cheese Quesadilla",
+              "description": "Grilled tortilla with melted cheese.",
+              "price": 4.99,
+              "available": true,
+              "image": "../images/Food/cheese-q.jpg"
+            },
+            {
+              "name": "Veggie Quesadilla",
+              "description": "Grilled tortilla with roasted vegetables and cheese.",
+              "price": 5.49,
+              "available": true,
+              "image": "../images/Food/veggie-q.jpg"
+            }
+          ]
+        },
+        {
+          "name": "Drinks",
+          "image": "../images/food-category/drink.jpg",
+          "items": [
+            {
+              "name": "Horchata",
+              "description": "Traditional Mexican rice drink.",
+              "price": 2.99,
+              "available": true,
+              "image": "../images/Food/horchata.jpg"
+            },
+            {
+              "name": "Margarita",
+              "description": "Classic margarita with lime and tequila.",
+              "price": 6.99,
+              "available": true,
+              "image": "../images/Food/margarita.jpg"
+            },
+            {
+              "name": "Jarritos",
+              "description": "Mexican soda, choice of tamarind, lime, or mandarin.",
+              "price": 1.99,
+              "available": true,
+              "image": "../images/Food/jarritos.jpg"
+            },
+            {
+              "name": "Mexican Coke",
+              "description": "Coca-Cola made with cane sugar, served in a glass bottle.",
+              "price": 2.49,
+              "available": true,
+              "image": "../images/Food/mexican-coke.jpg"
+            },
+            {
+              "name": "Agua Fresca",
+              "description": "Refreshing fruit-flavored water (options: watermelon, pineapple, or cucumber).",
+              "price": 3.49,
+              "available": true,
+              "image": "../images/Food/agua-fresca.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pizza Paradise",
+      "location": "789 Pizza Lane, Pizzatown",
+      "contact": {
+        "phone": "555-234-5678",
+        "email": "contact@pizzaparadise.com"
+      },
+      "openingHours": {
+        "monday": "11:00 AM - 11:00 PM",
+        "tuesday": "11:00 AM - 11:00 PM",
+        "wednesday": "11:00 AM - 11:00 PM",
+        "thursday": "11:00 AM - 11:00 PM",
+        "friday": "11:00 AM - 12:00 AM",
+        "saturday": "12:00 PM - 12:00 AM",
+        "sunday": "12:00 PM - 10:00 PM"
+      },
+      "menu": [
+        {
+          "name": "Pizzas",
+          "image": "../images/food-category/pizza.jpg",
+          "items": [
+            {
+              "name": "Margherita Pizza",
+              "description": "Classic pizza with fresh tomatoes, mozzarella, and basil.",
+              "price": 9.99,
+              "available": true,
+              "image": "../images/Food/margherita-pizza.jpg"
+            },
+            {
+              "name": "Pepperoni Pizza",
+              "description": "A crowd favorite with pepperoni and mozzarella.",
+              "price": 10.99,
+              "available": true,
+              "image": "../images/Food/pepperoni-pizza.jpg"
+            },
+            {
+              "name": "Veggie Pizza",
+              "description": "Bell peppers, onions, mushrooms, olives, and mozzarella.",
+              "price": 9.99,
+              "available": true,
+              "image": "../images/Food/veggie-pizza.jpg"
+            },
+            {
+              "name": "White Pizza",
+              "description": "Ricotta, mozzarella, garlic, and spinach.",
+              "price": 10.99,
+              "available": true,
+              "image": "../images/Food/white-pizza.jpg"
+            }
+          ]
+        },
+        {
+          "name": "Appetizers",
+          "image": "../images/food-category/appetizers.jpg",
+          "items": [
+            {
+              "name": "Garlic Bread",
+              "description": "Freshly baked garlic bread with herbs.",
+              "price": 3.99,
+              "available": true,
+              "image": "../images/Food/garlic-bread.jpg"
+            },
+            {
+              "name": "Bruschetta",
+              "description": "Grilled bread topped with tomatoes, garlic, and basil.",
+              "price": 4.99,
+              "available": true,
+              "image": "../images/Food/bruschetta.jpg"
+            },
+            {
+              "name": "Chicken Wings",
+              "description": "Spicy buffalo or BBQ chicken wings served with ranch.",
+              "price": 6.99,
+              "available": true,
+              "image": "../images/Food/chicken-wings.jpg"
+            }
+          ]
+        },
+        {
+          "name": "Drinks",
+          "image": "../images/food-category/drink.jpg",
+          "items": [
+            {
+              "name": "Soda",
+              "description": "Choice of Coke, Sprite, or Root Beer.",
+              "price": 1.99,
+              "available": true,
+              "image": "../images/Food/soda.jpg"
+            },
+            {
+              "name": "Lemonade",
+              "description": "Freshly squeezed lemonade.",
+              "price": 2.49,
+              "available": true,
+              "image": "../images/Food/lemonade-pizza-paradise.jpg"
+            },
+            {
+              "name": "Iced Tea",
+              "description": "Freshly brewed iced tea with lemon.",
+              "price": 1.99,
+              "available": true,
+              "image": "../images/Food/iced-tea-pizza.jpg"
+            },
+            {
+              "name": "Sparkling Water",
+              "description": "Refreshing sparkling water with a hint of lime.",
+              "price": 2.49,
+              "available": true,
+              "image": "../images/Food/water-glass-3971098_640.jpg"
+            },
+            {
+              "name": "Beer",
+              "description": "Choice of local craft beer or imported beer.",
+              "price": 4.99,
+              "available": true,
+              "image": "../images/Food/beer-pizza-paradise.jpg"
+            },
+            {
+              "name": "Red Wine",
+              "description": "A glass of house red wine.",
+              "price": 5.99,
+              "available": true,
+              "image": "../images/Food/red-wine-pizza-paradise.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Grill House",
+      "location": "123 BBQ Road, Grill City",
+      "contact": {
+        "phone": "555-432-8765",
+        "email": "info@grillhouse.com"
+      },
+      "openingHours": {
+        "monday": "12:00 PM - 10:00 PM",
+        "tuesday": "12:00 PM - 10:00 PM",
+        "wednesday": "12:00 PM - 10:00 PM",
+        "thursday": "12:00 PM - 10:00 PM",
+        "friday": "12:00 PM - 11:00 PM",
+        "saturday": "12:00 PM - 11:00 PM",
+        "sunday": "Closed"
+      },
+      "menu": [
+        {
+          "name": "BBQ Specials",
+          "image": "../images/food-category/bbq.jpg",
+          "items": [
+            {
+              "name": "BBQ Ribs",
+              "description": "Slow-cooked ribs with house BBQ sauce.",
+              "price": 14.99,
+              "available": true,
+              "image": "../images/Food/bbq-ribs.jpg"
+            },
+            {
+              "name": "Grilled Chicken",
+              "description": "Chargrilled chicken with a side of BBQ sauce.",
+              "price": 11.99,
+              "available": true,
+              "image": "../images/Food/grilled-chicken.jpg"
+            }
+          ]
+        },
+        {
+          "name": "Steaks",
+          "image": "../images/food-category/steak.jpg",
+          "items": [
+            {
+              "name": "Ribeye Steak",
+              "description": "Juicy ribeye steak cooked to your preference.",
+              "price": 19.99,
+              "available": true,
+              "image": "../images/Food/ribeye-steak.jpg"
+            },
+            {
+              "name": "Sirloin Steak",
+              "description": "Luxourious sirloin steak.",
+              "price": 16.99,
+              "available": true,
+              "image": "../images/Food/sirloin-steak.jpg"
+            }
+          ]
+        },
+        {
+          "name": "Drinks",
+          "image": "../images/food-category/drink.jpg",
+          "items": [
+            {
+              "name": "Beer",
+              "description": "Choice of local craft beers.",
+              "price": 4.99,
+              "available": true,
+              "image": "../images/Food/beer.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Indian Spice",
+      "location": "654 Curry Street, Spice Town",
+      "contact": {
+        "phone": "555-876-5432",
+        "email": "contact@indianspice.com"
+      },
+      "openingHours": {
+        "monday": "12:00 PM - 9:00 PM",
+        "tuesday": "12:00 PM - 9:00 PM",
+        "wednesday": "12:00 PM - 9:00 PM",
+        "thursday": "12:00 PM - 9:00 PM",
+        "friday": "12:00 PM - 10:00 PM",
+        "saturday": "12:00 PM - 10:00 PM",
+        "sunday": "Closed"
+      },
+      "menu": [
+        {
+          "name": "Curry Dishes",
+          "image": "../images/food-category/curry.jpg",
+          "items": [
+            {
+              "name": "Chicken Tikka Masala",
+              "description": "Grilled chicken in a creamy tomato sauce.",
+              "price": 12.99,
+              "available": true,
+              "image": "../images/Food/chicken-tikka-masala.jpg"
+            }
+          ]
+        },
+        {
+          "name": "Sides",
+          "image": "../images/food-category/sides.jpg",
+          "items": [
+            {
+              "name": "Garlic Naan",
+              "description": "Soft naan bread with garlic and butter.",
+              "price": 2.99,
+              "available": true,
+              "image": "../images/Food/garlic-naan.jpg"
+            },
+            {
+              "name": "Raita",
+              "description": "Cool yogurt dip with cucumbers.",
+              "price": 1.99,
+              "available": true,
+              "image": "../images/Food/raita.jpg"
+            }
+          ]
+        },
+        {
+          "name": "Drinks",
+          "image": "../images/food-category/drink.jpg",
+          "items": [
+            {
+              "name": "Mango Lassi",
+              "description": "Sweet yogurt-based mango drink.",
+              "price": 3.49,
+              "available": true,
+              "image": "../images/Food/mango-lassi.jpg"
+            },
+            {
+              "name": "Chai Tea",
+              "description": "Spiced Indian tea with milk.",
+              "price": 2.49,
+              "available": true,
+              "image": "../images/Food/chai.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mediterranean Bistro",
+      "location": "987 Olive Street, Meditown",
+      "contact": {
+        "phone": "555-345-6789",
+        "email": "info@mediterraneanbistro.com"
+      },
+      "openingHours": {
+        "monday": "11:00 AM - 9:00 PM",
+        "tuesday": "11:00 AM - 9:00 PM",
+        "wednesday": "11:00 AM - 9:00 PM",
+        "thursday": "11:00 AM - 9:00 PM",
+        "friday": "11:00 AM - 10:00 PM",
+        "saturday": "12:00 PM - 10:00 PM",
+        "sunday": "Closed"
+      },
+      "menu": [
+        {
+          "name": "Grilled Dishes",
+          "image": "../images/food-category/grilled-dish.jpg",
+          "items": [
+            {
+              "name": "Grilled Lamb Chops",
+              "description": "Tender lamb chops grilled with Mediterranean herbs.",
+              "price": 15.99,
+              "available": true,
+              "image": "../images/Food/grilled-lamb-chops.jpg"
+            }
+          ]
+        },
+        {
+          "name": "Salads",
+          "image": "../images/food-category/salad.jpg",
+          "items": [
+            {
+              "name": "Greek Salad",
+              "description": "Crisp salad with feta cheese, olives, and olive oil dressing.",
+              "price": 6.99,
+              "available": true,
+              "image": "../images/Food/greek-salad-mediterranean.jpg"
+            },
+            {
+              "name": "Tabbouleh",
+              "description": "Fresh parsley, tomatoes, and bulgur with lemon dressing.",
+              "price": 5.99,
+              "available": true,
+              "image": "../images/Food/tabbouleh.jpg"
+            }
+          ]
+        },
+        {
+          "name": "Drinks",
+          "image": "../images/food-category/drink.jpg",
+          "items": [
+            {
+              "name": "Mint Lemonade",
+              "description": "Fresh lemonade with mint.",
+              "price": 2.99,
+              "available": true,
+              "image": "../images/Food/mint-lemonade.jpg"
+            },
+            {
+              "name": "Turkish Coffee",
+              "description": "Strong and flavorful Turkish coffee.",
+              "price": 3.49,
+              "available": true,
+              "image": "../images/Food/turkish-coffee.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Seafood Shack",
+      "location": "555 Harbor Road, Seaside",
+      "contact": {
+        "phone": "555-765-4321",
+        "email": "info@seafoodshack.com"
+      },
+      "openingHours": {
+        "monday": "11:00 AM - 10:00 PM",
+        "tuesday": "11:00 AM - 10:00 PM",
+        "wednesday": "11:00 AM - 10:00 PM",
+        "thursday": "11:00 AM - 10:00 PM",
+        "friday": "11:00 AM - 11:00 PM",
+        "saturday": "12:00 PM - 11:00 PM",
+        "sunday": "12:00 PM - 9:00 PM"
+      },
+      "menu": [
+        {
+          "name": "Seafood Platters",
+          "image": "../images/food-category/seafood-platter.jpg",
+          "items": [
+            {
+              "name": "Grilled Salmon",
+              "description": "Fresh salmon fillet grilled with lemon butter.",
+              "price": 14.99,
+              "available": true,
+              "image": "../images/Food/grilled-salmon.jpg"
+            },
+            {
+              "name": "Lobster Tail",
+              "description": "Succulent lobster tail with garlic butter.",
+              "price": 24.99,
+              "available": true,
+              "image": "../images/Food/lobster-tail.jpg"
+            }
+          ]
+        },
+        {
+          "name": "Sides",
+          "image": "../images/food-category/sides.jpg",
+          "items": [
+            {
+              "name": "Coleslaw",
+              "description": "Creamy coleslaw with a hint of sweetness.",
+              "price": 2.99,
+              "available": true,
+              "image": "../images/Food/coleslaw.jpg"
+            },
+            {
+              "name": "Hush Puppies",
+              "description": "Deep-fried cornmeal batter, crispy and golden.",
+              "price": 3.49,
+              "available": true,
+              "image": "../images/Food/hush-puppies.jpg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

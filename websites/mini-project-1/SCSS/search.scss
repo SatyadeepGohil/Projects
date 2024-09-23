@@ -1,0 +1,401 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    gap: 50px;
+    font-family: 'Moderustic', sans-serif;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+    background-color: whitesmoke;
+    nav {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        align-items: center;
+        #logo {
+            width: 200px;
+        }
+
+        p {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+
+            img {
+                width: 10px;
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+
+            span {
+                font-weight: 400;
+                margin-right: 5px;
+            }
+            #top-address {
+                font-weight: 600;
+            }
+        }
+
+        #header-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
+                border-radius: 5px;
+                padding: 5px;
+                border: none;
+                font-weight: 600;
+            }
+
+            #user-btn {
+                height: 30px;
+            }
+
+            #cart img {
+                width: 40px;
+                height: 40px;
+            }
+
+            button:hover {
+                box-shadow: 1px 3px 5px -2px black;
+                background: linear-gradient(55deg, #FFB800, #FFBA00);
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+    }
+}
+
+#search-container {
+        input {
+                font-family: inherit;
+                font-size: 1.5rem;
+                width: 500px;
+                padding: 10px;
+                border-radius: 10px;
+                color: grey;
+                font-weight: 600;
+                margin: 10px;
+            }
+
+            button {
+                background-image: linear-gradient(75deg,
+                            hsl(35deg 100% 51%) 7%,
+                            hsl(34deg 99% 50%) 33%,
+                            hsl(32deg 100% 50%) 43%,
+                            hsl(31deg 100% 50%) 49%,
+                            hsl(29deg 100% 49%) 54%,
+                            hsl(28deg 100% 49%) 58%,
+                            hsl(26deg 100% 49%) 63%,
+                            hsl(24deg 99% 49%) 68%,
+                            hsl(22deg 97% 49%) 75%,
+                            hsl(19deg 94% 50%) 96%);
+                color: white;
+                font-size: 1.6rem;
+                font-weight: 550;
+                padding: 10px;
+                border-radius: 10px;
+                border: none;
+                transition: all ease 0.3s;
+            }
+
+            button:active {
+                transform: scale(0.9);
+                filter: brightness(1.5) contrast(1.1);
+            }
+
+}
+
+#search-results {
+    position: absolute;
+    width: 250px;
+    top: 21%;
+    background-color: black;
+    color: white;
+    z-index: 10;
+    font-size: 1.5rem;
+    margin-left: 10px;
+    border-radius: 10px;
+    li {
+        list-style-type: none;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding: 5px;
+    }
+    li:hover {
+        background-color: grey;
+        font-size: 1.6rem;
+    }
+}
+
+#category {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    #category-container {
+        display: flex;
+        align-items: center;
+        width: 80%;
+        height: 100%;
+        overflow-x: hidden;
+
+        .category-item {
+                width: 100%;
+                text-align: center;
+                margin-right: 20px;
+                transition: all ease-in 0.3s;
+
+                img {
+                    width: 200px;
+                    height: 200px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    object-position: center;
+                }
+
+                p {
+                    font-weight: 600;
+                    color: grey;
+                }
+            }
+    }
+
+    button {
+        display: grid;
+        place-content: center;
+        position: absolute;
+        background-color: #FF8A00;
+        color: white;
+        font-weight: 600;
+        border-radius: 50%;
+        border: none;
+        width: 50px;
+        height: auto;
+        padding: 10px;
+        font-size: 30px;
+        margin: 5px;
+        &#previous {
+            left: 0;
+        }
+
+        &#next {
+            right: 0;
+        }
+    }
+}
+
+#food-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 80%;
+
+.card {
+        width: 390px;
+        margin-bottom: 20px;
+
+        .card-img {
+            width: 100%;
+            height: 450px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+    h3 {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        color: #424242;
+    }
+
+    span {
+        display: flex;
+        margin-top: 5px;
+        margin-bottom: 5px;
+
+        img {
+            width: 15px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        p {
+            color: #FFB30E;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+    }
+
+    p {
+        text-wrap: nowrap;
+        margin-bottom: 5px;
+        font-size: 0.7rem;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        background: #F17228;
+        color: white;
+        font-weight: 700;
+        margin-top: 10px;
+    }
+    button:active {
+        background-color: #F17228;
+        filter: brightness(1.3) contrast(1.2);
+    }
+}
+}
+
+#restaurant-container {
+    margin-top: 50px;
+    #restaurant-card {
+        border-radius: 10px;
+        padding: 20px;
+        font-weight: 600;
+        background: linear-gradient(46deg, #FB3C00, #FFB800);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        box-shadow: 0 0 20px -5px#FB3C00;
+        h1 {
+            font-size: 3rem;
+        }
+
+        p {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            font-size: 1.5rem;
+        }
+
+        h3 {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        li {
+            list-style-type: none;
+            margin-top: 5px;
+        }
+    }
+}
+
+#order-container{
+    position: fixed;
+    top: 20%;
+    overflow-y: auto;
+    height: 50%;
+    display: none;
+    z-index: 100;
+    background-color: white;
+    width: 50%;
+    padding: 30px;
+
+    h1 {
+            text-align: center;
+            margin: 20px;
+    }
+
+    hr {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        list-style-type: none;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        span {
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            width: 20px;
+            height: 20px;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #F17228;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:active {
+            transform: scale(0.95);
+            background-color: white;
+            color: #F17228;
+        }
+    }
+
+    #no-food {
+        text-align: center;
+        color: orange;
+        font-weight: 600;
+        font-size: larger;
+    }
+
+    #cross {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+    }
+    #cross:active {
+        color: orange;
+    }
+}
+
+#order-message {
+    position: fixed;
+    bottom: 0;
+    transition: height linear 0.5s;
+    height: 0;
+    margin: 10px;
+    background: linear-gradient(76deg, #FFB800, #FF8A00);
+    border-radius: 10px;
+    p {
+        font-size: 1.5rem;
+        color: white;
+        font-weight: bold;
+        padding: 10px;
+    }
+}

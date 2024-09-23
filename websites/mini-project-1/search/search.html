@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodWagon Search Food</title>
+    <link rel="stylesheet" href="../SCSS/search.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html"><img src="../images/Logo.svg" alt="" id="logo"></a>
+            <p>Deiliver to <img src="../images/small-location-icon.png" alt="">
+                <span>
+                    Current location
+                </span> 
+                <span id="top-address">
+                    Coffeen St, Watertown
+                </span>
+            </p>
+            <div id="header-buttons">
+                <button id="user-btn">
+                    <img src="../images/user.svg" alt="">Login
+                </button>
+                <button id="cart">
+                    <img src="../images/trolley_6337212.png" alt="">
+                </button>
+            </div>
+        </nav>
+    </header>
+        <div id="search-container">
+            <input type="search" id="search" autocomplete="off" placeholder="Search for Food and Restaurant">
+            <button id="searchbtn">Search</button>
+            <div id="search-results"></div>
+        </div>
+    <div id="category">
+        <div id="category-container"></div>
+        <button id="previous">
+            <p>&lsaquo;</p>
+        </button>
+        <button id="next">
+            <p>&rsaquo;</p>
+        </button>
+    </div>
+    <div id="restaurant-container"></div>
+    <div id="food-container"></div>
+    <div id="order-container">
+        <h1>Your ordered Food</h1>
+        <p id="no-food">No Food ordered yet</p>
+        <ul id="order-items">
+        </ul>
+        <button id="cross">&#10006;</button>
+    </div>
+    <div id="order-message">
+        <p id="order-para">Your order for chicken is placed</p>
+    </div>
+    <script src="search.js" defer></script>
+    <!-- <img src="../images/food-category/burger.jpg" alt=""> -->
+</body>
+</html>
