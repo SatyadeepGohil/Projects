@@ -56,6 +56,7 @@ function checkLoginStatus() {
 
     if (localStorage.getItem('hasVisited') === 'true') {
         loginInfo.innerText = 'Welcome back';
+        loginContainer.style.display = 'none';
     }
 
     if (isLoggedIn && user) {

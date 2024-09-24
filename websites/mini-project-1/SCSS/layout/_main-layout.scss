@@ -1,6 +1,288 @@
+ @media (min-width: 481px) and (max-width: 768px) {
 
-@media (max-width: 576px) {
-    body {
-        background-color: black;
+        header {
+            nav p {
+                font-size: .6rem;
+
+                img {
+                    width: 10px;
+                }
+            }
+
+            #header-buttons {
+                gap: 5px;
+            }
+        }
+
+        #header-buttons #search-btn a p{
+            font-size: .7rem;
+            img {
+                width: 12px;
+            }
+        }
+
+        #user-btn p{
+            font-size: .7rem;
+            img {
+                width: 10px;
+            }
+        }
+
+        header nav #logo {
+            width: 130px;
+        }
+
+        #login-container form input {
+            font-size: 1rem;
+        }
+
+        #Delivery-panel {
+            h1 {
+                font-size: 2.5rem;
+            }
+            h6 {
+                font-size: 0.8rem;
+            }
+        }
+
+        #popular-foods #container #card-container .card-img {
+            width: 140px;
+        }
+
+        #featured-restaurants #restaurant-showcase-container .main-img {
+            width: 250px;
+        }
+
+        #app-features div {
+            p {
+                font-size: 0.7rem;
+            }
+            img {
+                width: 30px;
+            }
+        }
+
+        #app-install {
+            bottom: 10%;
+            h1 {
+                font-size: 2rem;
+            }
+
+            button img {
+                width: 20px;
+            }
+        }
+
+        #light-text {
+            font-size: 0.5rem;
+        }
+
+        #dark-text {
+            font-size: 0.9rem;
+        }
+
+        .direct-order-container {
+            div {
+                height: 190px;
+                width: 100%;
+
+                p {
+                        font-size: 0.7rem;
+                    }
+            }
+        }
+
+        #direct-order-foods .direct-order-container div h1 {
+            font-size: 1rem;
+        }
+
+        #direct-order-foods .direct-order-container div button {
+            margin-top: 5px;
+            padding: 5px;
+            font-size: 0.8rem;
+        }
+
+        footer {
+            li a {
+                font-size: 0.7rem;
+            }
+
+            #legal-information {
+                gap: 10px;
+                h1 {
+                    font-size: .8rem;
+                }
+            }
+
+            #socials div button {
+                margin-top: 10px;
+            }
+        }
+
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+    header {
+        nav p {
+            font-size: .7rem;
+
+            img {
+                width: 8px;
+            }
+        }
+
+        #header-buttons {
+            gap: 5px;
+        }
+    }
+
+    #header-buttons #search-btn a p {
+        font-size: .6rem;
+
+        img {
+            width: 10px;
+        }
+    }
+
+    #user-btn p {
+        font-size: .6rem;
+
+        img {
+            width: 10px;
+        }
+    }
+
+    header nav #logo {
+        width: 150px;
+    }
+
+    #login-container form input {
+        font-size: 1.5rem;
+    }
+
+    #Delivery-panel {
+        h1 {
+            font-size: 3rem;
+        }
+
+        h6 {
+            font-size: 0.9rem;
+        }
+    }
+
+    #popular-foods #container #card-container .card-img {
+        width: 160px;
+    }
+
+    #featured-restaurants #restaurant-showcase-container .main-img {
+        width: 280px;
+    }
+
+    #app-features-showcase #app-features div {
+        p {
+            font-size: 2rem;
+        }
+
+        img {
+            width: 45px;
+        }
+    }
+
+    #app-install {
+        bottom: 18%;
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        button img {
+            width: 16px;
+        }
+    }
+
+    #light-text {
+        font-size: 0.8rem;
+    }
+
+    #dark-text {
+        font-size: 1.1rem;
+    }
+
+    .direct-order-container {
+        div {
+            height: 250px;
+            width: 100%;
+
+            p {
+                font-size: 0.8rem;
+            }
+        }
+    }
+
+    #direct-order-foods .direct-order-container div h1 {
+        font-size: 1.8rem;
+    }
+
+    #direct-order-foods .direct-order-container div button {
+        margin-top: 8px;
+        padding: 8px;
+    }
+}
+
+
+@media (min-width: 1025px){
+    
+    #app-features-showcase {
+        height: 750px;
+    }
+
+    #app-install {
+        bottom: 20%;
+
+        h1 {
+            font-size: 4rem;
+        }
+    }
+
+    #light-text {
+        font-size: 0.8rem;
+    }
+
+    #dark-text {
+        font-size: 1rem;
+    }
+
+    #app-img {
+        width: 30%;
+        left: 20%;
+    }
+
+    .direct-order-container {
+        div {
+            height: 500px;
+            width: 100%;
+        }
+    }
+
+    #food-search #food-category-container .food-category-cards img {
+        width: 260px;
+    }
+
+    #direct-order-foods .direct-order-container div {
+        padding: 20px;
+        h1 {
+            font-size: 4rem;
+        }
+
+        p {
+            font-size: 1.5rem;
+        }
+    }
+
+    #bottom-order {
+        height: 400px;
+
+        div h1 {
+            font-size: 3rem;
+        }
     }
 }
