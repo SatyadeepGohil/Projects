@@ -1,22 +1,30 @@
 const xhr = new XMLHttpRequest();
 let searchInput = document.getElementById('search');
+let searchResults = document.getElementById('search-results');
+let searchAddress = document.getElementById('top-address');
 const searchBtn = document.getElementById('searchbtn');
+const address = localStorage.getItem('address');
 const foodContainer = document.getElementById('food-container');
 const categoryContainer = document.getElementById('category-container');
 const restaurantContainer = document.getElementById('restaurant-container');
 const cartButton = document.getElementById('cart');
 const closedButton = document.getElementById('cross');
-let searchResults = document.getElementById('search-results');
 const orderContainer = document.getElementById('order-container');
 const orderItems = document.getElementById('order-items');
+const hr = document.createElement('hr');
+const totalElement = document.createElement('p');
+const orderbtn = document.createElement('button');
+orderbtn.innerText = 'Place the order';
+orderbtn.id = 'order-btn';
+
 let orderMessage = document.getElementById('order-message');
 let orderPara = document.getElementById('order-para');
+let loginBtn = document.getElementById('user-btn');
+let loginContainer = document.getElementById('login-container')
 let orders = [];
 let data;
 
 
-const address = localStorage.getItem('address');
-let searchAddress = document.getElementById('top-address');
 if (address) {searchAddress.innerText = address}
 
 xhr.open('GET', 'restaurant.json', true);
@@ -66,7 +74,9 @@ function categoryRender() {
   })
 }
 
-
+loginBtn.addEventListener('click', () => {
+    loginContainer.style.display = loginContainer.style.display === 'block' ? 'none' : 'block';
+})
 
 function setupCategorySlider() {
   let categoryNext = document.getElementById('next');
@@ -303,13 +313,19 @@ function displayOrderDetails() {
   })
 
   orderItems.innerHTML = orderHTML;
-  const totalElement = document.createElement('p');
-  const hr = document.createElement('hr');
+
   totalElement.textContent = `Total: $${totalPrice.toFixed(2)}`;
   totalElement.style.textAlign = 'right';
   totalElement.style.marginRight = '40px';
-  orderItems.appendChild(hr);
-  orderItems.appendChild(totalElement);
+  orderContainer.appendChild(hr);
+  orderContainer.appendChild(totalElement);
+  orderContainer.appendChild(orderbtn);
+
+  orderbtn.addEventListener('click', () => {
+    orderItems.innerHTML = `<p>You have place order for the total price of $${totalPrice} and will soon arrived at the ${address}</p>`;
+    orders.length = 0;
+    totalElement.textContent = '';
+  })
 
   if (orders.length > 0) {
     document.getElementById('no-food').textContent = '';

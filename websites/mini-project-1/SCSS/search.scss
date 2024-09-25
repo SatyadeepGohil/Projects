@@ -87,6 +87,50 @@ header {
     }
 }
 
+#login-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    width: 40%;
+    border-radius: 10px;
+    height: auto;
+    padding: 30px;
+    background-color: white;
+    z-index: 100;
+    display: none;
+
+    form {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+
+        input {
+            width: 100%;
+            font-size: 1.5rem;
+            padding: 10px;
+            color: grey;
+            font-weight: 600;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background: #F17228;
+            color: white;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+    }
+}
+
 #search-container {
         input {
                 font-family: inherit;
@@ -181,6 +225,7 @@ header {
                 p {
                     font-weight: 600;
                     color: grey;
+                    margin-top: 10px;
                 }
             }
     }
@@ -384,6 +429,37 @@ header {
     }
 }
 
+#order-btn {
+    display: block;
+    margin: 0 auto;
+    font-size: 1rem;
+    margin-top: 30px;
+    padding: 10px;
+    border-radius: 8px;
+    background-image: linear-gradient(75deg,
+                hsl(35deg 100% 51%) 7%,
+                hsl(34deg 99% 50%) 33%,
+                hsl(32deg 100% 50%) 43%,
+                hsl(31deg 100% 50%) 49%,
+                hsl(29deg 100% 49%) 54%,
+                hsl(28deg 100% 49%) 58%,
+                hsl(26deg 100% 49%) 63%,
+                hsl(24deg 99% 49%) 68%,
+                hsl(22deg 97% 49%) 75%,
+                hsl(19deg 94% 50%) 96%);
+    border: none;
+     color: white;
+     font-weight: 600;
+}
+
+#order-btn:hover {
+    filter: drop-shadow(0 0 0.4rem crimson);
+}
+
+#order-btn:active {
+    filter: brightness(1.2) contrast(1.1);
+}
+
 #order-message {
     position: fixed;
     bottom: 0;
@@ -399,3 +475,5 @@ header {
         padding: 10px;
     }
 }
+
+@import './layout/search-layout';

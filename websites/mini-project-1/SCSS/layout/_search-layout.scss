@@ -1,0 +1,202 @@
+
+@media (min-width: 320px) and (max-width: 479px) {
+    header {
+            nav p {
+                font-size: .3rem;
+    
+                img {
+                    width: 5px;
+                }
+            }
+    
+            #header-buttons {
+                gap: 5px;
+            }
+        }
+    
+        header nav #header-buttons #user-btn {
+            font-size: .5rem;
+    
+            img {
+                width: 6px;
+            }
+        }
+
+        header nav #header-buttons #cart img{
+            width: 20px;
+            height: 20px;
+        }
+    
+        header nav #logo {
+            width: 80px;
+        }
+    
+        #login-container {
+            padding: 15px;
+        }
+    
+        #login-container form input {
+            font-size: .7em;
+        }
+
+        #search-container {
+            input {
+                width: 200px;
+                font-size: 0.6rem;
+            }
+
+            button {
+                font-size: 0.8rem;
+            }
+        }
+
+        #search-results {
+            font-size: 0.8rem;
+            width: 200px;
+        }
+
+        #category #category-container .category-item img {
+            width: 100px;
+            height: 100px;
+        }
+
+        #category button {
+            width: 30px;
+            font-size: 10px;
+        }
+
+        #order-message p {
+            font-size: 1rem;
+        }
+
+        #order-container {
+            width: 70%;
+            h1 {
+                font-size: 1rem;
+            }
+
+            li {
+                font-size: 0.8rem;
+            }
+
+            #no-food {
+                font-size: 0.8rem;
+            }
+        }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+
+    header {
+        nav p {
+            font-size: .46rem;
+
+            img {
+                width: 8px;
+            }
+        }
+
+        #header-buttons {
+            gap: 5px;
+        }
+    }
+
+    header nav #header-buttons #user-btn {
+        font-size: .6rem;
+
+        img {
+            width: 6px;
+        }
+    }
+
+    header nav #header-buttons #cart img {
+        width: 25px;
+        height: 25px;
+    }
+
+    header nav #logo {
+        width: 100px;
+    }
+
+    #login-container {
+        padding: 15px;
+    }
+
+    #login-container form input {
+        font-size: .7em;
+    }
+
+    #search-container {
+        input {
+            width: 250px;
+            font-size: 0.8rem;
+        }
+
+        button {
+            font-size: 1rem;
+        }
+    }
+
+    #search-results {
+        font-size: 0.8rem;
+        width: 250px;
+    }
+
+    #category #category-container .category-item img {
+        width: 150px;
+        height: 150px;
+    }
+
+    #category button {
+        width: 40px;
+        font-size: 15px;
+    }
+
+    #order-message p {
+        font-size: 1.5rem;
+    }
+
+    #order-container li {
+        font-size: 0.8rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    header {
+            nav p {
+                font-size: .7rem;
+    
+                img {
+                    width: 8px;
+                }
+            }
+    
+            #header-buttons {
+                gap: 5px;
+            }
+        }
+    
+        #header-buttons #search-btn a p {
+            font-size: .6rem;
+    
+            img {
+                width: 10px;
+            }
+        }
+    
+        #user-btn p {
+            font-size: .6rem;
+    
+            img {
+                width: 10px;
+            }
+        }
+    
+        header nav #logo {
+            width: 150px;
+        }
+    
+        #login-container form input {
+            font-size: 1.5rem;
+        }
+}

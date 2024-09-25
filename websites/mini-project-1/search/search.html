@@ -28,11 +28,24 @@
             </div>
         </nav>
     </header>
-        <div id="search-container">
-            <input type="search" id="search" autocomplete="off" placeholder="Search for Food and Restaurant">
-            <button id="searchbtn">Search</button>
-            <div id="search-results"></div>
-        </div>
+
+    <div id="login-container">
+        <form id="login-form">
+            <p id="login-information"></p>
+            <input type="text" placeholder="Enter your name" required id="username"><br>
+            <input type="password" placeholder="password" required id="password"><br>
+            <button type="submit" id="login-btn">Login</button>
+            <button id="logout-btn">Logout</button>
+        </form>
+    </div>
+
+    <div id="search-container">
+        <input type="search" id="search" autocomplete="off" placeholder="Search for Food and Restaurant">
+        <button id="searchbtn">Search</button>
+        <div id="search-results"></div>
+    </div>
+
+
     <div id="category">
         <div id="category-container"></div>
         <button id="previous">
@@ -42,8 +55,11 @@
             <p>&rsaquo;</p>
         </button>
     </div>
+
+
     <div id="restaurant-container"></div>
     <div id="food-container"></div>
+
     <div id="order-container">
         <h1>Your ordered Food</h1>
         <p id="no-food">No Food ordered yet</p>
@@ -51,9 +67,11 @@
         </ul>
         <button id="cross">&#10006;</button>
     </div>
+
     <div id="order-message">
         <p id="order-para">Your order for chicken is placed</p>
     </div>
+
     <script src="search.js" defer></script>
     <!-- <img src="../images/food-category/burger.jpg" alt=""> -->
 </body>
