@@ -4,16 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dovy</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
     <input type="text" placeholder="&#128269; Search notes and list" id="search">
     <div id="create-container">
-        <span>
-            <input type="text" placeholder="Take notes">
-            <button>&#x2611;</button>
-        </span>
+        <input type="text" id="title" placeholder="Title">
+        <textarea name="" id="notes-input" placeholder="Type your notes here" rows="1"></textarea>
+        <button id="close-btn">close</button>
     </div>
     <div id="container"></div>
+
+    <script>
+        const title = document.getElementById('title');
+        const notesInput = document.getElementById('notes-input');
+        const closeBtn = document.getElementById('close-btn');
+        let container = document.getElementById('container');
+
+        function dynamicInput() {
+            notesInput.style.height = 'auto';
+            notesInput.style.height = notesInput.scrollHeight + 'px';
+        }
+
+        function currentDate() {
+            let d = new Date();
+            let year = d.getFullYear();
+            let month = d.getMonth();
+            let date = d.getDate();
+            let hour = d.getHours();
+            let minute = String(d.getMinutes()).padStart(2, '0');
+
+            const monthNames = [
+                "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+            ];
+
+            let currentMonth = monthNames[month];
+
+            console.log(year, currentMonth,date, hour, minute);
+            let time = `${date}/${currentMonth}/${year} at ${hour}:${minute}`;
+            return time;
+        }
+
+        currentDate();
+
+        closeBtn.addEventListener('click', () => {
+            if (notesInput.value.trim() !== '') {
+                let card = `
+            <div class="card">
+             <h1>${title.value}</h1>
+            <p>${notesInput.value}</p>
+            <p> Created on ${currentDate()}</p>
+            </div>`;
+
+                container.innerHTML += card;
+
+                notesInput.value = '';
+                title.value = '';
+            }
+        })
+
+        console.log(new Date().getMonth() + 1);
+        notesInput.addEventListener('input', dynamicInput)
+    </script>
 </body>
 </html>
