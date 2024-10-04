@@ -18,6 +18,7 @@
     <script>
         const title = document.getElementById('title');
         const notesInput = document.getElementById('notes-input');
+        const inputHeight = window.getComputedStyle(notesInput).height;
         const closeBtn = document.getElementById('close-btn');
         let container = document.getElementById('container');
 
@@ -25,6 +26,10 @@
             notesInput.style.height = 'auto';
             notesInput.style.height = notesInput.scrollHeight + 'px';
         }
+
+        console.log(parseInt(window.getComputedStyle(notesInput).fontSize))
+
+        notesInput.addEventListener('input', dynamicInput)
 
         function currentDate() {
             let d = new Date();
@@ -34,6 +39,9 @@
             let hour = d.getHours();
             let minute = String(d.getMinutes()).padStart(2, '0');
 
+            let period = hour >= 12 ? 'PM' : 'AM';
+            hour = hour % 12 || 12;
+
             const monthNames = [
                 "Jan", "Feb", "Mar", "Apr", "May", "Jun",
                 "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -41,31 +49,38 @@
 
             let currentMonth = monthNames[month];
 
-            console.log(year, currentMonth,date, hour, minute);
-            let time = `${date}/${currentMonth}/${year} at ${hour}:${minute}`;
+            let time = `${date}/${currentMonth}/${year} at ${hour}:${minute} ${period}`;
             return time;
         }
 
         currentDate();
 
-        closeBtn.addEventListener('click', () => {
+
+        function addCard() {
             if (notesInput.value.trim() !== '') {
                 let card = `
             <div class="card">
-             <h1>${title.value}</h1>
-            <p>${notesInput.value}</p>
+             <h1 contenteditable="true" >${title.value}</h1>
+            <p contenteditable="true" >${notesInput.value}</p>
             <p> Created on ${currentDate()}</p>
             </div>`;
 
                 container.innerHTML += card;
 
-                notesInput.value = '';
                 title.value = '';
+                notesInput.value = '';
+                notesInput.style.height = inputHeight;
             }
-        })
+        }
 
-        console.log(new Date().getMonth() + 1);
-        notesInput.addEventListener('input', dynamicInput)
+        notesInput.addEventListener('keydown', e => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    addCard();
+                }
+            })
+
+        closeBtn.addEventListener('click', addCard);
     </script>
 </body>
 </html>
