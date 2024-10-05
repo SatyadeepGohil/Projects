@@ -172,6 +172,20 @@
             }
         }
 
+        function removeEmptyCard() {
+            const allcards = document.querySelectorAll('.card');
+
+            allcards.forEach(card => {
+                const titleElement = card.querySelector('h1');
+                const contentElement = card.querySelector('p:nth-of-type(1)');
+                if(titleElement.textContent.trim() === '' && contentElement.textContent.trim() === '') {
+                    container.removeChild(card);
+                }
+            })
+        }
+
+        removeEmptyCard();
+
         function enlargeCard(card) {
              const randomColor = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;
 
@@ -204,6 +218,8 @@
             if (currentContent !== originalContent) {
                 element.setAttribute('data-original', currentContent);
                 dateElement.textContent = `Edited on ${currentDate()}`;
+
+                setTimeout(() => { removeEmptyCard() }, 10000);
             }
         }
 
