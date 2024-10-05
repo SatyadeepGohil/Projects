@@ -16,6 +16,7 @@
     <div id="container"></div>
 
     <script>
+        const search = document.getElementById('search');
         const title = document.getElementById('title');
         const notesInput = document.getElementById('notes-input');
         const inputHeight = window.getComputedStyle(notesInput).height;
@@ -81,6 +82,66 @@
                     addCard();
                 }
             })
+
+        search.addEventListener('input', () => {
+            const searchTerm = search.value.trim().toLowerCase();
+            const allcards = document.querySelectorAll('.card');
+            let foundMatch = false;
+
+            allcards.forEach(card => {
+                const titleElement = card.querySelector('h1');
+                const contentElement = card.querySelector('p');
+                const dateElement = card.querySelector('p:last-child');
+
+                if (!titleElement.hasAttribute('data-original')) {
+                    titleElement.setAttribute('data-original', titleElement.textContent);
+                    contentElement.setAttribute('data-original', contentElement.textContent);
+                }
+
+                const originalTitle = titleElement.getAttribute('data-original');
+                const originalContent = contentElement.getAttribute('data-original');
+
+                if (searchTerm.length === 0) {
+                    titleElement.textContent = originalTitle;
+                    contentElement.textContent = originalContent;
+                    card.style.display = 'block';
+                    foundMatch = true;
+                }
+                else if (originalTitle.toLowerCase().includes(searchTerm) || originalContent.toLowerCase().includes(searchTerm)) {
+                    titleElement.innerHTML = highlightText(originalTitle, searchTerm);
+                    contentElement.innerHTML = highlightText(originalContent, searchTerm);
+                    dateElement.innerHTML = dateElement.textContent;
+                    card.style.display = 'block';
+
+                    foundMatch = true;
+                }
+                else {
+                    card.style.display = 'none';
+                }
+            });
+
+            const noResultMessage = document.getElementById('no-results-message') || createNoResultsMessage();
+            noResultMessage.style.display = foundMatch ? 'none' : 'block';
+        })
+
+        function highlightText(text, searchTerm) {
+                const regex = new RegExp(`(${escapeRegex(searchTerm)})`, 'gi');
+                return text.replace(regex, '<mark class="highlight">$1</mark>');
+            }
+
+        function escapeRegex(string) {
+                return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+            }
+
+        function createNoResultsMessage() {
+            let para = document.createElement('p');
+            para.id = 'no-results-message';
+            para.textContent = 'Nothing found here';
+            para.style.display = 'none';
+            container.parentNode.insertBefore(para, container.nextSibling);
+            return para;
+        }
+        
         
         let clickedCard = null;
 
@@ -114,6 +175,15 @@
         function enlargeCard(card) {
              const randomColor = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;
 
+            const titleElement = card.querySelector('h1');
+            const contentElement = card.querySelector('p');
+            const dateElement = card.querySelector('p:last-child');
+             
+            if (!titleElement.hasAttribute('data-original')) {
+                titleElement.setAttribute('data-original', titleElement.textContent);
+                contentElement.setAttribute('data-original', contentElement.textContent);
+            }
+
             card.style.backgroundColor = randomColor;
             card.children[0].setAttribute('contenteditable', 'true');
             card.children[1].setAttribute('contenteditable', 'true');
@@ -121,6 +191,20 @@
             card.style.transform = 'scale(1.5)';
             card.style.zIndex = '10';
             card.style.overflow = 'auto';
+
+            titleElement.addEventListener('input', (event) => handleEdit(event,dateElement));
+            contentElement.addEventListener('input', (event) => handleEdit(event,dateElement));
+        }
+
+        function handleEdit(event, dateElement) {
+            const element = event.target;
+            const originalContent = element.getAttribute('data-original');
+            const currentContent = element.textContent;
+
+            if (currentContent !== originalContent) {
+                element.setAttribute('data-original', currentContent);
+                dateElement.textContent = `Edited on ${currentDate()}`;
+            }
         }
 
         function resetCard(card) {
