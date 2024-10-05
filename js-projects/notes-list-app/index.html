@@ -58,18 +58,20 @@
 
         function addCard() {
             if (notesInput.value.trim() !== '') {
-                let card = `
+                let cardHTML = `
             <div class="card">
-             <h1 contenteditable="true" >${title.value}</h1>
-            <p contenteditable="true" >${notesInput.value}</p>
+             <h1>${title.value}</h1>
+            <p>${notesInput.value}</p>
             <p> Created on ${currentDate()}</p>
             </div>`;
 
-                container.innerHTML += card;
+                container.innerHTML += cardHTML;
 
                 title.value = '';
                 notesInput.value = '';
                 notesInput.style.height = inputHeight;
+
+                applyCardEventListeners();
             }
         }
 
@@ -79,6 +81,56 @@
                     addCard();
                 }
             })
+        
+        let clickedCard = null;
+
+        function applyCardEventListeners() {
+            const allcards = document.querySelectorAll('.card');
+
+            for(let i = 0; i < allcards.length; i++) {
+                allcards[i].addEventListener('click', (e) => {
+                    e.stopPropagation();
+
+                    let card = allcards[i];
+
+                    if (clickedCard && clickedCard !== card) {
+                        resetCard(clickedCard);
+                    }
+
+                    enlargeCard(card);
+
+                    clickedCard = card;
+
+                    document.addEventListener('click', () => {
+                         if (clickedCard) {
+                            resetCard(clickedCard);
+                            clickedCard = null;
+                        }
+                    }, {once: true});
+                })
+            }
+        }
+
+        function enlargeCard(card) {
+             const randomColor = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;
+
+            card.style.backgroundColor = randomColor;
+            card.children[0].setAttribute('contenteditable', 'true');
+            card.children[1].setAttribute('contenteditable', 'true');
+            card.style.position = 'absolute';
+            card.style.transform = 'scale(1.5)';
+            card.style.zIndex = '10';
+            card.style.overflow = 'auto';
+        }
+
+        function resetCard(card) {
+                card.children[0].setAttribute('contenteditable', 'false');
+                card.children[1].setAttribute('contenteditable', 'false');
+                card.style.position = 'relative';
+                card.style.transform = 'scale(1)';
+                card.style.zIndex = '1';
+                card.style.overflow = 'hidden';
+            }
 
         closeBtn.addEventListener('click', addCard);
     </script>

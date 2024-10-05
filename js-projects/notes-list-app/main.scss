@@ -52,9 +52,15 @@ body {
     .card {
         border: 1px solid white;
         padding: 20px;
-        width: 200px;
+        width: calc(33.33% - 20px);
+        min-height: 200px;
+        max-height: 300px;
+        break-inside: avoid;
+        transition: all ease 0.3s;
+        
         h2, p {
             word-wrap: break-word;
+            padding: 5px;
         }
     }
 }
