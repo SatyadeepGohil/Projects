@@ -41,26 +41,37 @@ body {
 
 #container {
     width: 90%;
-    height: 100%;
     background-color: aqua;
     margin-top: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
+    column-count: 3;
+    column-gap: 20px;
+    position: relative;
+    transition: all ease .3s;
 
     .card {
         border: 1px solid white;
         padding: 20px;
-        width: calc(33.33% - 20px);
+        display: inline-block;
         min-height: 200px;
-        max-height: 300px;
+        max-height: 500px;
+        overflow: hidden;
+        width: 100%;
         break-inside: avoid;
-        transition: all ease 0.3s;
+        position: relative;
+        scrollbar-width: none;
+        cursor: pointer;
+
+        [contenteditable='true'] {
+            cursor: text;
+        }
         
         h2, p {
             word-wrap: break-word;
             padding: 5px;
+        }
+
+        &:hover {
+            transform: scale(1.05);
         }
     }
 }
