@@ -10,8 +10,6 @@ function dynamicInput() {
     notesInput.style.height = notesInput.scrollHeight + 'px';
 }
 
-console.log(parseInt(window.getComputedStyle(notesInput).fontSize))
-
 notesInput.addEventListener('input', dynamicInput)
 
 function currentDate() {
@@ -35,9 +33,6 @@ function currentDate() {
     let time = `${date}/${currentMonth}/${year} at ${hour}:${minute} ${period}`;
     return time;
 }
-
-currentDate();
-
 
 function addCard() {
     if (notesInput.value.trim() !== '') {
@@ -203,7 +198,7 @@ function handleEdit(event, dateElement) {
         element.setAttribute('data-original', currentContent);
         dateElement.textContent = `Edited on ${currentDate()}`;
 
-        setTimeout(() => { removeEmptyCard() }, 10000);
+        removeEmptyCard();
     }
 }
 
