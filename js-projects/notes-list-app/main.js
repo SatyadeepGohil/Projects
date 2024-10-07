@@ -4,13 +4,22 @@ const notesInput = document.getElementById('notes-input');
 const inputHeight = window.getComputedStyle(notesInput).height;
 const closeBtn = document.getElementById('close-btn');
 let container = document.getElementById('container');
+let draggedCard = null;
 
-function dynamicInput() {
+function resizingInput() {
     notesInput.style.height = 'auto';
     notesInput.style.height = notesInput.scrollHeight + 'px';
 }
 
-notesInput.addEventListener('input', dynamicInput)
+function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    }
+}
+
+notesInput.addEventListener('input', resizingInput)
 
 function currentDate() {
     let d = new Date();
@@ -37,7 +46,7 @@ function currentDate() {
 function addCard() {
     if (notesInput.value.trim() !== '') {
         let cardHTML = `
-    <div class="card">
+    <div class="card" draggable="true">
         <h1>${title.value}</h1>
     <p>${notesInput.value}</p>
     <p> Created on ${currentDate()}</p>
@@ -50,7 +59,52 @@ function addCard() {
         notesInput.style.height = inputHeight;
 
         applyCardEventListeners();
+        applyDragDrop();
     }
+}
+
+function applyDragDrop() {
+    const allcards = document.querySelectorAll('.card');
+
+    allcards.forEach(card => {
+        card.addEventListener('dragstart', handleDragStart);
+        card.addEventListener('dragover', handleDragOver);
+        card.addEventListener('drop', handleDrop);
+        card.addEventListener('dragend', handleDragEnd);
+    })
+}
+
+function handleDragStart(e) {
+    draggedCard = this;
+    this.style.opacity = 0.5;
+}
+
+function handleDragOver(e) {
+    e.preventDefault();
+    this.style.border = '2px solid green';
+}
+
+function handleDrop(e) {
+    e.preventDefault();
+    this.style.border = '';
+
+    if (this !== draggedCard) {
+        const allcards = Array.from(container.children);
+        const draggedIndex = allcards.indexOf(draggedCard);
+        const droppedIndex = allcards.indexOf(this);
+
+        if (draggedIndex > droppedIndex) {
+            container.insertBefore(draggedCard, this);
+        }
+        else {
+            container.insertBefore(draggedCard, this.nextSibling);
+        }
+    }
+}
+
+function handleDragEnd(e) {
+    this.style.opacity = '1';
+    this.style.border = '1px solid white';
 }
 
 notesInput.addEventListener('keydown', e => {
@@ -60,10 +114,11 @@ notesInput.addEventListener('keydown', e => {
         }
     })
 
-search.addEventListener('input', () => {
-    const searchTerm = search.value.trim().toLowerCase();
+const searchCards = debounce((searchTerm) => {
+    const normalizedSearchTerm = searchTerm.trim().toLowerCase();
     const allcards = document.querySelectorAll('.card');
     let foundMatch = false;
+
 
     allcards.forEach(card => {
         const titleElement = card.querySelector('h1');
@@ -78,18 +133,14 @@ search.addEventListener('input', () => {
         const originalTitle = titleElement.getAttribute('data-original');
         const originalContent = contentElement.getAttribute('data-original');
 
-        if (searchTerm.length === 0) {
-            titleElement.textContent = originalTitle;
-            contentElement.textContent = originalContent;
-            card.style.display = 'block';
-            foundMatch = true;
-        }
-        else if (originalTitle.toLowerCase().includes(searchTerm) || originalContent.toLowerCase().includes(searchTerm)) {
-            titleElement.innerHTML = highlightText(originalTitle, searchTerm);
-            contentElement.innerHTML = highlightText(originalContent, searchTerm);
-            dateElement.innerHTML = dateElement.textContent;
-            card.style.display = 'block';
+        if (normalizedSearchTerm.length === 0 ||
+            originalTitle.toLowerCase().includes(normalizedSearchTerm) || 
+            originalContent.toLowerCase().includes(normalizedSearchTerm)) {
 
+            titleElement.innerHTML = highlightText(originalTitle, normalizedSearchTerm);
+            contentElement.innerHTML = highlightText(originalContent, normalizedSearchTerm);
+
+            card.style.display = 'block';
             foundMatch = true;
         }
         else {
@@ -97,27 +148,43 @@ search.addEventListener('input', () => {
         }
     });
 
-    const noResultMessage = document.getElementById('no-results-message') || createNoResultsMessage();
-    noResultMessage.style.display = foundMatch ? 'none' : 'block';
-})
+    updateNoResultsMessage(foundMatch, normalizedSearchTerm);
+}, 300)
 
 function highlightText(text, searchTerm) {
-        const regex = new RegExp(`(${escapeRegex(searchTerm)})`, 'gi');
-        return text.replace(regex, '<mark class="highlight">$1</mark>');
-    }
+    if (!searchTerm) return text;
+    const escapeSearchTerm = escapeRegex(searchTerm);
+    const regex = new RegExp(`(${escapeSearchTerm})`, 'gi');
+    return text.replace(regex, '<mark class="highlight">$1</mark>');
+}
 
 function escapeRegex(string) {
         return string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
     }
 
-function createNoResultsMessage() {
-    let para = document.createElement('p');
-    para.id = 'no-results-message';
-    para.textContent = 'Nothing found here';
-    para.style.display = 'none';
-    container.parentNode.insertBefore(para, container.nextSibling);
-    return para;
+function updateNoResultsMessage(foundMatch, searchTerm) {
+   let noResultMessage = document.getElementById('no-results-message');
+
+    if(!noResultMessage) {
+        noResultMessage = document.createElement('p');
+        noResultMessage.id = 'no-results-message';
+        container.parentNode.insertBefore(noResultMessage, container.nextSibling);
+    }
+
+    if(!foundMatch && searchTerm.length > 0) {
+        noResultMessage.style.display = 'block';
+        let noResultMessageHTML = `
+        <div class="no-results">
+                <p>No matching notes found</p>
+                <small>Try adjusting your search term</small>
+            </div>`;
+        noResultMessage.innerHTML = noResultMessageHTML;
+    } else {
+        noResultMessage.style.display = 'none';
+    }
 }
+
+search.addEventListener('input', (e) => searchCards(e.target.value));
 
 
 let clickedCard = null;
@@ -237,6 +304,8 @@ const allcards = document.querySelectorAll('.card');
     })
 }
 
+applyCardEventListeners();
+applyDragDrop();
 removeEmptyCard();
 
 closeBtn.addEventListener('click', addCard);

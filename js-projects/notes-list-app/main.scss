@@ -36,6 +36,7 @@ body {
 
     textarea {
         overflow: hidden;
+        resize: none;
     }
 }
 
@@ -50,9 +51,9 @@ body {
 
     .card {
         border: 1px solid white;
-        padding: 20px;
+        padding: 10px;
         display: inline-block;
-        min-height: 200px;
+        min-height: 100px;
         max-height: 500px;
         overflow: hidden;
         width: 100%;
@@ -65,7 +66,7 @@ body {
             cursor: text;
         }
         
-        h2, p {
+        h1, p {
             word-wrap: break-word;
             padding: 5px;
         }

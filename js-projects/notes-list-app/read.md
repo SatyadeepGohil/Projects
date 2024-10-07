@@ -57,6 +57,6 @@ While the current version of the Note App includes several advanced functionalit
     - **Description:** Implements persistent storage solutions (e.g., `localStorage`, IndexedDB, or cloud-based services like Firebase) to save notes across sessions.
     - **Benefits:** Ensures that users' notes are retained even after closing the browser or restarting the device, enhancing reliability.
 
-## 12. **Drag-and-Drop Note Reordering**
+<!-- ## 12. **Drag-and-Drop Note Reordering**
     - **Description:** Allows users to rearrange the order of their notes using drag-and-drop functionality.
-    - **Benefits:** Provides a more interactive and intuitive way to organize notes according to user preferences.
+    - **Benefits:** Provides a more interactive and intuitive way to organize notes according to user preferences. -->
