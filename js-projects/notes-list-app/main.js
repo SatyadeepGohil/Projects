@@ -5,6 +5,14 @@ const inputHeight = window.getComputedStyle(notesInput).height;
 const closeBtn = document.getElementById('close-btn');
 let container = document.getElementById('container');
 let draggedCard = null;
+let clickedCard = null;
+let originalColumnCount = getComputedStyle(container).columnCount;
+
+marked.setOptions({
+    gfm: true,
+    breaks: true,
+    sanitize: false,
+})
 
 function resizingInput() {
     notesInput.style.height = 'auto';
@@ -45,11 +53,13 @@ function currentDate() {
 
 function addCard() {
     if (notesInput.value.trim() !== '') {
-        let cardHTML = `
+    
+    let parseContent = marked.parse(notesInput.value);
+    let cardHTML = `
     <div class="card" draggable="true">
         <h1>${title.value}</h1>
-    <p>${notesInput.value}</p>
-    <p> Created on ${currentDate()}</p>
+    <div class='card-content'>${parseContent}</div>
+    <p class='card-date'> Created on ${currentDate()}</p>
     </div>`;
 
         container.innerHTML += cardHTML;
@@ -122,8 +132,8 @@ const searchCards = debounce((searchTerm) => {
 
     allcards.forEach(card => {
         const titleElement = card.querySelector('h1');
-        const contentElement = card.querySelector('p');
-        const dateElement = card.querySelector('p:last-child');
+        const contentElement = card.querySelector('.card-content');
+        const dateElement = card.querySelector('.card-date');
 
         if (!titleElement.hasAttribute('data-original')) {
             titleElement.setAttribute('data-original', titleElement.textContent);
@@ -186,10 +196,6 @@ function updateNoResultsMessage(foundMatch, searchTerm) {
 
 search.addEventListener('input', (e) => searchCards(e.target.value));
 
-
-let clickedCard = null;
-let originalColumnCount = getComputedStyle(container).columnCount;
-
 function applyCardEventListeners() {
     const allcards = document.querySelectorAll('.card');
 
@@ -200,11 +206,13 @@ function applyCardEventListeners() {
             if (clickedCard && clickedCard !== card) {
                 resetCard(clickedCard);
                 clickedCard = null;
+                card.setAttribute('data-enlarged', 'false');
             }
 
             if(!clickedCard) {
-            enlargeCard(card);
-            clickedCard = card;
+                enlargeCard(card);
+                clickedCard = card;
+                card.setAttribute('data-enlarged', 'true');
             }
         })
     }
@@ -213,6 +221,7 @@ function applyCardEventListeners() {
                     if (clickedCard && !clickedCard.contains(event.target) && !event.target.hasAttribute('contenteditable')) {
                     resetCard(clickedCard);
                     clickedCard = null;
+                    clickedCard.setAttribute('data-enlarged', 'false')
                 }
             });
 }
@@ -221,8 +230,8 @@ function enlargeCard(card) {
     const randomColor = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;
 
     const titleElement = card.querySelector('h1');
-    const contentElement = card.querySelector('p');
-    const dateElement = card.querySelector('p:last-child');
+    const contentElement = card.querySelector('.card-content');
+    const dateElement = card.querySelector('.card-date');
 
     const rect = card.getBoundingClientRect();
     card.setAttribute('data-original-top', rect.top + window.scrollY + 'px');
@@ -254,6 +263,8 @@ function enlargeCard(card) {
 
     titleElement.addEventListener('input', (event) => handleEdit(event,dateElement));
     contentElement.addEventListener('input', (event) => handleEdit(event,dateElement));
+
+    card.setAttribute('data-enlarged', 'true');
 }
 
 function handleEdit(event, dateElement) {
@@ -271,7 +282,7 @@ function handleEdit(event, dateElement) {
 
 function resetCard(card) {
     const titleElement = card.querySelector('h1');
-    const contentElement = card.querySelector('p');
+    const contentElement = card.querySelector('.card-content');
     const originalTop = card.getAttribute('data-original-top');
     const originalLeft = card.getAttribute('data-original-left');
 
@@ -289,16 +300,18 @@ function resetCard(card) {
         card.setAttribute('style', card.getAttribute('data-original-styles') || '');
         titleElement.setAttribute('contenteditable', 'false');
         contentElement.setAttribute('contenteditable', 'false');
+        card.setAttribute('data-enlarged', 'false');
     }, 300);
 }
 
 function removeEmptyCard() {
 const allcards = document.querySelectorAll('.card');
 
-    allcards.forEach(card => {
+        allcards.forEach(card => {
         const titleElement = card.querySelector('h1');
-        const contentElement = card.querySelector('p:nth-of-type(1)');
-        if(titleElement.textContent.trim() === '' && contentElement.textContent.trim() === '') {
+        const contentElement = card.querySelector('.card-content');
+        const isEnlarged = card.getAttribute('data-enlarged') === true;
+        if(titleElement.textContent.trim() === '' && contentElement.textContent.trim() === '' && !isEnlarged) {
             container.removeChild(card);
         }
     })
