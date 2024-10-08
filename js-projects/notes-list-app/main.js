@@ -1,9 +1,9 @@
 const search = document.getElementById('search');
+let container = document.getElementById('container');
 const title = document.getElementById('title');
 const notesInput = document.getElementById('notes-input');
 const inputHeight = window.getComputedStyle(notesInput).height;
 const closeBtn = document.getElementById('close-btn');
-let container = document.getElementById('container');
 let draggedCard = null;
 let clickedCard = null;
 let originalColumnCount = getComputedStyle(container).columnCount;
@@ -57,7 +57,7 @@ function addCard() {
     let cardHTML = `
     <div class="card" draggable="true">
         <h1>${title.value}</h1>
-    <div class='card-content'>${notesInput.value}</div>
+    <div class='card-content'>${marked.parse(notesInput.value)}</div>
     <p class='card-date'> Created on ${currentDate()}</p>
     </div>`;
 
@@ -71,6 +71,13 @@ function addCard() {
         applyDragDrop();
     }
 }
+
+notesInput.addEventListener('keydown', e => {
+        if (e.ctrlKey && e.key === 'Enter') {
+            e.preventDefault();
+            addCard();
+        }
+    })
 
 function applyDragDrop() {
     const allcards = document.querySelectorAll('.card');
@@ -115,13 +122,6 @@ function handleDragEnd(e) {
     this.style.opacity = '1';
     this.style.border = '1px solid white';
 }
-
-notesInput.addEventListener('keydown', e => {
-        if (e.ctrlKey && e.key === 'c') {
-            e.preventDefault();
-            addCard();
-        }
-    })
 
 const searchCards = debounce((searchTerm) => {
     const normalizedSearchTerm = searchTerm.trim().toLowerCase();
