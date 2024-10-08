@@ -11,7 +11,7 @@ let originalColumnCount = getComputedStyle(container).columnCount;
 marked.setOptions({
     gfm: true,
     breaks: true,
-    sanitize: false,
+    sanitize: true,
 })
 
 function resizingInput() {
@@ -54,11 +54,10 @@ function currentDate() {
 function addCard() {
     if (notesInput.value.trim() !== '') {
     
-    let parseContent = marked.parse(notesInput.value);
     let cardHTML = `
     <div class="card" draggable="true">
         <h1>${title.value}</h1>
-    <div class='card-content'>${parseContent}</div>
+    <div class='card-content'>${notesInput.value}</div>
     <p class='card-date'> Created on ${currentDate()}</p>
     </div>`;
 
@@ -118,7 +117,7 @@ function handleDragEnd(e) {
 }
 
 notesInput.addEventListener('keydown', e => {
-        if (e.key === 'Enter' && !e.shiftKey) {
+        if (e.ctrlKey && e.key === 'c') {
             e.preventDefault();
             addCard();
         }
@@ -136,8 +135,8 @@ const searchCards = debounce((searchTerm) => {
         const dateElement = card.querySelector('.card-date');
 
         if (!titleElement.hasAttribute('data-original')) {
-            titleElement.setAttribute('data-original', titleElement.textContent);
-            contentElement.setAttribute('data-original', contentElement.textContent);
+            titleElement.setAttribute('data-original', titleElement.innerHTML);
+            contentElement.setAttribute('data-original', contentElement.innerHTML);
         }
 
         const originalTitle = titleElement.getAttribute('data-original');
@@ -220,8 +219,8 @@ function applyCardEventListeners() {
     document.addEventListener('click', () => {
                     if (clickedCard && !clickedCard.contains(event.target) && !event.target.hasAttribute('contenteditable')) {
                     resetCard(clickedCard);
-                    clickedCard = null;
                     clickedCard.setAttribute('data-enlarged', 'false')
+                    clickedCard = null;
                 }
             });
 }
@@ -275,8 +274,6 @@ function handleEdit(event, dateElement) {
     if (currentContent !== originalContent) {
         element.setAttribute('data-original', currentContent);
         dateElement.textContent = `Edited on ${currentDate()}`;
-
-        removeEmptyCard();
     }
 }
 
@@ -301,6 +298,10 @@ function resetCard(card) {
         titleElement.setAttribute('contenteditable', 'false');
         contentElement.setAttribute('contenteditable', 'false');
         card.setAttribute('data-enlarged', 'false');
+
+        if (titleElement.textContent.trim() === "" && contentElement.textContent.trim() === '') {
+            removeEmptyCard();
+        }
     }, 300);
 }
 
@@ -310,15 +311,26 @@ const allcards = document.querySelectorAll('.card');
         allcards.forEach(card => {
         const titleElement = card.querySelector('h1');
         const contentElement = card.querySelector('.card-content');
-        const isEnlarged = card.getAttribute('data-enlarged') === true;
-        if(titleElement.textContent.trim() === '' && contentElement.textContent.trim() === '' && !isEnlarged) {
-            container.removeChild(card);
+
+        const isEnlarged = card.getAttribute('data-enlarged') === 'true';
+        const isBeingEdited = Array.from(card.querySelectorAll('*')).some(el => 
+            el.getAttribute('contenteditable') === 'true');
+        if(titleElement.textContent.trim() === '' &&
+            contentElement.textContent.trim() === '' &&
+            !isEnlarged && !isBeingEdited) {
+            card.style.transition = 'opacity 0.3s ease';
+            card.style.opacity = '0'
+            
+            setTimeout(() => {
+                if (card.parentNode) {
+                    card.parentNode.removeChild(card);
+                }
+            }, 300);
         }
     })
 }
 
 applyCardEventListeners();
 applyDragDrop();
-removeEmptyCard();
 
 closeBtn.addEventListener('click', addCard);
