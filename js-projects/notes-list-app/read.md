@@ -25,9 +25,9 @@ While the current version of the Note App includes several advanced functionalit
    - **Description:** Keeps a log of all changes made to a note, allowing users to view and revert to previous versions if needed.
    - **Benefits:** Provides a safety net against accidental deletions or unwanted changes, enhancing data integrity.
 
-## 4. **Markdown Support**
+<!-- ## 4. **Markdown Support**
    - **Description:** Allows users to format their notes using Markdown syntax, which is then rendered into styled HTML.
-   - **Benefits:** Offers flexible and efficient text formatting options, improving the readability and organization of notes.
+   - **Benefits:** Offers flexible and efficient text formatting options, improving the readability and organization of notes. -->
 
 ## 5. **Image and File Attachments**
    - **Description:** Enables users to attach images or other files to their notes for richer content.
@@ -41,19 +41,15 @@ While the current version of the Note App includes several advanced functionalit
     - **Description:** Allows users to categorize notes using tags or organize them into folders for better management.
     - **Benefits:** Enhances the ability to search, filter, and organize notes, making information retrieval more intuitive.
 
-## 8. **Dark Mode**
-    - **Description:** Introduces a dark theme option for the app interface, which can be toggled by the user or follow the system settings.
-    - **Benefits:** Reduces eye strain in low-light environments and provides a visually appealing alternative to the default theme.
-
-## 9. **Export and Backup Notes**
+## 8. **Export and Backup Notes**
     - **Description:** Enables users to export individual notes or all notes in various formats (e.g., PDF, Markdown, TXT) and create backups.
     - **Benefits:** Ensures data portability and security, allowing users to safeguard their notes against data loss.
 
-## 10. **Prioritization and Sorting Options**
+## 9. **Prioritization and Sorting Options**
     - **Description:** Provides options to prioritize notes and sort them based on criteria such as creation date, last edited date, or custom priority levels.
     - **Benefits:** Facilitates better organization and quick access to the most relevant or urgent notes.
 
-## 11. **Persistent Data Storage**
+## 10. **Persistent Data Storage**
     - **Description:** Implements persistent storage solutions (e.g., `localStorage`, IndexedDB, or cloud-based services like Firebase) to save notes across sessions.
     - **Benefits:** Ensures that users' notes are retained even after closing the browser or restarting the device, enhancing reliability.
 

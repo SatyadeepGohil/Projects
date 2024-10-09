@@ -4,6 +4,12 @@ const title = document.getElementById('title');
 const notesInput = document.getElementById('notes-input');
 const inputHeight = window.getComputedStyle(notesInput).height;
 const closeBtn = document.getElementById('close-btn');
+const markedownBtn = document.getElementById('markdown-btn');
+const listBtn = document.getElementById('list-btn');
+const toggleWrapper = document.querySelector('.toggle-wrapper');
+const toggleBtn = document.querySelector('.toggle-wrapper input');
+let isPreviewMode = false;
+let isList = false;
 let draggedCard = null;
 let clickedCard = null;
 let originalColumnCount = getComputedStyle(container).columnCount;
@@ -27,7 +33,61 @@ function debounce(func, wait) {
     }
 }
 
-notesInput.addEventListener('input', resizingInput)
+function checkPlaceholder() {
+    if (notesInput.textContent.trim() === "") {
+        notesInput.classList.add('placeholder');
+    } else {
+        notesInput.classList.remove('placeholder');
+    }
+}
+
+checkPlaceholder();
+
+notesInput.addEventListener('input', () => {
+    resizingInput();
+    checkPlaceholder();
+})
+
+notesInput.addEventListener('focus', checkPlaceholder);
+notesInput.addEventListener('blur', checkPlaceholder);
+
+listBtn.addEventListener('click', () => {
+    if (!isList) {
+        listBtn.style.backgroundColor = 'green';
+    }
+    else {
+        listBtn.style.backgroundColor = 'black';
+    }
+
+    isList = !isList;
+})
+
+markedownBtn.addEventListener('click', () => {
+    if (!isPreviewMode) {
+        markedownBtn.style.backgroundColor = 'green';
+        markedownBtn.textContent = 'Markdown: Preview';
+        toggleWrapper.style.display = 'inline-block';
+        notesInput.setAttribute('data-text', `${notesInput.innerHTML}`);
+    }
+    else {
+        markedownBtn.style.backgroundColor = 'black';
+        markedownBtn.textContent = 'Markdown';
+        toggleWrapper.style.display = 'none';
+    }
+
+    isPreviewMode = !isPreviewMode;
+})
+
+toggleBtn.addEventListener('change', () => {
+    if (toggleBtn.checked) {
+        notesInput.innerHTML = marked.parse(notesInput.getAttribute('data-text'));
+    }
+    else {
+        notesInput.innerHTML = notesInput.getAttribute('data-text');
+    }
+    resizingInput();
+})
+
 
 function currentDate() {
     let d = new Date();
@@ -52,21 +112,21 @@ function currentDate() {
 }
 
 function addCard() {
-    if (notesInput.value.trim() !== '') {
+    if (notesInput.innerHTML.trim() !== '') {
     
     let cardHTML = `
     <div class="card" draggable="true">
         <h1>${title.value}</h1>
-    <div class='card-content'>${marked.parse(notesInput.value)}</div>
+    <div class='card-content'>${marked.parse(notesInput.innerHTML)}</div>
     <p class='card-date'> Created on ${currentDate()}</p>
     </div>`;
 
         container.innerHTML += cardHTML;
 
         title.value = '';
-        notesInput.value = '';
-        notesInput.style.height = inputHeight;
+        notesInput.innerHTML = '';
 
+        resizingInput();
         applyCardEventListeners();
         applyDragDrop();
     }

@@ -12,10 +12,14 @@
     <div id="create-container">
         <div id="button-container">
             <button id="markdown-btn">Markdown</button>
+                <label class="toggle-wrapper">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
             <button id="list-btn">List</button>
         </div>
         <input type="text" id="title" placeholder="Title">
-        <textarea name="" id="notes-input" placeholder="Type your notes here" rows="1"></textarea>
+        <div id="notes-input" contenteditable="true" data-placeholder="Write your notes here"></div>
         <button id="close-btn">close</button>
     </div>
     <div id="container"></div>
