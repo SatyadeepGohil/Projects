@@ -107,6 +107,7 @@ body {
         overflow: hidden;
         resize: none;
         border: 1px solid grey;
+        white-space: pre-wrap;
     }
 
     #notes-input[data-placeholder]:empty:before {
