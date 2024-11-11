@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Adder</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.2/babel.min.js"
+        integrity="sha512-E93kfMJX6tlvTH0N0TmwNePkccFJAz+Lw8A2N+YDkHgKQazBZrM/XgdLoZKfnm5+vjEPkua04/KhqQZm/zbEJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+       const TodoApp = () => {
+        const [todos, setTodos] = React.useState([]);
+        const [inputValue, setInputValue] = React.useState('');
+
+        const handleAdditems = () => {
+            setTodos([...todos, { text: inputValue, completed: false }]);
+            setInputValue('');
+        }
+
+        const toggleTask = (index) => {
+            setTodos(todos.map((todo, i) => i === index ? {...todo, completed: !todo.completed } : todo));
+        }
+
+        const handleRemoveItem = (index) => {
+            setTodos(todos.filter((_,i) => i !== index))
+        }
+
+        return (
+            <>
+            <h1>To do lists</h1>
+            <input type="text" value={inputValue} placeholder={'write your tasks here'} onChange={(e) => setInputValue(e.target.value) }/>
+            <button onClick={handleAdditems}>Add</button>
+            <ul>
+                {todos.map((todo, index) => <li onClick={() => toggleTask(index)} style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>{ todo.text } 
+                    <button onClick={(e) => { e.stopPropagation(); handleRemoveItem(index);}} style={{ marginLeft: 10 }}>
+                        Remove
+                    </button>
+                    </li>)}
+            </ul>
+            </>
+        )
+       }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<TodoApp />);
+    </script>
+</body>
+</html>

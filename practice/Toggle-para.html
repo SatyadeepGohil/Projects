@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React app</title> 
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.2/babel.min.js"
+        integrity="sha512-E93kfMJX6tlvTH0N0TmwNePkccFJAz+Lw8A2N+YDkHgKQazBZrM/XgdLoZKfnm5+vjEPkua04/KhqQZm/zbEJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const Button = () => {
+            const [visibility, setVisibility] = React.useState(false);
+            const togglePara = () => {
+                setVisibility( !visibility );
+            }
+
+            return (
+                <>
+                <button onClick={togglePara}>Toggle paragraph</button>
+                <p style={{ display: visibility ? 'block' : 'none' }}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis eveniet possimus ducimus reiciendis voluptatem sint voluptatibus dolorum quia explicabo, sunt similique necessitatibus laudantium, minima provident excepturi? Accusantium maxime consequatur atque!</p>
+                </>
+            )
+        }
+        ReactDOM.createRoot(document.getElementById('root')).render(<Button />);
+    </script>
+</body>
+</html>

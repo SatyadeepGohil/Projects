@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React App</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.2/babel.min.js"
+        integrity="sha512-E93kfMJX6tlvTH0N0TmwNePkccFJAz+Lw8A2N+YDkHgKQazBZrM/XgdLoZKfnm5+vjEPkua04/KhqQZm/zbEJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const Button1 = () => {
+            const [count, setCount] = React.useState(0);
+            return (
+                <>
+                <h1>Count: {count} times</h1>
+                <button onClick={() => setCount(count + 1)}>Increment</button>
+                </>
+            )
+        }
+
+        const Button2 = () => {
+            const [count, setCount] = React.useState(0);
+            return (
+                <>
+                <h1>Count: {count} times</h1>
+                <button onClick={() => setCount(count + 1)}>Increment</button>
+                </>
+            )
+        }
+
+        const Button3 = () => {
+            const [count, setCount] = React.useState(0);
+            return (
+                <>
+                <h1>Count: {count} times</h1>
+                <button onClick={() => setCount(count + 1)}>Increment</button>
+                </>
+            )
+        }
+
+        const DisplayAllButton = () => {
+            return (
+                <>
+                <Button1 />
+                <Button2 />
+                <Button3 />
+                </>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<DisplayAllButton />)
+    </script>
+</body>
+</html>

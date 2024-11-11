@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React app</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.2/babel.min.js"
+        integrity="sha512-E93kfMJX6tlvTH0N0TmwNePkccFJAz+Lw8A2N+YDkHgKQazBZrM/XgdLoZKfnm5+vjEPkua04/KhqQZm/zbEJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const Form = () => {
+            const [name, setName] = React.useState('');
+            const [email, setEmail] = React.useState('');
+            const [password, setPassword] = React.useState('');
+
+            return (
+                <>
+                <form style={{ display: "flex", gap: 20, flexDirection: 'column'}}>
+                    <h1>Form</h1>
+                    <input value={name} placeholder={'your name here'} onChange={(e) => setName(e.target.value)}/>
+                    <input value={email} placeholder={'your email here'} onChange={(e) => setEmail(e.target.value)}/>
+                    <input value={password} placeholder={'your password here'} onChange={(e) => setPassword(e.target.value)}/>
+                </form>
+                <h1>Your Personal information</h1>
+                <p>Your name is {name}</p>
+                <p>Your email is {email}</p>
+                <p>Your password is {password}</p>
+                </>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<Form />)
+    </script>
+</body>
+</html>
