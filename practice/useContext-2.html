@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.2/babel.min.js"
+        integrity="sha512-E93kfMJX6tlvTH0N0TmwNePkccFJAz+Lw8A2N+YDkHgKQazBZrM/XgdLoZKfnm5+vjEPkua04/KhqQZm/zbEJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const UserContext = React.createContext();
+
+        const Component1 = () => {
+            const user = 'jane';
+            return (
+                <>
+                <UserContext.Provider value={user}>
+                <h1>Component 1</h1>
+                        <Component2 user={user}/>
+                </UserContext.Provider>
+                </>
+            )
+        }
+
+        const Component2 = ({ user }) => {
+            return (
+                <>
+                <h1>Component 2</h1>
+                <p>user {user}</p>
+                </>
+            )
+        }
+        ReactDOM.createRoot(document.getElementById('root')).render(<Component1 />);
+    </script>
+</body>
+</html>
