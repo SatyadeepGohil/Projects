@@ -1,0 +1,46 @@
+main {
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    width: inherit;
+}
+
+#editor-panel,  #preview-panel{
+    height: 100%;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+#editor-panel {
+    padding: 25px;
+    resize: none;
+}
+
+#preview-panel {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    padding: 25px;
+
+    /* Unordered and Ordered Lists */
+        ul,
+        ol {
+            margin: 0;
+            padding: 0 0 0 20px;
+            /* Indent nested lists */
+        }
+    
+        li {
+            margin-bottom: 5px;
+        }
+    
+        /* Sub-list Styling */
+        ul ul,
+        ul ol,
+        ol ul,
+        ol ol {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 20px;
+            /* Additional indentation for nested lists */
+        }
+}
