@@ -1,0 +1,7 @@
+{
+  "name": "my-markdown-engine",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "description": "A simple Markdown parsing library",
+  "type": "module"
+}

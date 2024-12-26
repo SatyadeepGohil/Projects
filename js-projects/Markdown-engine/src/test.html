@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Engine Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+
+        #output {
+            border: 1px solid #ccc;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Markdown Engine Test</h1>
+    <textarea id="markdownInput" placeholder="Write your Markdown here..."></textarea>
+    <button id="renderButton">Render Markdown</button>
+    <h2>Output</h2>
+    <div id="output"></div>
+
+    <script type="module">
+        import MarkdownEngine from './index.js';
+
+        // Initialize the MarkdownEngine
+        const engine = new MarkdownEngine();
+
+        // Add event listener to render button
+        document.getElementById('renderButton').addEventListener('click', () => {
+            const markdownInput = document.getElementById('markdownInput').value;
+            const output = engine.parseMarkdown(markdownInput);
+            document.getElementById('output').innerHTML = output;
+        });
+    </script>
+</body>
+
+</html>
