@@ -1,50 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markdown Engine Test</title>
+    <title>Document</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
         }
-
-        textarea {
-            width: 100%;
-            height: 150px;
+    
+        .editor-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
             margin-bottom: 20px;
         }
-
-        #output {
+    
+        .preview {
             border: 1px solid #ccc;
             padding: 20px;
-            background: #f9f9f9;
+            background: #fff;
+            border-radius: 4px;
+            min-height: 200px;
+            max-height: 100%;
+        }
+    
+        textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: monospace;
+            min-height: 200px;
+        }
+    
+        .toolbar {
+            margin-bottom: 10px;
+        }
+    
+        button {
+            padding: 8px 16px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    
+        button:hover {
+            background: #0056b3;
         }
     </style>
 </head>
-
 <body>
-    <h1>Markdown Engine Test</h1>
-    <textarea id="markdownInput" placeholder="Write your Markdown here..."></textarea>
-    <button id="renderButton">Render Markdown</button>
-    <h2>Output</h2>
-    <div id="output"></div>
+    <div class="container">
+        <h1>Markdown Editor</h1>
+        <div class="toolbar">
+            <button id="renderButton">Preview</button>
+            <button id="copyHtml">Copy HTML</button>
+        </div>
+        <div class="editor-container">
+            <textarea id="markdownInput" placeholder="Write your Markdown here...">
+# Welcome to Markdown Editor
+
+Try writing some markdown here:
+
+- List item 1
+  - Nested item 1.1
+  - Nested item 1.2
+- List item 2
+  1. Nested ordered item 2.1
+  2. Nested ordered item 2.2
+
+**Bold text** and *italic text*
+            </textarea>
+            <div class="preview" id="output"></div>
+        </div>
+    </div>
 
     <script type="module">
         import MarkdownEngine from './index.js';
 
-        // Initialize the MarkdownEngine
         const engine = new MarkdownEngine();
+        const markdownInput = document.getElementById('markdownInput');
+        const output = document.getElementById('output');
 
-        // Add event listener to render button
-        document.getElementById('renderButton').addEventListener('click', () => {
-            const markdownInput = document.getElementById('markdownInput').value;
-            const output = engine.parseMarkdown(markdownInput);
-            document.getElementById('output').innerHTML = output;
+        // Live preview
+        markdownInput.addEventListener('input', () => {
+            const rendered = engine.parseMarkdown(markdownInput.value);
+            output.innerHTML = rendered;
         });
+
+        // Copy HTML button
+        document.getElementById('copyHtml').addEventListener('click', () => {
+            const rendered = engine.parseMarkdown(markdownInput.value);
+            navigator.clipboard.writeText(rendered)
+                .then(() => alert('HTML copied to clipboard!'))
+                .catch(err => console.error('Failed to copy:', err));
+        });
+
+        // Initial render
+        output.innerHTML = engine.parseMarkdown(markdownInput.value);
     </script>
 </body>
-
 </html>

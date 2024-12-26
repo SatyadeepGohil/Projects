@@ -1,0 +1,1 @@
+just the combine bold/italic styles are not working and everything else render as expected.
