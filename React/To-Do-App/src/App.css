@@ -27,23 +27,42 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px;
+  background-color: grey;
 }
 
 nav #logo-container, nav #nav-features-container {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 .sidebar {
+  position: fixed;
+  left: -300px;
+  top: 52px;
+  width: 300px;
+  height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   gap: 20px;
-  width: 300px;
-  height: 100vh;
+  padding-top: 50px;
   background-color: pink;
+  transition: left 0.3s ease-in-out;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.menu-icon, .close-icon {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
 
 .sidebar #user-image-container {
@@ -77,9 +96,145 @@ nav #logo-container, nav #nav-features-container {
   border-radius: 10px;
   padding: 5px;
   color: #000000;
+  cursor: pointer;
 }
 
 .sidebar #sidebar-filter-container .filters:hover {
   background-color: #35793729;
   color: #357937;
+}
+
+.task-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  padding: 2%;
+}
+
+.task-container #top-text {
+  width: 100%;
+  height: 32px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: 0%;
+  color: #142E159E;
+}
+
+.task-container .top-input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border: 1.5px solid #496E4B33;
+  background: linear-gradient(0deg, rgba(53, 121, 55, 0.1) 0%, rgba(208, 255, 210, 0.1) 100%);
+}
+
+
+.task-container .top-input-container input {
+  min-height: 60px;
+  height: auto;
+  width: 100%;
+  border: none;
+  padding: 15px;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #1B281BB8;
+  background: transparent;
+  outline: none;
+}
+
+.top-input-container input:focus {
+  border-color: #357937;
+}
+
+.task-container .top-input-container div {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 5px;
+}
+
+.task-container .top-input-container button {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #357937;
+  background: #35793729;
+}
+
+/* Additional styles for active filters */
+.sidebar #sidebar-filter-container .filters.active {
+  background-color: #35793729;
+  color: #357937;
+  font-weight: 500;
+}
+
+/* Task container adjustments */
+.task-container {
+  margin-left: 0;
+  width: 100%;
+  padding: 20px;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.features-container {
+  padding: 10px;
+  border-top: 1px solid rgba(53, 121, 55, 0.1);
+}
+
+.task-options {
+  display: flex;
+  gap: 15px;
+}
+
+.task-options svg {
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.task-options svg:hover {
+  opacity: 1;
+}
+
+/* Empty state */
+.empty-tasks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  color: #757575;
+}
+
+.empty-tasks svg {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.empty-tasks h3 {
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.empty-tasks p {
+  max-width: 300px;
+}
+
+@media screen and (min-width: 768px) {
+  .sidebar.open + .task-container {
+    margin-left: 300px;
+    width: calc(100% - 300px);
+  }
 }

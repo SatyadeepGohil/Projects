@@ -1,30 +1,32 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import SidebarNav from "./SidebarNav";
+import TaskContainer from "./TasksContainer";
+import TaskUtils from "./TaskUtils"; // Import the task utilities
 import '../src/App.css';
-/* import TaskList from "./TaskList"; */ // Component that renders tasks
-/* import tasksData from "./data/tasks"; */ // Assume this is your tasks array
 
 function App() {
-  const [selectedFilter, setSelectedFilter] = useState("all"); // default filter
+  const [todayTasksCount, setTodayTasksCount] = useState(0);
+  const [completedTasksCount, setCompletedTasksCount] = useState(0);
+  const [totalTasksCount, setTotalTasksCount] = useState(0);
+  const [selectedFilter, setSelectedFilter] = useState("all");
 
-  // Memoize the filtered tasks to avoid unnecessary calculations
-  /* const filteredTasks = useMemo(() => {
-    if (selectedFilter === "all") {
-      return tasksData;
-    } else if (selectedFilter === "today") {
-      const today = new Date().toDateString();
-      return tasksData.filter(
-        (task) => new Date(task.dueDate).toDateString() === today
-      );
-    } else if (selectedFilter === "planned") {
-      return tasksData.filter((task) => task.isPlanned);
-    }
-    return tasksData;
-  }, [selectedFilter]); */
+  // Update today's task count for the sidebar indicator
+  useEffect(() => {
+    const allTasks = TaskUtils.getAllTasks();
+    setTotalTasksCount(allTasks.length);
+    setCompletedTasksCount(TaskUtils.getCompletedTasks().length);
+    setTodayTasksCount(TaskUtils.getTodayTasks().length);
+  }, []);
 
   return (
-    <div className="App">
-      <SidebarNav setSelectedFilter={setSelectedFilter} />
+    <div className="app-container">
+      <SidebarNav 
+        setSelectedFilter={setSelectedFilter} 
+        todayTasksCount={todayTasksCount}
+        completedTasksCount={completedTasksCount}
+        totalTasksCount={totalTasksCount}
+      />
+      <TaskContainer selectedFilter={selectedFilter} />
     </div>
   );
 }
