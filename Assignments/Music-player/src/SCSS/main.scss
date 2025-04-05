@@ -1,0 +1,470 @@
+@font-face {
+    font-family: 'Basier Circle Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../assets/BasierCircle-Regular.woff') format('woff');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Basier Circle Regular';
+    transition: background-color 1s ease;
+}
+
+/* Ensure content stays above background */
+.content-row {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+/* Base background layer */
+.base-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: background 0.5s ease;
+}
+
+/* Animated overlay */
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.main-container {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.side-panel {
+    padding: 15px;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    .logo-img {
+        width: 130px;
+        height: 40px;
+        margin-bottom: 10px;
+    }
+
+    .navigation-links {
+        color: grey;
+
+        &.active {
+            color: white;
+            background-color: transparent;
+        }
+    }
+
+    .profile-img-container {
+        position: absolute;
+        bottom: 10px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: white;
+        padding: 6px;
+
+        img {
+            background-size: contain;
+        }
+    }
+}
+
+.for-you-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-left: 200px;
+
+    h1 {
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 36px;
+    }
+
+    .song-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 5px;
+        margin-left: 5px;
+        transition: all 0.3s ease;
+        position: relative;
+
+        .img-name-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+
+            img {
+                width: 50px;
+                height: 50px;
+                object-fit: cover;
+            }
+        }
+
+        .name-container {
+            h3 {
+                color: grey;
+                margin-bottom: 4px;
+                font-size: 16px;
+            }
+
+            p {
+                margin-bottom: 0;
+                font-size: 14px;
+                color: #aaa;
+            }
+        }
+
+        &:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        &.active-song {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+
+            .name-container h3 {
+                color: white;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.music-player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    margin-top: 50px;
+    z-index: 2;
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 5px;
+    }
+
+    p {
+        color: #aaa;
+        margin-bottom: 20px;
+    }
+
+    .music-cover-img {
+        width: 80%;
+        height: 80%;
+        object-fit: contain;
+    }
+
+    .music-progress-bar {
+        width: 80%;
+        height: 5px;
+        background-color: #333;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .main-music-player-control-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .three-dots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 30px;
+        height: 30px;
+        background-color: #23211B;
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+
+        .circle {
+            width: 4px;
+            height: 4px;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        &:hover {
+            transform: translateY(-3px);
+            transition: all 0.3s ease;
+            background-color: #23211bc2;
+        }
+
+        &.favorited {
+            background-color: #FFD700;
+
+            .circle {
+                background-color: #000;
+            }
+        }
+    }
+}
+
+/* Enhanced player controls */
+.player-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.play-btn {
+    background: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.play-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Volume control */
+.volume-control-wrapper {
+    position: relative;
+}
+
+.sound-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sound-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.volume-slider-container {
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.volume-slider {
+    width: 100%;
+    height: 4px;
+    appearance: none;
+    background: gray;
+    border-radius: 2px;
+    outline: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+}
+
+/* Animations for transitions */
+.music-cover-img {
+    transition: all 0.5s ease;
+}
+
+.music-progress-bar-container {
+    width: 80%;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+
+/* Add to your SCSS/main.css file */
+
+/* General responsive overrides */
+@media (max-width: 768px) {
+    .main-container {
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    .mobile-side-panel {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        z-index: 999;
+        background: rgba(0, 0, 0, 0.95);
+        left: 0;
+        top: 0;
+        animation: slideIn 0.3s ease-in-out;
+        overflow-y: auto;
+        padding-bottom: 70px;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(-100%);
+        }
+
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    .sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    .close-sidebar-btn {
+        color: white;
+        font-size: 24px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .toggle-sidebar-btn {
+        color: white;
+        font-size: 24px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 10;
+    }
+
+    .feature-container {
+        height: 100vh;
+        overflow-y: auto;
+        margin-top: 1000px;
+        margin-left: 0 !important;
+    }
+
+    .mobile-player {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .for-you-container {
+        margin-left: 0;
+        padding-top: 40px;
+    }
+
+    /* Show playlist button */
+    .show-playlist-btn {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .show-playlist-btn:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+}

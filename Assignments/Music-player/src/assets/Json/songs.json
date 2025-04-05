@@ -1,0 +1,68 @@
+{
+  "songs": [
+    {
+      "id": "1",
+      "title": "Gorila",
+      "thumbnail": "https://cdn.pixabay.com/audio/2025/03/19/20-23-35-428_200x200.png",
+      "musicUrl": "/songs/gorila-315977.mp3",
+      "duration": "1:55",
+      "artistName": "Alex_MakeMusic"
+    },
+    {
+      "id": "2",
+      "title": "Don't Talk",
+      "thumbnail": "https://cdn.pixabay.com/audio/2025/03/18/11-45-34-728_200x200.png",
+      "musicUrl": "/songs/dont-talk-315229.mp3",
+      "duration": "1:50",
+      "artistName": "Cosmonkey"
+    },
+    {
+      "id": "3",
+      "title": "The Beat of Nature",
+      "thumbnail": "https://pixabay.com/music/thumbnail/4df92a02df6939833192092925dc67c5.svg",
+      "musicUrl": "/songs/the-beat-of-nature-122841.mp3",
+      "duration": "2:53",
+      "artistName": "folk_acoustic"
+    },
+    {
+      "id": "4",
+      "title": "Drop It",
+      "thumbnail": "https://cdn.pixabay.com/audio/2024/03/04/18-39-14-309_200x200.jpeg",
+      "musicUrl": "/songs/drop-it-124014.mp3",
+      "duration": "1:42",
+      "artistName": "Coma-Media"
+    },
+    {
+      "id": "5",
+      "title": "Stomping Rock (Four Shots)",
+      "thumbnail": "https://cdn.pixabay.com/audio/2022/05/17/19-32-35-334_200x200.jpg",
+      "musicUrl": "/songs/stomping-rock-four-shots-111444.mp3",
+      "duration": "1:59",
+      "artistName": "AlexGrohl"
+    },
+    {
+      "id": "6",
+      "title": "Honor and Sword (Main)",
+      "thumbnail": "https://cdn.pixabay.com/audio/2023/10/01/14-13-06-872_200x200.png",
+      "musicUrl": "/songs/honor-and-sword-main-11222.mp3",
+      "duration": "4:01",
+      "artistName": "Good_B_Music"
+    },
+    {
+      "id": "7",
+      "title": "Legacy of the Century",
+      "thumbnail": "https://cdn.pixabay.com/audio/2025/03/27/12-01-45-792_200x200.jpg",
+      "musicUrl": "/songs/legacy-of-the-century-background-orchestral-music-for-video-full-ver-319547.mp3",
+      "duration": "2:48",
+      "artistName": "White_Records"
+    },
+    {
+      "id": "8",
+      "title": "Aggressive Fire Flow",
+      "thumbnail": "https://cdn.pixabay.com/audio/2025/03/28/08-57-18-221_200x200.png",
+      "musicUrl": "/songs/aggressive-fire-flow-type-hard-trap-beat-prod-by-onesevenbeatxs-319923.mp3",
+      "duration": "2:29",
+      "artistName": "onsevenbeatxs"
+    }
+  ]
+}
