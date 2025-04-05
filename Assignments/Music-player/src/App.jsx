@@ -57,7 +57,10 @@ function App() {
 
   const audioRef = useRef(null);
 
-  alert("if background color doesn't change then refresh the page and try again. Also if anything else is not working then also refresh the page.")
+ useEffect(() => {
+    alert("if background color doesn't change then refresh the page and try again. Also if anything else is not working then also refresh the page.");
+  }, []);
+
 
   useEffect(() => {
     const handleResize = () => {
