@@ -9,8 +9,9 @@
 </head>
 
 <body>
-    <div class="controls">
+    <div class="controls" id="controls">
         <h3>Grid Controls</h3>
+        <button class="toggle-controls" id="toggleControls">◀</button>
         <label>
             Effect Range:
             <input type="range" id="effectRange" min="1" max="10" value="5" step="0.5">
@@ -26,6 +27,10 @@
         <label>
             Smoothness:
             <input type="range" id="smoothness" min="1" max="20" value="10" step="1">
+        </label>
+        <label>
+            Grid Size:
+            <input type="range" id="gridSize" min="5" max="30" value="10" step="1">
         </label>
         <label>
             Theme:
@@ -55,21 +60,45 @@
             theme: 'default',
             smoothness: 10, // Higher value = smoother animations
             lastPointerPosition: { x: 0, y: 0 }, // Track pointer for smoother hover transitions
-            animationFrame: null // For smooth animation tracking
+            animationFrame: null, // For smooth animation tracking
+            controlsCollapsed: false // Track controls visibility
         };
 
         // DOM Elements
         const container = document.getElementById('container');
+        const controls = document.getElementById('controls');
+        const toggleControls = document.getElementById('toggleControls');
         const effectRangeInput = document.getElementById('effectRange');
         const maxHeightInput = document.getElementById('maxHeight');
         const speedInput = document.getElementById('speed');
         const themeSelector = document.getElementById('themeSelector');
         const smoothnessInput = document.getElementById('smoothness');
+        const gridSizeInput = document.getElementById('gridSize');
+
+        // Toggle controls visibility
+        toggleControls.addEventListener('click', () => {
+            controls.classList.toggle('collapsed');
+            config.controlsCollapsed = controls.classList.contains('collapsed');
+            toggleControls.textContent = config.controlsCollapsed ? '▶' : '◀';
+        });
+
+        // Calculate grid dimensions based on viewport
+        function calculateGridSize() {
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+
+            // Calculate cell size based on the current grid dimensions
+            const cellWidth = Math.floor(viewportWidth / config.cols) - 5; // subtract gap
+            const cellHeight = Math.floor(viewportHeight / config.rows) - 5; // subtract gap
+
+            return { cellWidth, cellHeight };
+        }
 
         // Create grid
         function createGrid() {
             container.innerHTML = '';
             const boxCount = config.rows * config.cols;
+            const { cellWidth, cellHeight } = calculateGridSize();
 
             const fragment = document.createDocumentFragment();
             for (let i = 0; i < boxCount; i++) {
@@ -80,13 +109,15 @@
                 const col = i % config.cols;
                 box.dataset.row = row;
                 box.dataset.col = col;
+                box.style.width = `${cellWidth}px`;
+                box.style.height = `${cellHeight}px`;
                 fragment.appendChild(box);
             }
             container.appendChild(fragment);
 
             // Update grid layout
-            container.style.gridTemplateColumns = `repeat(${config.cols}, 50px)`;
-            container.style.gridTemplateRows = `repeat(${config.rows}, 50px)`;
+            container.style.gridTemplateColumns = `repeat(${config.cols}, ${cellWidth}px)`;
+            container.style.gridTemplateRows = `repeat(${config.rows}, ${cellHeight}px)`;
         }
 
         // Improved ripple effect function
@@ -274,8 +305,6 @@
 
             // Trigger three waves for a more dynamic effect
             animateWave(0);
-            animateWave(1);
-            animateWave(2);
         }
 
         // Apply hover effect
@@ -326,6 +355,11 @@
             });
         }
 
+        // Handle resizing
+        function handleResize() {
+            createGrid();
+        }
+
         // Update settings based on controls
         effectRangeInput.addEventListener('input', (e) => {
             config.effectRange = parseFloat(e.target.value);
@@ -341,6 +375,13 @@
 
         smoothnessInput.addEventListener('input', (e) => {
             config.smoothness = parseInt(e.target.value);
+        });
+
+        gridSizeInput.addEventListener('input', (e) => {
+            const size = parseInt(e.target.value);
+            config.rows = size;
+            config.cols = size;
+            createGrid();
         });
 
         themeSelector.addEventListener('change', (e) => {
@@ -361,9 +402,43 @@
             }
         });
 
+        // Handle keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Toggle controls with 'H' key
+            if (e.key === 'h' || e.key === 'H') {
+                controls.classList.toggle('collapsed');
+                config.controlsCollapsed = controls.classList.contains('collapsed');
+                toggleControls.textContent = config.controlsCollapsed ? '▶' : '◀';
+            }
+        });
+
         // Initialize the grid
+        window.addEventListener('resize', handleResize);
         createGrid();
         applyHoverEffects();
+
+        // Initial hint for controls
+        setTimeout(() => {
+            const hint = document.createElement('div');
+            hint.style.position = 'fixed';
+            hint.style.bottom = '20px';
+            hint.style.left = '50%';
+            hint.style.transform = 'translateX(-50%)';
+            hint.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+            hint.style.color = 'white';
+            hint.style.padding = '10px 20px';
+            hint.style.borderRadius = '20px';
+            hint.style.fontSize = '14px';
+            hint.style.opacity = '0.8';
+            hint.style.transition = 'opacity 0.5s ease';
+            hint.textContent = 'Press H to toggle controls panel';
+            document.body.appendChild(hint);
+
+            setTimeout(() => {
+                hint.style.opacity = '0';
+                setTimeout(() => hint.remove(), 500);
+            }, 3000);
+        }, 1000);
     </script>
 </body>
 
