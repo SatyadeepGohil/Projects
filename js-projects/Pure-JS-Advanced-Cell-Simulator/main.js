@@ -21,8 +21,8 @@ window.addEventListener('resize', () => {
 })
 
 let cells = [];
-const upperLimit = 5000;
-const radius = 1;
+const upperLimit = 500;
+const radius = 10;
 
 const maxVelocity = 3;
 const drag = 0.95;
@@ -48,10 +48,25 @@ const cellsY = new Float32Array(upperLimit);
 const cellsVX = new Float32Array(upperLimit);
 const cellsVY = new Float32Array(upperLimit);
 
+// Using Unit8Array for better performance
+const cellsColliding = new Uint8Array(upperLimit);
+const cellsCollisionTimer = new Uint8Array(upperLimit);
+const maxCollisionFrames = 5;
+
 const clampXMin = -radius;
 const clampXMax = canvas.width + radius;
 const clampYMin = -radius;
 const clampYMax = canvas.height + radius;
+
+const colorPoolSize = 1;
+const colorPool = new Array(colorPoolSize);
+
+for (let i = 0; i < colorPoolSize; i++) {
+    const hue = (i * (360 / colorPoolSize)) % 360;
+    colorPool[i] =  `hsl(${hue}, 100%, 50%)`
+}
+
+const cellsColorIndex = new Uint8Array(upperLimit);
 
 // Generates random cells
 for (let i = 0; i < upperLimit; i++) {
@@ -59,12 +74,17 @@ for (let i = 0; i < upperLimit; i++) {
     cellsY[i] = Math.random() * (canvas.height - 2 * radius) + radius;
     cellsVX[i] = (Math.random() * 2 - 1) * maxVelocity;
     cellsVY[i] = (Math.random() * 2 - 1) * maxVelocity;
+    cellsColorIndex[i] = i % colorPoolSize;
 }
 
 const clamp = (val, min, max) => val < min ? min : (val > max ? max : val);
 
 const moveAndWrap = () => {
     for (let i = 0; i < upperLimit; i++) {
+
+        if (cellsCollisionTimer[i] > 0) {
+            cellsCollisionTimer[i]--;
+        }
 
         if (Math.abs(cellsVX[i]) > maxVelocity) {
             cellsVX[i] *= drag;
@@ -121,6 +141,10 @@ const rebuildGrid = () => {
 
 const applyRepulsionWithGrid = () => {
     rebuildGrid();
+
+    for (let i = 0; i < upperLimit; i++) {
+        cellsColliding[i] = 0;
+    } 
     
     for (let gx = 0; gx < numCols; gx++) {
         for (let gy = 0; gy < numRows; gy++) {
@@ -160,6 +184,15 @@ const applyRepulsionWithGrid = () => {
                             const distanceSquared = diffX * diffX + diffY * diffY;
 
                             if (distanceSquared < repulsionThresholdSquared) {
+
+                                // by assigning 1 it is getting marked as colliding
+                                cellsColliding[cellIdxA] = 1;
+                                cellsColliding[cellIdxB] = 1;
+
+                                // Reset collision timer to max for a more prominent visual effect
+                                cellsCollisionTimer[cellIdxA] = maxCollisionFrames;
+                                cellsCollisionTimer[cellIdxB] = maxCollisionFrames;
+
                                 //Only calcuting square root for optimization
                                 const distance = Math.sqrt(distanceSquared);
                                 const effectiveDistance = Math.max(distance, minDistance);
@@ -188,8 +221,8 @@ const applyRepulsionWithGrid = () => {
 const draw = () => {
     offCtx.clearRect(0,0, canvas.width, canvas.height);
 
+    // drawing non colliding cells
     offCtx.beginPath();
-
     for (let i = 0; i < upperLimit; i++) {
         offCtx.moveTo(cellsX[i] + radius, cellsY[i]);
         offCtx.arc(cellsX[i], cellsY[i], radius, 0, 2 * Math.PI);
@@ -198,6 +231,25 @@ const draw = () => {
     offCtx.fillStyle = 'black';
     offCtx.fill();
 
+    // drawing colliding cells by color group to minimize context changes
+    for (let colorIdx = 0; colorIdx < colorPoolSize; colorIdx++) {
+        let hasCollidingCells = false;
+        offCtx.beginPath();
+
+        for (let i = 0; i < upperLimit; i++) {
+            if (cellsCollisionTimer[i] > 0 && cellsColorIndex[i] === colorIdx) {
+                offCtx.moveTo(cellsX[i] + radius, cellsY[i]);
+                offCtx.arc(cellsX[i], cellsY[i], radius, 0, 2 * Math.PI);
+                hasCollidingCells = true;
+            }
+        }
+
+        if (hasCollidingCells) {
+            offCtx.fillStyle = colorPool[colorIdx];
+            offCtx.fill();
+        }
+    }
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(offScreenCanvas, 0, 0);
 }
@@ -205,15 +257,30 @@ const draw = () => {
 let frameCount = 0;
 let lastFPSUpdate = 0;
 let fps = 0;
+let collisionCount = 0;
 
 function drawStats() {
-    ctx.fillStyle = 'white';
-    ctx.fillRect(10, 10, 120, 50);
-    ctx.fillStyle = ('black');
-    ctx.font = '14px Arial';
-    ctx.fillText(`FPS ${fps.toFixed(1)}`, 20, 30);
-    ctx.fillText(`Cells: ${upperLimit}`, 20, 50);
+    const padding = 10;
+    const lineHeight = 25;
+
+    // Background box
+    ctx.fillStyle = 'grey';
+    ctx.fillRect(10, 10, 180, 90); // Slightly bigger box for more room
+
+    // Text style
+    ctx.fillStyle = 'black';
+    ctx.font = '26px Arial';
+
+    // Base position
+    const startX = 10 + padding;
+    let startY = 10 + padding + 20; // First line's Y position
+
+    // Draw text with spacing
+    ctx.fillText(`FPS: ${fps.toFixed(1)}`, startX, startY);
+    ctx.fillText(`Cells: ${upperLimit}`, startX, startY + lineHeight);
+    ctx.fillText(`Collisions: ${collisionCount}`, startX, startY + 2 * lineHeight);
 }
+
 
 function updateFPS(now) {
     frameCount++;
@@ -222,6 +289,11 @@ function updateFPS(now) {
         fps = frameCount * 1000 / (now - lastFPSUpdate);
         frameCount = 0;
         lastFPSUpdate = now;
+
+        collisionCount = 0;
+        for (let i = 0; i < upperLimit; i++) {
+            if (cellsColliding[i]) collisionCount++;
+        }
     }
 }
 
