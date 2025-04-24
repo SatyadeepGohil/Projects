@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  text-align: center;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.App header {
+  background-color: #0b1426;
+  padding: 20px 0;
+  color: white;
+}
+
+.App-main {
+  flex: 1;
+  padding: 20px;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.App-footer {
+  padding: 10px;
+  background-color: #0b1426;
+  color: white;
+  font-size: 14px;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.crypto-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  background-color: rgba(128, 128, 128, 0.093);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.crypto-table th,
+.crypto-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.crypto-table th {
+  background-color: lightblue;
+  font-weight: 600;
+  color: #58667e;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.crypto-table tbody tr:hover {
+  background-color: wheat;
+  transform: translateY(-5px);
+  transition: all 0.3s ease-in-out;
+}
+
+.crypto-logo {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.crypto-name {
+  font-weight: 500;
+}
+
+.price {
+  font-weight: 600;
+}
+
+.percent-positive {
+  color: #16c784;
+  font-weight: 500;
+}
+
+.percent-negative {
+  color: #ea3943;
+  font-weight: 500;
+}
+
+.chart-cell {
+  width: 100px;
+}
+
+@media (max-width: 1200px) {
+  .crypto-table {
+    min-width: 1000px;
+  }
+}

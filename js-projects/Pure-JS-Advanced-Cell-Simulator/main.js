@@ -21,7 +21,7 @@ window.addEventListener('resize', () => {
 })
 
 let cells = [];
-const upperLimit = 500;
+const upperLimit = 100;
 const radius = 10;
 
 const maxVelocity = 3;
@@ -31,7 +31,7 @@ const repulsionThresholdSquared = repulsionThreshold * repulsionThreshold;
 const minDistance = 0.5; // originally 1.0 but reduced to 0.5 for smaller radius
 const repulsionFactor = 0.5;
 const maxForce = 0.5;
-const gridCellSize = Math.max(repulsionThreshold, 20); // lerger grid cells for less checks
+const gridCellSize = Math.max(repulsionThreshold, 20); // larger grid cells for less checks
 const numCols = Math.ceil(canvas.width / gridCellSize);
 const numRows = Math.ceil(canvas.height / gridCellSize);
 
