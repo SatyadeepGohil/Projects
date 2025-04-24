@@ -18,6 +18,19 @@ function App() {
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
+    const handleConnectionError = () => {
+      console.log('Switching to mock data due to connection error');
+      setUseMock(true);
+    };
+
+    window.addEventListener('binanceConnectionError', handleConnectionError);
+
+    return () => {
+      window.removeEventListener('binanceConnectionError', handleConnectionError);
+    }
+  })
+
+  useEffect(() => {
     let service;
 
     if (useMock) {
@@ -51,8 +64,8 @@ function App() {
       <div className='App'>
         <header className='App-header'>
           <h1>Crypto Tracker</h1>
-          <div className='data-source-toggle'>
-            <button onClick={toggleDataSource}>
+          <div className={'data-source-toggle'}>
+            <button onClick={toggleDataSource} className={`${useMock ? 'mock-btn': 'binance-btn'}`}>
               Using {useMock ? 'Mock' : 'Binance'} Data
             </button>
             <span className={`connection-status ${isConnected ? 'connected' : 'disconnected'}`}>

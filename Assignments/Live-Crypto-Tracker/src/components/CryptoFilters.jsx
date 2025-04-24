@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 const CryptoFilters = ({ onFilterChange }) => {
     const [filters, setFilters] = useState({
@@ -15,9 +15,9 @@ const CryptoFilters = ({ onFilterChange }) => {
             setFilters(parsedFilters);
             onFilterChange(parsedFilters);
         }
-    }, [onFilterChange]);
+    }, []);
 
-    const handleFilterChange = (e) => {
+    const handleFilterChange = useCallback((e) => {
         const { name, value } = e.target;
         
         const newFilters = {
@@ -28,9 +28,9 @@ const CryptoFilters = ({ onFilterChange }) => {
         setFilters(newFilters);
         localStorage.setItem('cryptoFilters', JSON.stringify(newFilters));
         onFilterChange(newFilters);
-    };
+    }, [filters, onFilterChange]);
 
-    const clearFilters = () => {
+    const clearFilters = useCallback(() => {
         const defaultFilters = {
             nameSearch: '',
             minPrice: '',
@@ -41,7 +41,7 @@ const CryptoFilters = ({ onFilterChange }) => {
         setFilters(defaultFilters);
         localStorage.setItem('cryptoFilters', JSON.stringify(defaultFilters));
         onFilterChange(defaultFilters);
-    };
+    }, [onFilterChange]);
 
       return (
         <div className="crypto-filters">
@@ -65,7 +65,7 @@ const CryptoFilters = ({ onFilterChange }) => {
                 onChange={handleFilterChange}
                 className="filter-input"
                 />
-                <span>to</span>
+                <span>To</span>
                 <input
                 type="number"
                 name="maxPrice"
