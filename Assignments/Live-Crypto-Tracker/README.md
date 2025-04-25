@@ -1,12 +1,66 @@
-# React + Vite
+# Crypto Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React app demonstrating real-time price and volume fluctuations for five selected cryptocurrencies, with live data from Binance and a fallback mock service.
 
-Currently, two official plugins are available:
+## Project Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+.
+└── src/
+    ├── assets/
+    ├── components/
+    │   ├── CryptoFilters.jsx
+    │   ├── CryptoTable.jsx
+    │   └── CryptoTableRow.jsx
+    ├── features/crypto/
+    │   ├── cryptoSlice.js
+    │   └── initialData.js
+    ├── services/
+    │   ├── binanceWebSocket.js
+    │   └── mockWebSocket.js
+    ├── App.css
+    ├── App.jsx
+    └── main.jsx
+```
 
-## Expanding the ESLint configuration
+## 🚀 Setup Instructions
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+# Clone repo
+git clone <repo-url>
+cd crypto-tracker
+
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+_No environment variables required (mock service only)._ 
+
+## 🛠 Tech Stack & Architecture
+
+- **Framework**: React (Vite)
+- **State Management**: Redux Toolkit + React-Redux
+- **WebSocket Services**:
+  - **BinanceWebSocketService**: streams live data for 5 assets
+  - **MockWebSocketService**: simulates updates when real WebSocket fails
+- **Components**:
+  - **Header**: title, data-source toggle button, connection status indicator
+  - **CryptoFilters**: name search, price range, gainers/losers filter
+  - **CryptoTable**: sortable table of assets with sparklines and favorite toggles
+
+**Flow**:
+1. App initializes Redux store
+2. Attempts Binance connection; on error, switches to mock (console logs available)
+3. UI button allows manual toggle between real and mock data
+
+## 🎬 Demo
+
+![Demo GIF](path/to/demo.gif)
+
+Video link: [Watch Demo](#)
