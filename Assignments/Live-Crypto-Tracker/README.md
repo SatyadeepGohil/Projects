@@ -49,6 +49,8 @@ _No environment variables required (mock service only)._
 - **WebSocket Services**:
   - **BinanceWebSocketService**: streams live data for 5 assets
   - **MockWebSocketService**: simulates updates when real WebSocket fails
+- **LocalStorage**:
+  - Favorites and filter selections are stored persistently
 - **Components**:
   - **Header**: title, data-source toggle button, connection status indicator
   - **CryptoFilters**: name search, price range, gainers/losers filter
@@ -58,9 +60,8 @@ _No environment variables required (mock service only)._
 1. App initializes Redux store
 2. Attempts Binance connection; on error, switches to mock (console logs available)
 3. UI button allows manual toggle between real and mock data
+4. User-selected favorites and filters persist across sessions via localStorage
 
 ## 🎬 Demo
 
-![Demo GIF](path/to/demo.gif)
-
-Video link: [Watch Demo](#)
+Video link: [Watch Demo](https://www.loom.com/share/1aac39fc424248a4b8ccf4013592fcc9?sid=c4b049f7-42aa-4643-a14d-b9fb4e2e4a9c)
