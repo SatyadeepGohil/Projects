@@ -28,7 +28,7 @@ A simple React app demonstrating real-time price and volume fluctuations for fiv
 ```bash
 # Clone repo
 git clone <repo-url>
-cd crypto-tracker
+cd Live-Crypto-Tracker
 
 # Install dependencies
 npm install
@@ -36,8 +36,6 @@ npm install
 # Start dev server
 npm run dev
 
-# Build for production
-npm run build
 ```
 
 _No environment variables required (mock service only)._ 
