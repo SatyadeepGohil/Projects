@@ -5,11 +5,19 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let boids = [];
-let numOfBoids = 200;
+const numOfBoids = 100;
+const maxSpeed = 5;
+const minSpeed = 0.5;
+const maxForce = 1;
 
-let maxSpeed = 3;
-let minSpeed = 0.5;
-let maxForce = 1;
+let mode = 'dreamy';
+
+document.getElementById('dreamyBtn').addEventListener('click', () => {
+    mode = 'dreamy';
+})
+document.getElementById('vividBtn').addEventListener('click', () => {
+    mode = 'vivid';
+})
 
 
 class Boid {
@@ -18,60 +26,22 @@ class Boid {
         this.vx = vx;
         this.vy = vy;
         this.acceleration = { x: x, y: y};
-        this.radius = 2;
-        this.color = 'black';
+        this.radius = 5;
+        this._hueOffSet = Math.random() * 360;
+        this.history = [];
+        this.maxTrail = 30;
     }
 
-    draw(ctx) {
-        ctx.beginPath();
-        ctx.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-        ctx.closePath();
-    }
+    applyForce(f) {
+        const m = Math.hypot(f.x, f.y);
 
-    update() {
-        this.vx += this.acceleration.x;
-        this.vy += this.acceleration.y;
-
-        let speed = Math.sqrt(this.vx ** 2 + this.vy ** 2);
-        if (speed > maxSpeed) {
-            this.vx = (this.vx / speed) * maxSpeed;
-            this.vy = (this.vy / speed) * maxSpeed;
+        if (m > maxForce) {
+            f.x = (f.x/m) * maxForce;
+            f.y = (f.y/m) * maxForce;
         }
 
-        this.position.x += this.vx;
-        this.position.y += this.vy;
-
-        this.acceleration.x = 0;
-        this.acceleration.y = 0;
-
-        if (this.position.x + this.radius > canvas.width) {
-            this.position.x = this.radius;
-        }
-
-        if (this.position.x - this.radius < 0) {
-            this.position.x = canvas.width - this.radius;
-        }
-
-        if (this.position.y + this.radius > canvas.height) {
-            this.position.y = this.radius;
-        }
-
-        if (this.position.y - this.radius < 0) {
-            this.position.y = canvas.height - this.radius;
-        }
-    }
-
-    applyForce(force) {
-        this.acceleration.x += force.x;
-        this.acceleration.y += force.y;
-
-        let magnitude = Math.sqrt(force.x ** 2 + force.y ** 2);
-        if (magnitude > maxForce) {
-            force.x = (force.x / magnitude) * maxForce;
-            force.y = (force.y / magnitude) * maxForce;
-        }
+        this.acceleration.x += f.x;
+        this.acceleration.y += f.y;
     }
 
     flock(boids) {
@@ -92,9 +62,8 @@ class Boid {
     }
 
     seperate(boids) {
-        let desiredSeparation = 25.0;
-        let steer = { x: 0, y: 0};
-        let count = 0;
+        const desiredSeparation = 25.0;
+        let steer = { x: 0, y: 0}, count = 0;
 
         boids.forEach(other => {
             let d = Math.sqrt((this.position.x - other.position.x) ** 2 + (this.position.y - other.position.y) ** 2);
@@ -188,6 +157,82 @@ class Boid {
         }
         return { x: 0, y: 0};
     }
+
+    update() {
+        this.vx += this.acceleration.x;
+        this.vy += this.acceleration.y;
+
+        let speed = Math.sqrt(this.vx ** 2 + this.vy ** 2);
+        if (speed > maxSpeed) {
+            this.vx = (this.vx / speed) * maxSpeed;
+            this.vy = (this.vy / speed) * maxSpeed;
+        }
+
+        this.position.x += this.vx;
+        this.position.y += this.vy;
+
+        this.acceleration.x = 0;
+        this.acceleration.y = 0;
+
+        let wrapped = false;
+
+        if (this.position.x + this.radius > canvas.width) {
+            this.position.x = this.radius; wrapped = true;
+        }
+
+        if (this.position.x - this.radius < 0) {
+            this.position.x = canvas.width - this.radius; wrapped = true;
+        }
+
+        if (this.position.y + this.radius > canvas.height) {
+            this.position.y = this.radius; wrapped = true;
+        }
+
+        if (this.position.y - this.radius < 0) {
+            this.position.y = canvas.height - this.radius; wrapped = true;
+        }
+
+        this.history.push({...this.position });
+        if (this.history.length > this.maxTrail) this.history.shift();
+
+        if (wrapped) {
+            this.history = [{ ...this.position }]
+        }
+
+        this.acceleration.x = 0;
+        this.acceleration.y = 0;
+    }
+
+    draw(ctx) {
+        if (mode === 'vivid') {
+            if (this.history.length > 1) {
+                ctx.lineWidth = this.radius;
+                for (let i = 1; i < this.history.length; i++) {
+                    const p0 = this.history[i - 1];
+                    const p1 = this.history[i];
+                    const t = i / this.history.length;
+                    const hue = (this._hueOffSet + 360 * t) % 360;
+                    ctx.strokeStyle = `hsl(${hue}, 80%, ${30 + 50 * t}%)`;
+                    ctx.beginPath();
+                    ctx.moveTo(p0.x, p0.y);
+                    ctx.lineTo(p1.x, p1.y);
+                    ctx.stroke()
+                }
+            }
+            ctx.beginPath();
+            ctx.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'white';
+            ctx.fill();
+            ctx.closePath();
+        } else {
+            const hue = (performance.now() * 0.8 + this._hueOffSet) % 360;
+            ctx.beginPath();
+            ctx.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `hsl(${hue}, 90%, 60%)`;
+            ctx.fill();
+            ctx.closePath();
+        }
+    }
 }
 
 function createBoids(numOfBoids) {
@@ -203,12 +248,18 @@ function createBoids(numOfBoids) {
 createBoids(numOfBoids);
 
 function update() {
-    ctx.clearRect( 0, 0, canvas.width, canvas.height);
+    if (mode === 'dreamy') {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    } else {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+        ctx.fillRect( 0, 0, canvas.width, canvas.height);
+    }
 
     boids.forEach(boid => {
         boid.flock(boids);
-        boid.draw(ctx);
         boid.update();
+        boid.draw(ctx);
     })
 
     requestAnimationFrame(update);
