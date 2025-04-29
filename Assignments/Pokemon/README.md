@@ -1,4 +1,3 @@
-```markdown
 # Pokémon Finder 🧩
 
 A responsive web app to search and filter Pokémon by name or type using data from the [PokéAPI](https://pokeapi.co/). Built with **React**, **Vite**, and plain **CSS**.
@@ -72,4 +71,3 @@ pokemon-finder/
 ---
 
 Made with ❤️ by Satyadeep Gohil
-```
