@@ -1,12 +1,75 @@
-# React + Vite
+```markdown
+# Pokémon Finder 🧩
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive web app to search and filter Pokémon by name or type using data from the [PokéAPI](https://pokeapi.co/). Built with **React**, **Vite**, and plain **CSS**.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔍 Search Pokémon by name
+- 🧪 Filter Pokémon by type
+- 🖼️ Display Pokémon with type badges and images
+- 🎴 Clickable cards that open detailed modals
+- 🧭 Sticky header for better UX
+- ⚡ Fast and optimized using Vite
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React** – Frontend framework
+- **Vite** – Lightning-fast development build tool
+- **CSS** – Styling (no frameworks)
+
+## 📦 Getting Started
+
+### 1. Clone the repo
+```bash
+git clone https://github.com/your-username/pokemon-finder.git
+cd pokemon-finder
+```
+
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Start development server
+```bash
+npm run dev
+```
+
+### 4. Build for production
+```bash
+npm run build
+```
+
+## 🖼️ Screenshots
+
+*(Optional – Add screenshots or GIFs of your app here)*
+
+## 📁 Folder Structure
+
+```
+pokemon-finder/
+├── public/
+├── src/
+│   ├── PokemonCard.jsx
+│   ├── App.jsx
+│   ├── App.css
+│   └── main.jsx
+├── index.html
+├── package.json
+└── vite.config.js
+```
+
+## 🌐 API Used
+
+- [PokéAPI](https://pokeapi.co/): A free RESTful API for Pokémon data
+
+## 🙌 Credits
+
+- Font: ["Press Start 2P"](https://fonts.google.com/specimen/Press+Start+2P)
+- Pokémon Data: [PokéAPI](https://pokeapi.co/)
+
+---
+
+Made with ❤️ by Satyadeep Gohil
+```
