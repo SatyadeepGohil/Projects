@@ -92,42 +92,41 @@ function HomePage() {
         typeFilter={typeFilter}
         setTypeFilter={setTypeFilter}
         allTypes={allTypes}
-      />  
+      />
+      <PokemonGrid pokemons={filteredPokemons} loading={loading} />
+      
+      <div className='pagination-controls'>
+        <button onClick={() => setPage((p) => Math.max(1, p - 1))}
+        disabled={page === 1}
+        >
+          Prev
+        </button>
+        <span>
+          Page {page} of {totalPages || 1}
+        </span>
+        <button 
+        onClick={() => setPage((p) => Math.min(totalPages || 1, p + 1))}
+        disabled={page === totalPages || totalPages === 0}
+        >
+          Next
+        </button>
+
+        <select 
+        value={itemsPerPage} 
+        onChange={(e) => {
+          const newValue = Number(e.target.value);
+          setItemsPerPage(newValue);
+          setPage(1);
+        }}
+        >
+          {[10, 20, 50].map((val, index) => (
+            <option key={index} value={val}>
+              {val} per page
+            </option>
+          ))}
+        </select>
+      </div>
     </main>
-
-    <PokemonGrid pokemons={filteredPokemons} loading={loading} />
-    
-    <div className='pagination-controls'>
-      <button onClick={() => setPage((p) => Math.max(1, p - 1))}
-       disabled={page === 1}
-       >
-        Prev
-      </button>
-      <span>
-        Page {page} of {totalPages || 1}
-      </span>
-      <button 
-      onClick={() => setPage((p) => Math.min(totalPages || 1, p + 1))}
-      disabled={page === totalPages || totalPages === 0}
-      >
-        Next
-      </button>
-
-      <select 
-      value={itemsPerPage} 
-      onChange={(e) => {
-        const newValue = Number(e.target.value);
-        setItemsPerPage(newValue);
-        setPage(1);
-      }}
-      >
-        {[10, 20, 50].map((val, index) => (
-          <option key={index} value={val}>
-            {val} per page
-          </option>
-        ))}
-      </select>
-    </div>
     </>
   )
 }
