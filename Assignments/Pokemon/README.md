@@ -2,15 +2,6 @@
 
 A responsive web app to search and filter Pokémon by name or type using data from the [PokéAPI](https://pokeapi.co/). Built with **React**, **Vite**, and plain **CSS**.
 
-## 🚀 Features
-
-- 🔍 Search Pokémon by name
-- 🧪 Filter Pokémon by type
-- 🖼️ Display Pokémon with type badges and images
-- 🎴 Clickable cards that open detailed modals
-- 🧭 Sticky header for better UX
-- ⚡ Fast and optimized using Vite
-
 ## 🛠️ Tech Stack
 
 - **React** – Frontend framework
