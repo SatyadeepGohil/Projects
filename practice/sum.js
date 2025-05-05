@@ -1,4 +1,4 @@
-const array = [[1,2],[3,4],[5,6]];
+/* const array = [[1,2],[3,4],[5,6]];
 
 function flatenArray(arr) {
     let res = [];
@@ -10,4 +10,18 @@ function flatenArray(arr) {
     return res;
 }
 
-console.log(flatenArray(array), array.flat())
+console.log(flatenArray(array), array.flat()) */
+
+let string = '1';
+let number = 1;
+let res;
+
+function fn (s, n) {
+    if (s === n) {
+        return res = true;
+    } else {
+        return res = false;
+    }
+}
+
+console.log(fn(string, number));
