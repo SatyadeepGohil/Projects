@@ -6,7 +6,7 @@ import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
 import '../src/App.css';
 
 function App() {
-  const [cards, setCards] = useState(null);
+  const [cards, setCards] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [filter, setFilter] = useState('');
@@ -25,6 +25,8 @@ function App() {
   }, []);
 
   const renderStars = (rating) => {
+    if (typeof rating !== 'number') return 'No rating';
+
     const safeRating = typeof rating === 'number' ? Math.min(Math.max(rating, 0), 5) : 0;
     const fullStars = Math.floor(safeRating);
     const halfStar = safeRating - fullStars >= 0.5;
@@ -105,11 +107,11 @@ function App() {
       <div id="card-container">
         {sortedCards.map((card) => (
           <div className="card" key={card.id}>
-            <img src={card.image} alt={card.name} />
+            <img src={card.image === "" ? null : card.image} alt={card.name} />
             <h3>{card.name}</h3>
             <p>{card.price}</p>
             <div className="rating">
-              {renderStars(card.rating.average)}
+              {card.rating?.average != null ? renderStars(card.rating.average) : 'No rating'}
             </div>
           </div>
         ))}
