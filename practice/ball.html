@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+
+        canvas {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+</body>
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        animate();
+    })
+
+    let balls = [];
+    let numofBalls = 100;
+
+    class Ball {
+        constructor (x, y, dx, dy, radius, gravity, bounce, color) {
+            this.x = x,
+            this.y = y,
+            this.dx = dx,
+            this.dy = dy,
+            this.radius = radius,
+            this.gravity = gravity,
+            this.bounce = bounce,
+            this.color = color,
+            this.maxVelocity = 50,
+            this.drag = 0.001
+        }
+
+        draw (ctx) {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+        }
+
+        update(canvas) {
+            this.dy += this.gravity;
+            this.x += this.dx;
+            this.y += this.dy;
+
+
+            if (this.y + this.radius > canvas.height) {
+                this.y = canvas.height - this.radius;
+                this.dy *= -this.bounce;
+            }
+
+            if (this.y - this.radius < 0) {
+                this.y = this.radius;
+                this.dy *= -this.bounce;
+            }
+
+            if (this.x + this.radius > canvas.width) {
+                this.x = this.radius;
+            }
+
+            if (this.x - this.radius < 0) {
+                this.x = canvas.width - this.radius;
+            }
+
+            if (this.dy >= this.maxVelocity) {
+                this.dy *= this.drag;
+            }
+
+            if (this.dx >= this.maxVelocity) {
+                this.dx *= this.drag;
+            }
+        }
+
+        collisions () {
+            for (let i = 0; i < balls.length; i++) {
+                const other = balls[i];
+                if (other === this) continue;
+
+                const distanceX = other.x - this.x;
+                const distanceY = other.y - this.y;
+                const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+                const minDist = this.radius + other.radius;
+
+                if (distance < minDist) {
+                const angle = Math.atan2(distanceY, distanceX);
+                const targetX = other.x + Math.cos(angle) * minDist;
+                const targetY = other.y + Math.sin(angle) * minDist;
+                const ax = (targetX - this.x) * 0.05;
+                const ay = (targetY - this.y) * 0.05;
+
+                    this.dx -= ax;
+                    this.dy -= ay;
+                    other.dx += ax;
+                    other.dy += ay;
+                }
+            }
+        }
+    }
+
+    function intialBallData (items) {
+
+        for (let i = 0; i < items; i++) {
+            let radius = 10;
+            let x = Math.random() * (canvas.width - 2 * radius) + radius;
+            let y = Math.random() * (canvas.height - 2 * radius) + radius;
+            let dx = Math.random() * 2 - 0.5;
+            let dy = Math.random() * 2 - 0.5;
+            let gravity = 0;
+            let bounce = 0.8;
+            let color = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+
+            balls.push(new Ball(x, y, dx, dy, radius, gravity, bounce, color));
+        }
+    }
+
+    intialBallData(numofBalls);
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        balls.forEach(ball => {
+            ball.draw(ctx);
+            ball.update(canvas);
+            ball.collisions();
+        })
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+
+</script>
+</html>

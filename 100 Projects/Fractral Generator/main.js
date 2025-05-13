@@ -13,7 +13,12 @@ class FractalForest {
         this.trees = [];
         this.fallenFruits = [];
 
+        // intial tree
         this.addTree(this.canvas.width /2, this.canvas.height);
+
+        this.lastFrameTime = performance.now();
+        this.frameCounter = 0;
+        this.fps = 0;
 
         this.animate = this.animate.bind(this);
         requestAnimationFrame(this.animate);
@@ -31,7 +36,8 @@ class FractalForest {
             maturityAge: 700 + Math.floor(Math.random() * 300), // when tree will maturity
             deathAge: 800 + Math.floor(Math.random() * 800), // when tree will die
             isDying: false, // flag for dying state
-            deathProgress: 0 // progress of death for animation
+            deathProgress: 0, // progress of death for animation
+            energy: 100 // energy for the fruit production
         };
 
         this.trees.push(tree);
@@ -39,7 +45,7 @@ class FractalForest {
 
     updateWind() {
         // this condition controls how many times the wind will appear on the screen
-        if (Math.random() < 0.002) {
+        if (Math.random() < 0.001) {
             this.windForce = (Math.random() * 0.4 - 0.2) * (Math.random() < 0.5 ? - 1 : 1);
             this.windFrequency = 60 + Math.random() * 100;
         }
@@ -72,6 +78,12 @@ class FractalForest {
 
         this.updateFruits(tree);
 
+        // energy regeneration
+        if (tree.age > tree.maturityAge * 0.4 && !tree.isDying && tree.energy < 100) {
+            tree.energy += 0.05;
+        }
+
+        // aging added
         tree.age++;
 
         if (tree.age > tree.deathAge && !tree.isDying) {
@@ -119,7 +131,6 @@ class FractalForest {
                     branch.startY === y
                 ) {
                     branchExists = true;
-
                     branch.angle = branchAngle;
                     branch.endX = x2;
                     branch.endY = y2;
@@ -153,28 +164,30 @@ class FractalForest {
         }
 
         this.ctx.lineWidth = currentDepth > 5 ? 1 : 4 - (tree.isDying ? tree.deathProgress * 2 : 0);
-        this.ctx.shadowBlur = 10;
-        this.ctx.shadowColor = this.ctx.strokeStyle;
-        this.ctx.globalCompositionOperation = 'lighter';
-
         this.ctx.beginPath();
         this.ctx.moveTo(x, y);
         this.ctx.lineTo(x2, y2);
         this.ctx.stroke();
         this.ctx.restore();
 
-        if (/* currentDepth === maxDepth - 1 &&
-            tree.maxDepth >= tree.targetMaxDepth &&
-            tree.age > tree.maturityAge * 0.7 &&
-            Math.random() < 0.01 &&
-            !tree.isDying */
-            !tree.isDying && currentDepth > maxDepth - 1 && tree.age > tree.maturityAge * 0.4 && Math.random() < 0.001
+        // fruit creation logic
+        const maxFruitPerBranch = 3;
+        const fruitCountAtDepth = tree.fruits.filter(f => f.branchDepth === currentDepth).length;
+
+        if (!tree.isDying &&
+            currentDepth > maxDepth - 1 &&
+            tree.age > tree.maturityAge * 0.4 &&
+            Math.random() < 0.005 &&
+            fruitCountAtDepth < maxFruitPerBranch &&
+            tree.energy >= 10 /* && */
+            /* tree.fruits.length < tree.targetMaxDepth * 2 */
         ) {
             const hue = Math.random() * 360;
             const fruitExists = tree.fruits.some(f => 
                 Math.abs(f.x - x2) < 5 && Math.abs(f.y - y2) < 5
             );
 
+            // creating fruit consumes energy
             if (!fruitExists) {
                 tree.fruits.push({
                     x: x2,
@@ -186,8 +199,13 @@ class FractalForest {
                     fallSpeed: 0,
                     radius: 0,
                     branchDepth: currentDepth,
-                    maxRadius: 3 + Math.random() * 3 // controls maximum radius of each fruit
-                })
+                    maxRadius: 3 + Math.random() * 2, // controls maximum radius of each fruit
+                    branchIndex: tree.branches.length - 2, // tracking this fruit to know which branch it is on
+                    relativePos: 1 // Position at the end of the branch
+                });
+
+                // consumption of energy when creating the fruit
+                tree.energy -= 10;
             }
         }
 
@@ -216,16 +234,53 @@ class FractalForest {
         for (let i = tree.fruits.length - 1; i >= 0; i--) {
             const fruit = tree.fruits[i];
 
+            // updating fruit position based on it's branch position
+            if (!fruit.falling && fruit.branchIndex !== undefined) {
+                const branch = tree.branches.find((b, idx) => idx === fruit.branchIndex);
+
+                if (branch) {
+                    
+                    if (fruit.relativePos === undefined) {
+                        // finding fruit's intial relative position
+                        const branchVector = {
+                            x: branch.endX - branch.startX,
+                            y: branch.endY - branch.startY
+                        };
+                        const fruitVector = {
+                            x: fruit.x - branch.startX,
+                            y: fruit.y - branch.startY
+                        }
+
+                        // Projeting fruit position to branch vector to get the relative position
+                        const branchLength = Math.sqrt(branchVector.x * branchVector.x + branchVector.y * branchVector.y);
+                        const dotProduct = (fruitVector.x * branchVector.x + fruitVector.y * branchVector.y) / (branchLength * branchLength);
+
+                        //storing relative psotioin for future updates reducing potential load
+                        fruit.relativePos = Math.max(0, Math.min(1, dotProduct));
+                    }
+
+                    // applying relative positioin to the current branch position
+                    fruit.x = branch.startX + (branch.endX - branch.startX) * fruit.relativePos;
+                    fruit.y = branch.startY + (branch.endY - branch.startY) * fruit.relativePos;
+                }
+            }
+
             this.ctx.save();
-            this.ctx.globalCompositionOperation = 'lighter';
+
+            // only using composition for mature fruits
+            if (fruit.radius > fruit.maxRadius * 0.7) {
+                this.ctx.globalCompositionOperation = 'lighter';
+            }
 
             if (fruit.radius < fruit.maxRadius && !fruit.falling) {
                 fruit.radius += 0.05;
             }
 
-            // outer glow
-            this.ctx.shadowColor = fruit.color;
-            this.ctx.shadowBlur = 10;
+            // outer glow of only mature fruits
+            if (fruit.radius >= fruit.maxRadius * 0.9) {
+                this.ctx.shadowColor = fruit.color;
+                this.ctx.shadowBlur = 5;
+            }
 
             // main body of the fruit
             this.ctx.beginPath();
@@ -234,16 +289,19 @@ class FractalForest {
             this.ctx.fill();
 
             //Highlight
-            this.ctx.beginPath();
-            this.ctx.arc(
-                fruit.x - fruit.radius * 0.3,
-                fruit.y - fruit.radius * 0.3,
-                fruit.radius * 0.6,
-                0,
-                Math.PI * 2
-            );
-            this.ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-            this.ctx.fill();
+            if (fruit.radius > 1) {
+                this.ctx.beginPath();
+                this.ctx.arc(
+                    fruit.x - fruit.radius * 0.3,
+                    fruit.y - fruit.radius * 0.3,
+                    fruit.radius * 0.4,
+                    0,
+                    Math.PI * 2
+                );
+                this.ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+                this.ctx.fill();
+            }
+            
             this.ctx.restore();
 
             fruit.maturityAge++;
@@ -284,14 +342,12 @@ class FractalForest {
 
             this.ctx.save();
             this.ctx.fillStyle = 'rgba(200, 200, 50, 0.8)';
-            this.shadowColor = 'rgba(255, 255, 150, 0.6)'
-            this.ctx.shadowBlur = 8;
             this.ctx.beginPath();
             this.ctx.arc(fallenFruit.x, fallenFruit.y - 2, radius, 0, Math.PI * 2);
             this.ctx.fill();
 
             // germination indicator for the fruit ready to sprout
-            if (fallenFruit.age > fallenFruit.germinationTime * 7 && !fallenFruit.sprouted) {
+            if (fallenFruit.age > fallenFruit.germinationTime * 0.9 && !fallenFruit.sprouted) {
                 this.ctx.fillStyle = 'rgba(100, 255, 100, 0.5)';
                 this.ctx.beginPath();
                 this.ctx.arc(fallenFruit.x, fallenFruit.y - 4, radius * 0.7, 0, Math.PI * 2);
@@ -322,12 +378,34 @@ class FractalForest {
     }
 
     animate() {
-        
-        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        const now = performance.now();
+        const elapsed = now - this.lastFrameTime;
 
+        // upadting fps counter every second
+        this.frameCounter++;
+        if (elapsed > 1000) {
+            this.fps = Math.round((this.frameCounter * 1000) / elapsed);
+            this.frameCounter = 0;
+            this.lastFrameTime = now;
+
+            // skipping background clearing every frame fro perfomance if fps is low
+            if (this.fps < 30) {
+                this.clearEveryFrame = false;
+            } else {
+                this.clearEveryFrame = true;
+            }
+        }
+
+        // using a lighter color methaod during low fps
+        if (this.clearEveryFrame || this.frameCounter % 2 === 0) {
+            this.ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        }
+
+        // wind updates
         this.updateWind();
 
+        // processing trees
         for (const tree of this.trees) {
             this.drawTree(tree);
         }

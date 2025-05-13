@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        textarea {
+            margin-top: 10px;
+            width: 80%;
+            padding: 10px;
+            resize: none;
+        }
+
+        #container {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+            width: 80%;
+            height: 100%;
+            background-color: rgba(128, 128, 128, 0.393);
+            color: crimson;
+        }
+
+        #result {
+            margin-top: 10px;
+            word-wrap: break-word;
+            width: 90%;
+            border: 1px solid black;
+            border-radius: 2px;
+            padding: 5px;
+            color: antiquewhite;
+            font-size: xx-large;
+        }
+    </style>
+</head>
+<body>
+    <textarea name="" id="input" placeholder="write something..."></textarea>
+    <div id="container">
+        <p id="result"></p>
+        <p id="character-count"></p>
+    </div>
+</body>
+<script>
+    const input = document.getElementById('input');
+    let result = document.getElementById('result');
+    let characterCountDisplay = document.getElementById('character-count');
+    let counter = 0;
+
+    input.addEventListener('input', (e) => {
+        result.innerText = input.value;
+        characterCountDisplay.innerText = `Character count: ${input.value.length}`;
+    })
+
+    document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.key === 'r' || e.key === 'R') {
+            input.value = '';
+        }
+    })
+</script>
+</html>

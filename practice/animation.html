@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: background 0.1s ease;
+        }
+
+        div {
+            height: 300px;
+            width: 300px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+<script>
+    let container = document.getElementById('container');
+    container.innerText = 'hello world';
+    function randomColor() {
+        const r = Math.random() * 255 - 1;
+        const b = Math.random() * 255 - 1;
+        const g = Math.random() * 255 - 1;
+        const alpha = Math.random() * 1;
+        let color = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+       return color;
+    }
+
+    
+    function animation() {
+        setInterval(() => {
+            container.style.background = `linear-gradient( ${randomColor()}, ${randomColor()})`;
+            container.style.fontSize = `${Math.max(10, Math.random() * 48)}px`;
+            container.style.color = randomColor();
+        }, 1000);
+    }
+
+    animation();
+</script>
+</html>
