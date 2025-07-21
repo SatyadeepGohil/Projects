@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="main.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
     <nav>
@@ -20,9 +21,10 @@
         <div id="sidebar"></div>
 
         <div id="notes-container">
-            <div id="content-contianer" contenteditable="true">something</div>
-            <button>Add notes</button>
+            <textarea class="content-container" id="editor"></textarea>
+            <div class="content-container" id="preview"></div>
         </div>
+        <button id="add-note-btn">Add note</button>
     </div>
 </body>
 <script src="main.js"></script>

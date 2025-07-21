@@ -38,6 +38,7 @@ nav {
     justify-content: center;
     align-items: center;
     height: 100%;
+    background-color: black;
 
     #sidebar {
         position: fixed;
@@ -70,9 +71,32 @@ nav {
     }
 
     #notes-container {
-        background-color: lightcoral;
+        position: relative;
         height: inherit;
         width: 60%;
         z-index: 1;
+        background-color: brown;
+
+        .content-container {
+            width: 100%;
+            height: inherit;
+            position: absolute;
+            top: 0;
+            left: 0;background-color: cadetblue;
+        }
+
+        #editor {
+            display: block;
+        }
+
+        #preview {
+            display: none;
+        }
+    }
+
+    #add-note-btn {
+        position: absolute;
+        bottom: 0;
+        right: 0;
     }
 }
