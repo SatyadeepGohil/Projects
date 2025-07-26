@@ -5,7 +5,7 @@
 }
 
 body {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -37,13 +37,12 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 100vh;
     background-color: black;
 
     #sidebar {
-        position: fixed;
-        height: inherit;
         position: absolute;
+        height: 100vh;
         top: 0;
         left: 0;
         background-color: rgb(168, 253, 253);
@@ -73,30 +72,54 @@ nav {
     #notes-container {
         position: relative;
         height: inherit;
+        overflow-y: auto;
         width: 60%;
         z-index: 1;
         background-color: brown;
 
         .content-container {
             width: 100%;
-            height: inherit;
+            height: 100%;
+            overflow-x: hidden;
             position: absolute;
             top: 0;
-            left: 0;background-color: cadetblue;
+            left: 0;
         }
 
         #editor {
             display: block;
+            padding: 10px 15px;
+            font-size: 1.5rem;
+            background-color: wheat;
+            word-wrap: break-word;
         }
 
         #preview {
             display: none;
+            padding: 10px 20px;
+            background-color: white;
+            word-wrap: break-word;
         }
     }
 
     #add-note-btn {
-        position: absolute;
+        position: fixed;
         bottom: 0;
         right: 0;
+        margin: 10px;
+        font-size: 2rem;
+        padding: 10px;
+        font-family: inherit;
+        border: none;
+        border-radius: 5px;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.861);
+        }
+
+        &:active {
+            transform: translateY(5px);
+            transition: transform 0.3ms ease;
+        }
     }
 }

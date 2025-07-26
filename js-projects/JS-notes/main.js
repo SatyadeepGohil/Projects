@@ -11,7 +11,7 @@ editor.addEventListener('input', () => {
     preview.innerHTML = marked.parse(raw);
 })
 
-function togglesidebar () {
+function toggleSidebar () {
     isToggle = !isToggle;
     if (isToggle) {
         sidebar.style.display = 'block';
@@ -22,7 +22,7 @@ function togglesidebar () {
     }
 }
 
-function togglepreview () {
+function togglePreview () {
     isPreveiwVisible = !isPreveiwVisible;
 
     if (isPreveiwVisible) {
@@ -34,17 +34,17 @@ function togglepreview () {
 
 
 document.addEventListener('keydown', (e) => {
-    if (e.key === 't' || e.key === 'T') {
-        togglesidebar();
+    if (e.shiftKey && e.key === 't' || e.shiftKey && e.key === 'T') {
+        e.preventDefault();
+        toggleSidebar();
+    }
+
+    if (e.shiftKey && e.key === 'c' || e.shiftKey && e.key === 'C') {
+        e.preventDefault();
+        togglePreview();
     }
 })
 
 sidebarToggleBtn.addEventListener('click', () => {
-    togglesidebar();
-})
-
-document.addEventListener('keydown', (e) => {
-    if (e.ctrlKey && e.key === 'c' || e.ctrlKey && e.key === 'C') {
-        togglepreview();
-    }
+    toggleSidebar();
 })
