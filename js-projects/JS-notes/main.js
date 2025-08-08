@@ -13,7 +13,7 @@ let isPreviewVisible = false;
 let currentFile = null;
 let currentFolder = null;
 
-let intialFile = { folderName: ''};
+let intialNote = { file: { name: 'Untitled', content: 'write something'}};
 
 let localData = localStorage.getItem('notes-data');
 let fileData;
@@ -21,7 +21,7 @@ let fileData;
 if (localData) {
     fileData = JSON.parse(localData);
 } else {
-    fileData = intialFile;
+    fileData = intialNote;
     localStorage.setItem('notes-data', JSON.stringify(fileData));
 }
 
@@ -36,8 +36,6 @@ function toggleSidebar () {
     } else {
         sidebar.style.display = 'none';
         sidebar.style.width = '0';
-        fileCreateBtn.style.display = 'hidden';
-        folderCreateBtn.style.display = 'hidden';
     }
 }
 
@@ -50,6 +48,10 @@ function togglePreview () {
         preview.style.display = 'none';
     }
 }
+
+editor.addEventListener('input', () => {
+    preview.innerHTML = marked.parse(editor.value);
+})
 
 
 document.addEventListener('keydown', (e) => {
